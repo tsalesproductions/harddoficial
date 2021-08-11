@@ -94,7 +94,9 @@ export const csrf: ShieldConfig['csrf'] = {
   |
   */
   exceptRoutes: [
-    '/qrcode/resetar'
+    '/qrcode/resetar',
+    '/ecommerce/get',
+    '/ecommerce/set'
   ],
 
   /*

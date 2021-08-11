@@ -45,4 +45,11 @@ Route.group(() => {
   Route.post('/qrcode/resetar', 'QrsController.reset');
 }).middleware(['auth']);
 
+Route.group(() => {
+  Route.get('/ecommerce/get/:id', 'ApisController.getList')
+  Route.post('/ecommerce/set/:id', 'ApisController.setList')
+
+});
+
+
 Route.get('/logout', 'AuthController.logout')
