@@ -38,4 +38,11 @@ Route.group(() => {
   // Route.get('/dashboard/categories', 'DashboardController.showCategories');
 }).middleware(['auth']);
 
+Route.group(() => {
+  Route.get('/qrcode/criar', 'QrsController.showIndex');
+  Route.post('/qrcode/criar', 'QrsController.generate');
+  Route.get('/qrcode/listar', 'QrsController.showList');
+  Route.post('/qrcode/resetar', 'QrsController.reset');
+}).middleware(['auth']);
+
 Route.get('/logout', 'AuthController.logout')
