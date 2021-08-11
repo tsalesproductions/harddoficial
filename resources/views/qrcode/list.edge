@@ -1,0 +1,120 @@
+{{-- include header --}}
+@include('parts/header')
+
+{{-- include aside --}}
+@include('parts/aside')
+
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+  <!-- Navbar -->
+  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">QrCode</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Criar</li>
+        </ol>
+      </nav>
+      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+          
+        </div>
+        <ul class="navbar-nav  justify-content-end" style="gap: 20px">
+          <li class="nav-item d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+              <i class="fa fa-user me-sm-1"></i> 
+              <span class="d-sm-inline d-none">{{name}}</span>
+            </a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a href="/logout" class="nav-link text-body font-weight-bold px-0">
+              <i class="fa fa-sign-out me-sm-1"></i>
+              <span class="d-sm-inline d-none">Sair</span>
+            </a>
+          </li>
+          <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+              <div class="sidenav-toggler-inner">
+                <i class="sidenav-toggler-line"></i>
+                <i class="sidenav-toggler-line"></i>
+                <i class="sidenav-toggler-line"></i>
+              </div>
+            </a>
+          </li>
+          {{--  <li class="nav-item px-3 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body p-0">
+              <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+            </a>
+          </li>  --}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="container-fluid py-4">
+    <div class="row mt-4">
+      <div class="col-lg-8 col-md-12 col-sm-12">
+        <h6 class="font-weight-bolder mb-0">Criar QrCode</h6>
+        <div class="card z-index-2">
+          <div class="card-body p-3">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0 first">
+                <thead>
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Código</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                    <th class="text-secondary opacity-7"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @each(result in results)
+                  <tr>
+                    <td width="10%">
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="{{ result.qr_code }}" class="avatar avatar-sm me-3" alt="user1">
+                        </div>
+                      </div>
+                    </td>
+                    <td width="50%">{{ result.qr_id }}</td>
+                    <td class="align-middle text-center text-sm" width="20%">
+                      @if(result.qr_status == 1) 
+                      <span class="badge badge-sm bg-gradient-danger">Indisponível</span>
+                      @else
+                        <span class="badge badge-sm bg-gradient-success">Disponível</span>
+                      @end
+                      
+                    </td>
+                    <td class="align-middle text-center d-flex" width="30%" style="gap: 10px;height: 60px;align-items: center;">
+                      <a style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Baixar" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip" onclick="download64('{{ result.qr_code }}','{{ result.qr_id }}')">
+                        <i class="fas fa-download fa-lg"></i>
+                      </a>
+                      <a style="cursor: pointer" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copiar" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="copyToClipBoard('{{ result.qr_id }}')">
+                        <i class="fas fa-copy fa-lg"></i>
+                      </a>
+                      <a href="{{ result.qr_id }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
+                        <i class="fas fa-eye fa-lg"></i>
+                      </a>
+                      {{--  <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
+                        <i class="fas fa-edit fa-lg"></i>
+                      </a>  --}}
+                      @if(result.qr_status == 1) 
+                      <a style="cursor: pointer" onclick="request.triggerReset('{{ result.qr_id }}', event)" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Resetar" class="text-secondary font-weight-bold text-xs trigger-reset" data-toggle="tooltip">
+                        <i class="fas fa-sync fa-lg"></i>
+                      </a>
+                      @end
+                    </td>
+                  </tr>
+                  @endeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{{-- include footer --}}
+@include('parts/footer')
