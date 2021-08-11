@@ -42,10 +42,21 @@ let request = {
 
   triggerReset: async function(id, e){
     e.preventDefault()
-    console.log(id);
     try{
       let response = await this.get("POST", "qrcode/resetar", {id: id});
-      console.log(response);
+          response = response[0];
+      switch(response.status){
+        case "success":
+          alertFire(response.status, response.msg);
+          let target = e.target.parentElement.parentElement.parentElement.querySelector(".bg-gradient-danger");
+              target.classList.remove("bg-gradient-danger");
+              target.classList.add("bg-gradient-success");
+        break;
+
+        default: 
+          alertFire(response.status, response.msg);
+        break;
+      }
     }catch(e){
       console.log(e)
     }

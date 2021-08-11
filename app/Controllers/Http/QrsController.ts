@@ -115,7 +115,24 @@ export default class QrsController {
       
   }
 
-  public async reset({ view, auth, response }: HttpContextContract) {
-    response.json([{status: "OK"}]);
+  public async reset({ view, auth, response, request }: HttpContextContract) {
+    let data = request.body();
+    
+    if(data.id){
+      const r = await QrData.findBy('qr_id', data.id);
+
+      if(!r) return response.json([{status: "error", msg: "Não foi encontrado um código com o id informado"}]);
+      
+      r.qr_status = "0";
+      r.qr_emergencia = "";
+      r.qr_meu_emergencia = "";
+
+      await r.save();
+      response.json([{status: "success", msg: "Código resetado com sucesso"}]);
+    }else{
+      response.json([{status: "error", msg: "O parâmetro id está vazio"}]);
+    }
+
+    
   }
 }

@@ -11,7 +11,7 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
           <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">QrCode</a></li>
-          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Criar</li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Gerenciar</li>
         </ol>
       </nav>
       <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -53,7 +53,7 @@
   <div class="container-fluid py-4">
     <div class="row mt-4">
       <div class="col-lg-8 col-md-12 col-sm-12">
-        <h6 class="font-weight-bolder mb-0">Criar QrCode</h6>
+        <h6 class="font-weight-bolder mb-0">Gerenciar QrCode</h6>
         <div class="card z-index-2">
           <div class="card-body p-3">
             <div class="table-responsive p-0">
@@ -89,10 +89,10 @@
                       <a style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Baixar" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip" onclick="download64('{{ result.qr_code }}','{{ result.qr_id }}')">
                         <i class="fas fa-download fa-lg"></i>
                       </a>
-                      <a style="cursor: pointer" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copiar" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="copyToClipBoard('{{ result.qr_id }}')">
+                      <a style="cursor: pointer" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copiar" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="copyToClipBoard('https://www.hardd.com.br/myme?id={{ result.qr_id }}')">
                         <i class="fas fa-copy fa-lg"></i>
                       </a>
-                      <a href="{{ result.qr_id }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
+                      <a href="https://www.hardd.com.br/myme?id={{ result.qr_id }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
                         <i class="fas fa-eye fa-lg"></i>
                       </a>
                       {{--  <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
