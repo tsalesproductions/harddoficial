@@ -51,5 +51,9 @@ Route.group(() => {
 
 });
 
+Route.get('/myme/:id', 'MymesController.mymeManager')
+Route.post('/myme', 'MymesController.mymeSend')
+
 
 Route.get('/logout', 'AuthController.logout')
+

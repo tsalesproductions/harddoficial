@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+main.myme{
+    font-family: 'Montserrat', sans-serif;
+
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 40px;  
+}
+
+main.myme input[type='file']{
+    display: none;
+}
+
+main.myme input,
+main.myme textarea,
+main.myme input::placeholder,
+main.myme textarea::placeholder{
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    font-weight: 700;
+    font-size: 19px;
+    color: #333;
+}
+
+main.myme input:focus,
+main.myme textarea:focus{
+    outline: none;
+    border: none;
+    
+}
+
+main.myme .gd{
+    display: grid;
+    grid-gap: 10px;
+    margin-bottom: 10px;
+}
+
+main.myme header{
+    width: 100%;
+    height: 185px;
+    background-color: #313131;
+}
+
+/****** GRID ******/
+.m1{
+    grid-template-columns: 50% 3fr 1fr;
+    margin-top: 10px;
+}
+
+.m2{
+    grid-template-columns: 50% 20% 1fr;
+}
+
+.m3{
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.m4,
+.m5{
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.m6{
+    grid-template-columns: 1fr 1fr 150px;
+}
+
+.m7{
+    grid-template-columns: 1fr;
+}
+
+/****** EU ******/
+main.myme .my {
+    position: relative;
+    width: 100%;
+}
+
+main.myme .my *:not(.photo){
+    z-index: 2;
+}
+
+main.myme .my .photo{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: -95px;
+    z-index: 1;
+}
+
+main.myme .my img{
+    border: 4px solid #fff;
+    border-radius: 50%;
+    width: 186px;
+    height: 186px;
+    background-color: #fff;
+}
+
+main.myme h1{
+    color:#1A1A1A;
+    font-weight: bold;
+    font-size: 75px;
+}
+
+main.myme .field{
+    text-align: left;
+    background-color: #E6E6E6;
+    padding: 5px;
+}
+
+main.myme .field.b,
+main.myme .b{
+    background-color: #ccc;
+}
+
+main.myme button[type='submit']{
+    padding: 0;
+    margin: 0;
+    background-color: #ccc;
+    border: none;
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+main.myme button[type='submit']:disabled{
+    opacity: .9;
+    cursor: no-drop;
+}
+
+main.myme button[type='submit']:hover{
+    opacity: .9;
+}
+
+main.myme .field strong{
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+}
+/****** MEU ******/
+main.myme .me{
+    margin-top: 55px;
+}
+
+main.myme h4.emergencia{
+    color: #990000;
+    text-align: center;
+    font-size: 27px;
+    font-weight: 800;
+    margin: 15px 0px;
+}
+
+main.myme .field-foto{
+    position: relative;
+    background-color: transparent;
+}
+
+main.myme .field-foto img{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+/****** HELP ******/
+.help{
+    margin-top: 55px;
+}
+
+.help .ic{
+    text-align: center;
+}
+
+.help .ic img{
+    width: 80px;
+}
+
+.help ul{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.help ul li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    font-weight: 700;
+    font-size: 17px;
+    color: #333;
+
+    padding: 5px 15px !important;
+}
+
+.help ul li:nth-child(2),
+.help ul li:nth-child(4){
+    text-align: right;
+}
+
+
+.help ul li span{
+    color: #990000;
+}
+
+/***** EDIT *****/
+main.myme .terms{
+    display: grid;
+    grid-template-columns: 25px 1fr;
+    font-size: 15px;
+    align-items: center;
+    gap: 5px;
+    line-height: 1;
+}
+
+main.myme .terms input{
+    width: 25px;
+    height: 25px;
+}
+
+/***** FOOTER *****/
+main.myme footer{
+    text-align: center;
+    margin-top: 20px;
+}
+
+main.myme footer img{
+    width: 60px;
+}
+
+/***** MOBILE *****/
+@media(max-width:992px){
+    main.myme{
+        padding: 10px;  
+    }
+
+    main.myme .field strong{
+        font-size: 10px;
+    }
+
+    main.myme h4.emergencia{
+        font-size: 18px;
+    }
+
+    main.myme .help{
+        margin: 0;
+    }
+
+    .help .ic img{
+        width: 40px;
+    }
+
+    .help .ic{
+        margin: 20px
+    }
+
+    .help ul li{
+        text-align: left !important;
+        padding: 5px !important;
+        font-size: 13px;
+    }
+
+    main.myme h1{
+        font-size: 55px;
+        padding-top: 25px;
+    }
+
+    main.myme .terms{
+        align-items: normal;
+    }
+    
+}

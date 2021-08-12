@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyMe</title>
+    <link rel="stylesheet" href="../assets/css/myme.css"/>
+</head>
+<body>
+    <main class="myme 
+    @if(data && data.qr_status == 0)
+        disponivel
+    @else
+        usado
+    @endif
+    ">
+        @if(data)
+        <form action="{{ route('MymesController.mymeSend') }}" method="POST" enctype="multipart/form-data">
+            {{ csrfField() }}
+            <header></header>
+            <div class="my">
+                <div class="photo"><img id="field_me_foto" src="../assets/img/foto.png"/></div>
+                <h1>EU</h1>
+                <div class="fields">
+                    <div class="gd m1">
+                        <div class="field field-nome">
+                            <strong>NOME:</strong>
+                            <input required  type="text" name="field_eu_nome" value="" class="form-control"/>
+                        </div>
+        
+                        <div class="field field-nascimento">
+                            <strong>DATA DE NASCIMENTO:</strong>
+                            <input required  type="text" name="field_eu_nascimento" value="" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="gd m2">
+                        <div class="field field-endereco b">
+                            <strong>ENDEREÇO:</strong>
+                            <input required  type="text" name="field_eu_endereco" value="" class="form-control"/>
+                        </div>
+        
+                        <div class="field field-numero b">
+                            <strong>NUMERO:</strong>
+                            <input required  type="text" name="field_eu_numero" value="" class="form-control"/>
+                        </div>
+        
+                        <div class="field field-cidade b">
+                            <strong>CIDADE:</strong>
+                            <input required  type="text" name="field_eu_cidade" value="" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="gd m3">
+                        <div class="field field-sangue">
+                            <strong>TIPO SANGUINEO:</strong>
+                            <input required  type="text" name="field_eu_sangue" value="" class="form-control"/>
+                        </div>
+
+                        <div class="field field-alergia">
+                            <strong>ALERGIA:</strong>
+                            <input required  type="text" name="field_eu_alergia" value="" class="form-control"/>
+                        </div>
+
+                        <div class="field field-peso">
+                            <strong>PESO:</strong>
+                            <input required  type="text" name="field_eu_peso" value="" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="gd m4">
+                        <div class="field field-medicamento b">
+                            <strong>USO MEDICAMENTO:</strong>
+                            <input required  type="text" name="field_eu_medicamento" value="" class="form-control"/>
+                        </div>
+
+                        <div class="field field-email b">
+                            <strong>E-EMAIL:</strong>
+                            <input required  type="text" name="field_eu_email" value="" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
+
+                    <div class="gd m5">
+                        <div class="field field-nome b">
+                            <strong>NOME:</strong>
+                            <input required  type="text" name="field_eu_e_nome1" value="" class="form-control"/>
+                        </div>
+        
+                        <div class="field field-contato b">
+                            <strong>CONTATO:</strong>
+                            <input required  type="text" name="field_eu_e_contato1" value="" class="form-control"/>
+                        </div>
+        
+                        <div class="field field-nome">
+                            <strong>NOME:</strong>
+                            <input required  type="text" name="field_eu_e_nome2" value="" class="form-control"/>
+                        </div>
+        
+                        <div class="field field-contato">
+                            <strong>CONTATO:</strong>
+                            <input required  type="text" name="field_eu_e_contato2" value="" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="me">
+                <h1>MEU</h1>
+
+                <div class="gd m6">
+                    <div class="field field-nome">
+                        <strong>NOME:</strong>
+                        <input required  type="text" name="field_meu_nome" value="" class="form-control"/>
+                    </div>
+                    <div class="field field-data-ano">
+                        <strong>DATA/ANO:</strong>
+                        <input required  type="text" name="field_meu_dataano" value="" class="form-control"/>
+                    </div>
+                    <div class="field field-foto">
+                        <img id="field_my_foto" src="../assets/img/meu.PNG"/>
+                    </div>
+                </div>
+
+                <div class="gd m2">
+                    <div class="field field-endereco b">
+                        <strong>ENDEREÇO:</strong>
+                        <input required  type="text" name="field_meu_endereco" value="" class="form-control"/>
+                    </div>
+
+                    <div class="field field-numero b">
+                        <strong>NUMERO:</strong>
+                        <input required  type="text" name="field_meu_numero" value="" class="form-control"/>
+                    </div>
+
+                    <div class="field field-cidade b">
+                        <strong>CIDADE:</strong>
+                        <input required  type="text" name="field_meu_cidade" value="" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="gd m7">
+                    <div class="field field-obs b">
+                        <strong>OBS:</strong>
+                        <textarea name="field_meu_obs" value="" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
+                <div class="gd m5">
+                    <div class="field field-nome b">
+                        <strong>NOME:</strong>
+                        <input required  type="text" name="field_meu_c_nome1" value="" class="form-control"/>
+                    </div>
+
+                    <div class="field field-contato b">
+                        <strong>CONTATO:</strong>
+                        <input required  type="text" name="field_meu_c_contato1" value="" class="form-control"/>
+                    </div>
+
+                    <div class="field field-nome">
+                        <strong>NOME:</strong>
+                        <input required  type="text" name="field_meu_c_nome2" value="" class="form-control"/>
+                    </div>
+
+                    <div class="field field-contato">
+                        <strong>CONTATO:</strong>
+                        <input required  type="text" name="field_meu_c_contato2" value="" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+
+            <input type="file" name="field_eu_foto" accept="image/*" id="field_eu_foto"/>
+            <input type="file" name="field_meu_foto" accept="image/*" id="field_meu_foto"/>
+
+            <div class="edit">
+                <div class="terms">
+                    <input required  type="checkbox" id="field_terms" name="field_terms">
+                    <label for="terms">Eu concordo que <a href="#">sobre a lei LGPD</a> e estou ciente que os dados inseridos acima estarão disponíveis a qualquer momento através deste link.</label>
+                </div>
+
+                <button type="submit" disabled>SALVAR DADOS</button>
+            </div>
+
+            <div class="help">
+                <div class="ic"><img src="../assets/img/help.PNG"></div>
+                <ul>
+                    <li class="field b"><span>193</span> - CORPO DE BOMBEIROS</li>
+                    <li class="field b"><span>194</span> - POLÍCIA FEDERAL</li>
+                    <li class="field"><span>197</span> - POLÍCIA CIVIL</li>
+                    <li class="field"><span>190</span> - POLÍCIA MILITAR</li>
+                </ul>
+            </div>
+
+            <footer>
+                <a href="https://www.hardd.com.br/"><img src="https://cdn.awsli.com.br/400x300/1916/1916880/logo/b778bd9eee.png"></a>
+            </footer>
+        </form> 
+        @else
+            <h2 style="font-size: 32px; text-align: center;">MyMe não encontrado</h2>
+        @endif
+    </main>
+    <script src="../assets/js/myme.js"></script>
+</body>
+</html>
