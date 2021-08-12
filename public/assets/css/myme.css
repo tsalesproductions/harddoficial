@@ -9,6 +9,18 @@ main.myme{
     padding: 40px;  
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 50000000s ease-in-out 0s;
+}
+
+.disponivel #field_me_foto,
+.disponivel #field_my_foto{
+    cursor: pointer;
+}
+
 main.myme input[type='file']{
     display: none;
 }
@@ -95,6 +107,7 @@ main.myme .my img{
     border-radius: 50%;
     width: 186px;
     height: 186px;
+    object-fit: cover;
     background-color: #fff;
 }
 
@@ -177,7 +190,7 @@ main.myme .field-foto img{
 }
 
 .help .ic img{
-    width: 80px;
+    width: 50px;
 }
 
 .help ul{
@@ -257,7 +270,7 @@ main.myme footer img{
     }
 
     .help .ic{
-        margin: 20px
+        margin: 20px !important
     }
 
     .help ul li{

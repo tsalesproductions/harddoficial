@@ -16,68 +16,70 @@
     @endif
     ">
         @if(data)
-        <form action="{{ route('MymesController.mymeSend') }}" method="POST" enctype="multipart/form-data">
+        <form enctype="multipart/form-data" method="POST" action="{{ route('MymesController.mymeSend') }}">
             {{ csrfField() }}
-            <header></header>
+            <header>
+                <img src="../assets/img/capa.PNG" width="100%">
+            </header>
             <div class="my">
-                <div class="photo"><img id="field_me_foto" src="../assets/img/foto.png"/></div>
+                <div class="photo"><img id="field_me_foto" src="{{data.qr_imagem}}"/></div>
                 <h1>EU</h1>
                 <div class="fields">
                     <div class="gd m1">
                         <div class="field field-nome">
                             <strong>NOME:</strong>
-                            <input required  type="text" name="field_eu_nome" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_nome" value="{{data.qr_cliente_nome}}" class="form-control"/>
                         </div>
         
                         <div class="field field-nascimento">
                             <strong>DATA DE NASCIMENTO:</strong>
-                            <input required  type="text" name="field_eu_nascimento" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_nascimento" value="{{data.qr_cliente_nascimento}}" class="form-control"/>
                         </div>
                     </div>
 
                     <div class="gd m2">
                         <div class="field field-endereco b">
                             <strong>ENDEREÇO:</strong>
-                            <input required  type="text" name="field_eu_endereco" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_endereco" value="{{data.qr_cliente_endereco_rua}}" class="form-control"/>
                         </div>
         
                         <div class="field field-numero b">
                             <strong>NUMERO:</strong>
-                            <input required  type="text" name="field_eu_numero" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_numero" value="{{data.qr_cliente_endereco_numero}}" class="form-control"/>
                         </div>
         
                         <div class="field field-cidade b">
                             <strong>CIDADE:</strong>
-                            <input required  type="text" name="field_eu_cidade" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_cidade" value="{{data.qr_cliente_endereco_cidade}}" class="form-control"/>
                         </div>
                     </div>
 
                     <div class="gd m3">
                         <div class="field field-sangue">
                             <strong>TIPO SANGUINEO:</strong>
-                            <input required  type="text" name="field_eu_sangue" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_sangue" value="{{data.qr_cliente_tipo_sanguineo}}" class="form-control"/>
                         </div>
 
                         <div class="field field-alergia">
                             <strong>ALERGIA:</strong>
-                            <input required  type="text" name="field_eu_alergia" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_alergia" value="{{data.qr_cliente_alergia}}" class="form-control"/>
                         </div>
 
                         <div class="field field-peso">
                             <strong>PESO:</strong>
-                            <input required  type="text" name="field_eu_peso" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_peso" value="{{data.qr_cliente_peso}}" class="form-control"/>
                         </div>
                     </div>
 
                     <div class="gd m4">
                         <div class="field field-medicamento b">
                             <strong>USO MEDICAMENTO:</strong>
-                            <input required  type="text" name="field_eu_medicamento" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_medicamento" value="{{data.qr_cliente_uso_medicamento}}" class="form-control"/>
                         </div>
 
                         <div class="field field-email b">
                             <strong>E-EMAIL:</strong>
-                            <input required  type="text" name="field_eu_email" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_email" value="{{data.qr_cliente_email}}" class="form-control"/>
                         </div>
                     </div>
 
@@ -86,22 +88,22 @@
                     <div class="gd m5">
                         <div class="field field-nome b">
                             <strong>NOME:</strong>
-                            <input required  type="text" name="field_eu_e_nome1" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_e_nome1" value="{{emergencia.meu.nome1}}" class="form-control"/>
                         </div>
         
                         <div class="field field-contato b">
                             <strong>CONTATO:</strong>
-                            <input required  type="text" name="field_eu_e_contato1" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_e_contato1" value="{{emergencia.meu.contato1}}" class="form-control"/>
                         </div>
         
                         <div class="field field-nome">
                             <strong>NOME:</strong>
-                            <input required  type="text" name="field_eu_e_nome2" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_e_nome2" value="{{emergencia.meu.nome2}}" class="form-control"/>
                         </div>
         
                         <div class="field field-contato">
                             <strong>CONTATO:</strong>
-                            <input required  type="text" name="field_eu_e_contato2" value="" class="form-control"/>
+                            <input required  type="text" name="field_eu_e_contato2" value="{{emergencia.meu.contato2}}" class="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -112,38 +114,38 @@
                 <div class="gd m6">
                     <div class="field field-nome">
                         <strong>NOME:</strong>
-                        <input required  type="text" name="field_meu_nome" value="" class="form-control"/>
+                        <input required  type="text" name="field_meu_nome" value="{{data.qr_meu_nome}}" class="form-control"/>
                     </div>
                     <div class="field field-data-ano">
                         <strong>DATA/ANO:</strong>
-                        <input required  type="text" name="field_meu_dataano" value="" class="form-control"/>
+                        <input required  type="text" name="field_meu_dataano" value="{{data.qr_meu_data}}" class="form-control"/>
                     </div>
                     <div class="field field-foto">
-                        <img id="field_my_foto" src="../assets/img/meu.PNG"/>
+                        <img id="field_my_foto" src="{{data.qr_meu_foto}}"/>
                     </div>
                 </div>
 
                 <div class="gd m2">
                     <div class="field field-endereco b">
                         <strong>ENDEREÇO:</strong>
-                        <input required  type="text" name="field_meu_endereco" value="" class="form-control"/>
+                        <input required  type="text" name="field_meu_endereco" value="{{data.qr_meu_endereco}}" class="form-control"/>
                     </div>
 
                     <div class="field field-numero b">
                         <strong>NUMERO:</strong>
-                        <input required  type="text" name="field_meu_numero" value="" class="form-control"/>
+                        <input required  type="text" name="field_meu_numero" value="{{data.qr_meu_numero}}" class="form-control"/>
                     </div>
 
                     <div class="field field-cidade b">
                         <strong>CIDADE:</strong>
-                        <input required  type="text" name="field_meu_cidade" value="" class="form-control"/>
+                        <input required  type="text" name="field_meu_cidade" value="{{data.qr_meu_cidade}}" class="form-control"/>
                     </div>
                 </div>
 
                 <div class="gd m7">
                     <div class="field field-obs b">
                         <strong>OBS:</strong>
-                        <textarea name="field_meu_obs" value="" class="form-control"></textarea>
+                        <textarea name="field_meu_obs" class="form-control">{{data.qr_meu_obs}}</textarea>
                     </div>
                 </div>
 
@@ -151,28 +153,29 @@
                 <div class="gd m5">
                     <div class="field field-nome b">
                         <strong>NOME:</strong>
-                        <input required  type="text" name="field_meu_c_nome1" value="" class="form-control"/>
+                        <input required  type="text" name="field_meu_c_nome1" value="{{emergencia.eu.nome1}}" class="form-control"/>
                     </div>
 
                     <div class="field field-contato b">
                         <strong>CONTATO:</strong>
-                        <input required  type="text" name="field_meu_c_contato1" value="" class="form-control"/>
+                        <input required  type="text" name="field_meu_c_contato1" value="{{emergencia.eu.contato1}}" class="form-control"/>
                     </div>
 
                     <div class="field field-nome">
                         <strong>NOME:</strong>
-                        <input required  type="text" name="field_meu_c_nome2" value="" class="form-control"/>
+                        <input required  type="text" name="field_meu_c_nome2" value="{{emergencia.eu.nome2}}" class="form-control"/>
                     </div>
 
                     <div class="field field-contato">
                         <strong>CONTATO:</strong>
-                        <input required  type="text" name="field_meu_c_contato2" value="" class="form-control"/>
+                        <input required  type="text" name="field_meu_c_contato2" value="{{emergencia.eu.contato2}}" class="form-control"/>
                     </div>
                 </div>
             </div>
 
-            <input type="file" name="field_eu_foto" accept="image/*" id="field_eu_foto"/>
-            <input type="file" name="field_meu_foto" accept="image/*" id="field_meu_foto"/>
+            <input type="file" name="field_eu_foto" accept="image/*" id="field_eu_foto2"/>
+            <input type="file" name="field_meu_foto" accept="image/*" id="field_meu_foto2"/>
+            <input type="hidden" name="qr_id" value="{{ qr_id }}"/>
 
             <div class="edit">
                 <div class="terms">
@@ -184,7 +187,7 @@
             </div>
 
             <div class="help">
-                <div class="ic"><img src="../assets/img/help.PNG"></div>
+                <div class="ic" style="margin-bottom: 55px"><img src="../assets/img/atencao.PNG"></div>
                 <ul>
                     <li class="field b"><span>193</span> - CORPO DE BOMBEIROS</li>
                     <li class="field b"><span>194</span> - POLÍCIA FEDERAL</li>

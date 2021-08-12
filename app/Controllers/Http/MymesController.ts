@@ -2,6 +2,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import QrData from 'App/Models/QrCode';
 import Route from '@ioc:Adonis/Core/Route'
 import Application from '@ioc:Adonis/Core/Application'
+import Database from '@ioc:Adonis/Lucid/Database'
 
 export default class MymesController {
   public async mymeManager({view, request, response, params }: HttpContextContract) {
@@ -9,7 +10,29 @@ export default class MymesController {
 
     let data = await QrData.findBy('qr_id', body.id);
 
-    return view.render('myme/index', {data: data});
+    let qr_emergencia,
+        qr_meu_emergencia;
+
+        if(data?.qr_emergencia){
+          qr_emergencia = JSON.parse(data.qr_emergencia);
+        }
+
+        if(data?.qr_meu_emergencia){
+          qr_meu_emergencia = JSON.parse(data.qr_meu_emergencia);
+        }
+
+
+    return view.render('myme/index', {data: data, qr_id: body.id, emergencia: {eu: qr_emergencia, meu: qr_meu_emergencia}});
+  }
+
+  private async uploadFile(request, name){
+    const file = request.file(name);
+    const fileName = `myme_${Math.floor(Math.random() * 99999999) + 1}.${file.extname}`
+    await file.move(Application.publicPath('uploads'), {
+      name: fileName,
+    });
+
+    return `/uploads/${fileName}`;
   }
 
   public async mymeSend({view, request, response }: HttpContextContract) {
@@ -39,15 +62,77 @@ export default class MymesController {
       field_meu_c_nome2,
       field_meu_c_contato2,
       field_eu_foto,
-      field_meu_foto
-    } 
+      field_meu_foto,
+      qr_id
+    }
       = request.all();
 
-    console.log(field_eu_nome);
-    const coverImage = request.file('field_eu_nome')
-    if (coverImage) {
-      await coverImage.move(Application.tmpPath('uploads'))
+    let qr_meu_emergencia = {
+      nome1: field_meu_c_nome1,
+      contato1: field_meu_c_contato1,
+      nome2: field_meu_c_nome2,
+      contato2: field_meu_c_contato2
     }
+
+    let qr_emergencia = {
+      nome1: field_eu_e_nome1,
+      contato1: field_eu_e_contato1,
+      nome2: field_eu_e_nome2,
+      contato2: field_eu_e_contato2
+    }
+
+    let me_img = await this.uploadFile(request, 'field_eu_foto');
+    let my_img = await this.uploadFile(request, 'field_meu_foto');
+    
+    let result = await Database.rawQuery(`UPDATE qr_codes SET
+    qr_imagem = ?,
+    qr_cliente_nome = ?,
+    qr_cliente_nascimento = ?,
+    qr_cliente_endereco_rua = ?,
+    qr_cliente_endereco_numero = ?,
+    qr_cliente_endereco_cidade = ?,
+    qr_cliente_tipo_sanguineo = ?,
+    qr_cliente_alergia = ?,
+    qr_cliente_peso = ?,
+    qr_cliente_uso_medicamento = ?,
+    qr_cliente_email = ?,
+    qr_emergencia = ?,
+    qr_meu_nome = ?,
+    qr_meu_data = ?,
+    qr_meu_endereco = ?,
+    qr_meu_numero = ?,
+    qr_meu_cidade = ?,
+    qr_meu_obs = ?,
+    qr_meu_emergencia = ?,
+    qr_meu_foto = ?,
+    qr_status = ? 
+    WHERE qr_id = ?
+    `, [
+      me_img,
+      field_eu_nome,
+      field_eu_nascimento,
+      field_eu_endereco,
+      field_eu_numero,
+      field_eu_cidade,
+      field_eu_sangue,
+      field_eu_alergia,
+      field_eu_peso,
+      field_eu_medicamento,
+      field_eu_email,
+      JSON.stringify(qr_meu_emergencia),
+      field_meu_nome,
+      field_meu_dataano,
+      field_meu_endereco,
+      field_meu_numero,
+      field_meu_cidade,
+      field_meu_obs,
+      JSON.stringify(qr_emergencia),
+      my_img,
+      '1',
+      qr_id
+    ]);
+
+    return response.redirect('/myme/'+qr_id);
     
     
   }

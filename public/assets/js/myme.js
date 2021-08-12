@@ -3,11 +3,14 @@ const formManager = {
     q: function(data){
         return document.querySelector(data);
     },
+    qall: function(data){
+        return document.querySelectorAll(data);
+    },
     triggetImages: function(){
         let field_me_foto = this.q("#field_me_foto"),
-            field_me_input = this.q("#field_eu_foto"),
+            field_me_input = this.q("#field_eu_foto2"),
             field_my_foto = this.q("#field_my_foto"),
-            field_my_input = this.q("#field_meu_foto");
+            field_my_input = this.q("#field_meu_foto2");
 
             field_me_foto.src = "https://image.flaticon.com/icons/png/512/1692/1692911.png"
             field_my_foto.src = "https://image.flaticon.com/icons/png/512/1692/1692911.png"
@@ -21,6 +24,7 @@ const formManager = {
             });
     },
     termsValidate: function(){
+        if(this.q(".usado")) return;
         let terms = this.q("#field_terms"),
             submit = this.q("button[type='submit']");
 
@@ -31,6 +35,13 @@ const formManager = {
                     submit.disabled = true;
                 }
             });
+    },
+    disableAllInputs: function(){
+        if(!this.q(".usado")) return;
+        let inputs = this.qall("input,textarea");
+        inputs.forEach(function(item){
+            item.disabled = true;
+        })
     },
     checkIfEnabled: function(){
         if(this.myme.classList.contains("usado")){
@@ -43,6 +54,7 @@ const formManager = {
     init: function(){
         this.checkIfEnabled();
         this.termsValidate();
+        this.disableAllInputs();
     }
 }
 
