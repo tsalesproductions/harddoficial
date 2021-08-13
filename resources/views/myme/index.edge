@@ -84,26 +84,41 @@
                     </div>
 
                     <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
-
                     <div class="gd m5">
                         <div class="field field-nome b">
                             <strong>NOME:</strong>
-                            <input required  type="text" name="field_eu_e_nome1" value="{{emergencia.meu.nome1}}" class="form-control"/>
+                            <input required  type="text" name="field_eu_e_nome1"
+                            @if(emergencia.meu) 
+                            value="{{emergencia.meu.nome1}}"
+                            @end
+                            class="form-control"/>
                         </div>
         
                         <div class="field field-contato b">
                             <strong>CONTATO:</strong>
-                            <input required  type="text" name="field_eu_e_contato1" value="{{emergencia.meu.contato1}}" class="form-control"/>
+                            <input required  type="text" name="field_eu_e_contato1" 
+                            @if(emergencia.meu) 
+                            value="{{emergencia.meu.contato1}}"
+                            @end 
+                            class="form-control"/>
                         </div>
         
                         <div class="field field-nome">
                             <strong>NOME:</strong>
-                            <input required  type="text" name="field_eu_e_nome2" value="{{emergencia.meu.nome2}}" class="form-control"/>
+                            <input required  type="text" name="field_eu_e_nome2" 
+                            @if(emergencia.meu)
+                            value="{{emergencia.meu.nome2}}"
+                            @endif
+                            class="form-control"/>
                         </div>
         
                         <div class="field field-contato">
                             <strong>CONTATO:</strong>
-                            <input required  type="text" name="field_eu_e_contato2" value="{{emergencia.meu.contato2}}" class="form-control"/>
+                            <input required  type="text" name="field_eu_e_contato2" 
+                            @if(emergencia.meu)
+                            value="{{emergencia.meu.contato2}}"
+                            @end
+                            class="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -153,22 +168,38 @@
                 <div class="gd m5">
                     <div class="field field-nome b">
                         <strong>NOME:</strong>
-                        <input required  type="text" name="field_meu_c_nome1" value="{{emergencia.eu.nome1}}" class="form-control"/>
+                        <input required  type="text" name="field_meu_c_nome1"
+                        @if(emergencia.eu)
+                        value="{{emergencia.eu.nome1}}"
+                        @end
+                        class="form-control"/>
                     </div>
 
                     <div class="field field-contato b">
                         <strong>CONTATO:</strong>
-                        <input required  type="text" name="field_meu_c_contato1" value="{{emergencia.eu.contato1}}" class="form-control"/>
+                        <input required  type="text" name="field_meu_c_contato1"
+                        @if(emergencia.eu)
+                        value="{{emergencia.eu.contato1}}"
+                        @endif 
+                        class="form-control"/>
                     </div>
 
                     <div class="field field-nome">
                         <strong>NOME:</strong>
-                        <input required  type="text" name="field_meu_c_nome2" value="{{emergencia.eu.nome2}}" class="form-control"/>
+                        <input required  type="text" name="field_meu_c_nome2" 
+                        @if(emergencia.eu)
+                        value="{{emergencia.eu.nome2}}"
+                        @end
+                        class="form-control"/>
                     </div>
 
                     <div class="field field-contato">
                         <strong>CONTATO:</strong>
-                        <input required  type="text" name="field_meu_c_contato2" value="{{emergencia.eu.contato2}}" class="form-control"/>
+                        <input required  type="text" name="field_meu_c_contato2" 
+                        @if(emergencia.eu)
+                        value="{{emergencia.eu.contato2}}"
+                        @end
+                        class="form-control"/>
                     </div>
                 </div>
             </div>
@@ -183,7 +214,7 @@
                     <label for="terms">Eu concordo que <a href="#">sobre a lei LGPD</a> e estou ciente que os dados inseridos acima estarão disponíveis a qualquer momento através deste link.</label>
                 </div>
 
-                <button type="submit" disabled>SALVAR DADOS</button>
+                <button type="submit" disabled><div class="spinner-border" style="width: 1.3rem;height: 1.3rem; display: none;" role="status"><span class="visually-hidden"></span></div> SALVAR DADOS</button>
             </div>
 
             <div class="help">

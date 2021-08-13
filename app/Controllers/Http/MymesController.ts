@@ -9,6 +9,7 @@ export default class MymesController {
     let body = params;
 
     let data = await QrData.findBy('qr_id', body.id);
+    console.log(body.id);
 
     let qr_emergencia,
         qr_meu_emergencia;

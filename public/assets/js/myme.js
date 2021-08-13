@@ -19,8 +19,28 @@ const formManager = {
                 field_me_input.click();
             });
 
+            field_me_input.addEventListener("change", function(es){
+                if (es.target.files && es.target.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        field_me_foto.src =  e.target.result;
+                    }
+                    reader.readAsDataURL(es.target.files[0]);
+                }
+            });
+
             field_my_foto.addEventListener("click", function(){
                 field_my_input.click();
+            });
+
+            field_my_input.addEventListener("change", function(es){
+                if (es.target.files && es.target.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        field_my_foto.src =  e.target.result;
+                    }
+                    reader.readAsDataURL(es.target.files[0]);
+                }
             });
     },
     termsValidate: function(){
@@ -31,8 +51,12 @@ const formManager = {
             terms.addEventListener("change", function(e){
                 if(e.target.checked){
                     submit.disabled = false;
+                    submit.addEventListener("click", function(e){
+                        e.target.children[0].style.display = "inline-block";
+                    });
                 }else{
                     submit.disabled = true;
+                    submit.removeEventListener('click', myFunction, false);
                 }
             });
     },

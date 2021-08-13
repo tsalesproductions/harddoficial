@@ -96,7 +96,9 @@ export const csrf: ShieldConfig['csrf'] = {
   exceptRoutes: [
     '/qrcode/resetar',
     '/ecommerce/get',
-    '/ecommerce/set'
+    '/ecommerce/set',
+    '/myme',
+    '/myme/:id'
   ],
 
   /*
@@ -177,7 +179,7 @@ export const dnsPrefetch: ShieldConfig['dnsPrefetch'] = {
 export const xFrame: ShieldConfig['xFrame'] = {
   enabled: true,
   action: 'ALLOW-FROM',
-  domain: 'www.w3schools.com'
+  domain: 'www.hardd.com.br'
 }
 
 /*
