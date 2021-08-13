@@ -26,7 +26,6 @@
 }
 
 img[src="(unknown)"],
-
 img[src=""] {
     display: none !important ;
 }
