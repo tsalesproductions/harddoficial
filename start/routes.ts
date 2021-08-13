@@ -51,6 +51,8 @@ Route.group(() => {
 
 });
 
+
+Route.get('/myme', 'QrsController.identify');
 Route.get('/myme/:id', 'MymesController.mymeManager')
 Route.post('/myme', 'MymesController.mymeSend')
 

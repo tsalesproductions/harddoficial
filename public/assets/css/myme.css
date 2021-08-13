@@ -387,3 +387,85 @@ main.myme footer img{
         animation-duration: 1.5s;
     }
 }
+
+
+/***** IDENTIFY *****/
+.identify {
+    background-color: #1f1f1f;
+}
+
+.identify .container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.identify main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,.2);
+    border-radius: 5px;
+}
+
+.identify .field-submit{
+    padding: 0 !important;
+}
+
+@media (min-width: 998px) {
+    .identify main > div img{
+        width: 200px;
+    }
+}
+
+@media (max-width: 997px){
+    .identify main{
+        justify-content: space-between;
+        margin: 0 5px;
+    }
+
+    .identify main > div img{
+        max-width: 150px;
+    }
+}
+
+.identify h4{
+    color: #fff;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.identify main form {
+    flex: 0 1 60%;
+}
+
+.identify main > div{
+    flex: 0 1 35%;
+    text-align: center;
+}
+
+.identify input{
+    text-transform: uppercase;
+}
+
+.identify input::placeholder{
+    font-size: 13px !important;
+}
+
+.identify main .me{
+    margin-top: 0 !important;
+}
+
+.identify footer{
+    margin: 0 !important
+}
+
+.identify .field{
+
+}
+
+.identify button{
+    margin: 0 !important;
+    height: 35px !important;
+}

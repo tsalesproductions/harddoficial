@@ -60,7 +60,8 @@
               <table class="table align-items-center mb-0">
                 <thead>
                   <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Código</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">QR Direto</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Serial</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                     <th class="text-secondary opacity-7">
                       <a style="cursor: pointer;" onclick="$('.trigger-download').click();" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Baixar todos" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
@@ -72,13 +73,14 @@
                 <tbody>
                   @each(result in results)
                   <tr>
-                    <td width="60%">
-                      <div class="d-flex px-2 py-1">
+                    <td width="10%">
+                      <div class="d-flex px-2 py-1 justify-content-center">
                         <div>
-                          <img src="{{ result.qr_code }}" class="avatar avatar-sm me-3" alt="user1">
+                          <img src="{{ result.qr_code }}" class="avatar avatar-sm" alt="user1">
                         </div>
                       </div>
                     </td>
+                    <td data-serial="{{ result.qr_id }}" width="50%"></td>
                     <td class="align-middle text-center text-sm" width="20%">
                       <span class="badge badge-sm bg-gradient-success">Disponível</span>
                     </td>
@@ -107,6 +109,15 @@
     </div>
   </div>
 </main>
+<script>
+  window.addEventListener("load", function(){
+    let seriais = document.querySelectorAll("td[data-serial]");
+        seriais.forEach(function(item){
+          item.innerText = item.getAttribute('data-serial').split("=")[1]
+        });
+  })
+</script>
 
 {{-- include footer --}}
 @include('parts/footer')
+

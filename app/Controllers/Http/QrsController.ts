@@ -6,10 +6,14 @@ const QRCode = require('qrcode');
 const url = "https://www.hardd.com.br/myme?id=";
 
 export default class QrsController {
+  public async identify({ view, auth, response }: HttpContextContract) {
+    return view.render('myme/identify');
+  }
 
   public async showIndex({ view, auth, response }: HttpContextContract) {
     await auth.use('web').authenticate();
-
+    // let qr = await QRCode.toDataURL('https://www.hardd.com.br/');
+    // console.log(qr);
     const userData = await User.findBy('email', auth.user?.email);
 
     if (!userData) {
@@ -51,7 +55,7 @@ export default class QrsController {
   }
 
   private async generateId(){
-    let id = Math.floor(Math.random() * 9999999) + 1;
+    let id = "HM"+Math.floor(Math.random() * 9999999) + 1;
     let search = await this.searchInDatabase('qr_id', id);
     
     if(search){

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyMe</title>
+    <link rel="stylesheet" href="../assets/css/myme.css"/>
+</head>
+<body class="identify">
+    <div class="container">
+        <main class="myme">
+            <form enctype="multipart/form-data">
+                {{ csrfField() }}
+                <div class="me">
+                    <h4>IDENTIFIQUE-SE</h4>
+    
+                    <div class="gd">
+                        <div class="field field-nome">
+                            <strong>SERIAL:</strong>
+                            <input required  type="text" name="serial" placeholder="DIGITE AQUI" class="form-control"/>
+                        </div>
+                        <div class="field field-submit">
+                            <button type="submit"><div class="spinner-border" style="width: 1.3rem;height: 1.3rem; display: none;" role="status"><span class="visually-hidden"></span></div> ACESSAR</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="edit">
+                    
+                </div>
+    
+                <footer>
+                    <a href="https://www.hardd.com.br/"><img src="../assets/img/hardd_logo_white.png"></a>
+                </footer>
+            </form>
+            <div><img src="../assets/img/myme_logo_white.png" width="100"></div>
+        </main>
+    </div>
+    {{--  <script src="../assets/js/myme.js"></script>  --}}
+</body>
+</html>
+
+<script>
+    window.addEventListener("load", function(){
+        let form = document.querySelector(".identify form");
+            if(!form) return;
+            form.addEventListener("submit", function(e){
+                e.preventDefault();
+                let input = document.querySelector("input[name='serial']");
+                    input = input.value;
+                location.href = location.origin+"/myme/"+input
+            });
+    })
+</script>
