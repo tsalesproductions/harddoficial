@@ -84,9 +84,10 @@ const formManager = {
                     let ta = document.createElement("a");
                         ta.href = `tel:+55${tel}`;
                         ta.classList.add("tel-button");
-                        document.body.appendChild(ta);
-                        ta.click();
-                        
+                    document.body.append(ta);
+                    let taa = document.querySelector(".tel-button");
+                    taa.click();
+                    setTimeout(() => taa.remove(), 1000);
                 })
             });
     },
