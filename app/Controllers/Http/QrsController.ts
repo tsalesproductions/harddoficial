@@ -67,7 +67,7 @@ export default class QrsController {
 
   private async generateQrCode(q){
     async function generateCode(url){
-      return await QRCode.toDataURL(url);
+      return await QRCode.toDataURL(url, {width: 140});
     }
 
     let codes = Array();
