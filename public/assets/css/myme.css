@@ -331,7 +331,7 @@ main.myme footer img{
         grid-template-columns: 50% 3fr !important;
     }
 
-    main.myme header{
+    main.myme header img{
         object-fit: cover;
         object-position: right;
     }
