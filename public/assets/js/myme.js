@@ -76,12 +76,13 @@ const formManager = {
         }
     },
     contactValidate: function(){
-        let list = document.querySelectorAll(".field-contato input[disabled]");
+        let list = document.querySelectorAll(".field-contato input[readonly]");
             list.forEach(function(item){
                 item.style.cursor = "pointer";
-                item.addEventListener("click", function(){
-                    console.log(item);
-                });
+                item.addEventListener("click", function(e){
+                    let tel = item.value.replace("-","").replace("(", "").replace(")", "").replace(/\s/g, '');
+                    window.open(`tel:+55${tel}`);
+                })
             });
     },
     init: function(){
