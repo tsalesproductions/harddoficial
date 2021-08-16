@@ -93,6 +93,7 @@ const formManager = {
 
         let help = document.querySelectorAll(".help li");
             help.forEach(function(item){
+                item.style.cursor = "pointer";
                 item.addEventListener("click", function(e){
                     let input = null;
                     switch(e.target.tagName){
