@@ -207,6 +207,9 @@ main.myme .field-foto img{
     position: absolute;
     width: 100%;
     bottom: 0;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
 }
 
 /****** HELP ******/
@@ -315,12 +318,6 @@ main.myme footer img{
 
     main.myme .terms{
         align-items: normal;
-    }
-
-    main.myme .field-foto img{
-        height: 150px;
-        object-fit: cover;
-        object-position: center;
     }
 
     input:read-only,
