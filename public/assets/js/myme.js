@@ -86,6 +86,7 @@ const formManager = {
                         ta.classList.add("tel-button");
                         document.body.appendChild(ta);
                         ta.click();
+                        
                 })
             });
     },
