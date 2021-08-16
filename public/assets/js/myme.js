@@ -64,7 +64,7 @@ const formManager = {
         if(!this.q(".usado")) return;
         let inputs = this.qall("input,textarea");
         inputs.forEach(function(item){
-            item.disabled = true;
+            item.readonly = true;
         })
     },
     checkIfEnabled: function(){
