@@ -75,6 +75,15 @@ const formManager = {
             this.triggetImages();
         }
     },
+    contactValidate: function(){
+        let list = document.querySelectorAll(".field-contato input[disabled]");
+            list.forEach(function(item){
+                item.style.cursor = "pointer";
+                item.addEventListener("click", function(){
+                    console.log(item);
+                });
+            });
+    },
     init: function(){
         this.checkIfEnabled();
         this.termsValidate();
