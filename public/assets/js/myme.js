@@ -90,6 +90,32 @@ const formManager = {
                     setTimeout(() => taa.remove(), 1000);
                 })
             });
+
+        let help = document.querySelectorAll(".help li");
+            help.forEach(function(item){
+                item.addEventListener("click", function(e){
+                    let input = null;
+                    switch(e.target.tagName){
+                        case "LI":
+                            input = e.target;
+                        break;
+                        case "SPAN":
+                            input = e.target.parentElement;
+                        break;
+                    }
+                    
+                    let tel = input.children[0].innerText;
+                    let ta = document.createElement("a");
+                        ta.href = `tel:${tel}`;
+                        ta.classList.add("help-tel-button");
+                    document.body.append(ta);
+                    let taa = document.querySelector(".help-tel-button");
+                    taa.click();
+                    setTimeout(() => taa.remove(), 1000);
+                });
+            });
+
+        
     },
     init: function(){
         this.checkIfEnabled();
