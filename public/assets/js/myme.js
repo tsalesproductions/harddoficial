@@ -107,7 +107,7 @@ const formManager = {
                     
                     let tel = input.children[0].innerText;
                     let ta = document.createElement("a");
-                        ta.href = `tel:+55${tel}`;
+                        ta.href = `tel:${tel}`;
                         ta.classList.add("help-tel-button");
                     document.body.append(ta);
                     let taa = document.querySelector(".help-tel-button");
