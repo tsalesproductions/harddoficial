@@ -316,6 +316,19 @@ main.myme footer img{
     main.myme .terms{
         align-items: normal;
     }
+
+    main.myme .field-foto img{
+        height: 150px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    input:read-only,
+    input[readonly]{
+        -webkit-text-fill-color:#333; /* Override iOS / Android font color change */
+        -webkit-opacity:1;
+        opacity: 1;
+    }
     
 }
 
