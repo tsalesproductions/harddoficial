@@ -81,7 +81,11 @@ const formManager = {
                 item.style.cursor = "pointer";
                 item.addEventListener("click", function(e){
                     let tel = item.value.replace("-","").replace("(", "").replace(")", "").replace(/\s/g, '');
-                    window.open(`tel:+55${tel}`);
+                    let ta = document.createElement("a");
+                        ta.href = `tel:+55${tel}`;
+                        ta.classList.add("tel-button");
+                        document.body.appendChild(ta);
+                        ta.click();
                 })
             });
     },
