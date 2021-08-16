@@ -12,8 +12,8 @@ const formManager = {
             field_my_foto = this.q("#field_my_foto"),
             field_my_input = this.q("#field_meu_foto2");
 
-            field_me_foto.src = "https://image.flaticon.com/icons/png/512/1692/1692911.png"
-            field_my_foto.src = "https://image.flaticon.com/icons/png/512/1692/1692911.png"
+            field_me_foto.src = "../assets/img/perfil_redondo.png"
+            field_my_foto.src = "../assets/img/perfil_quadrado.png"
 
             field_me_foto.addEventListener("click", function(){
                 field_me_input.click();
