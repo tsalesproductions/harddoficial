@@ -332,6 +332,7 @@ main.myme footer img{
     }
 
     main.myme header img{
+        height: 100%;
         object-fit: cover;
         object-position: right;
     }
