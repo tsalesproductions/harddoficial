@@ -329,6 +329,10 @@ main.myme footer img{
         -webkit-opacity:1;
         opacity: 1;
     }
+
+    .m1{
+        grid-template-columns: 50% 3fr !important;
+    }
     
 }
 
