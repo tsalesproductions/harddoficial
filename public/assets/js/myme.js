@@ -82,7 +82,7 @@ const formManager = {
                 item.addEventListener("click", function(e){
                     let tel = item.value.replace("-","").replace("(", "").replace(")", "").replace(/\s/g, '');
                     let ta = document.createElement("a");
-                        ta.href = `tel:+55${tel}`;
+                        ta.href = `tel:${tel}`;
                         ta.classList.add("tel-button");
                     document.body.append(ta);
                     let taa = document.querySelector(".tel-button");
