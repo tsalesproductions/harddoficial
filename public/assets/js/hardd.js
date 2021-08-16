@@ -22,7 +22,7 @@ function alertFire(type, text){
 function download64(data, id){
   var a = document.createElement("a"); //Create <a>
   a.href = data; //Image Base64 Goes here
-  a.download = "qr_"+id+".png"; //File name Here
+  a.download = id+".png"; //File name Here
   a.click(); //Downloaded file
 }
 
