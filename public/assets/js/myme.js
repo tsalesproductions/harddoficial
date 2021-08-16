@@ -88,6 +88,7 @@ const formManager = {
         this.checkIfEnabled();
         this.termsValidate();
         this.disableAllInputs();
+        this.contactValidate();
     }
 }
 
