@@ -333,6 +333,11 @@ main.myme footer img{
     .m1{
         grid-template-columns: 50% 3fr !important;
     }
+
+    main.myme header{
+        object-fit: cover;
+        object-position: right;
+    }
     
 }
 
