@@ -82,7 +82,7 @@ const formManager = {
                 item.addEventListener("click", function(e){
                     let tel = item.value.replace("-","").replace("(", "").replace(")", "").replace(/\s/g, '');
                     let ta = document.createElement("a");
-                        ta.href = `tel:${tel}`;
+                        ta.href = `tel:+55${tel}`;
                         ta.classList.add("tel-button");
                     document.body.append(ta);
                     let taa = document.querySelector(".tel-button");
@@ -107,7 +107,7 @@ const formManager = {
                     
                     let tel = input.children[0].innerText;
                     let ta = document.createElement("a");
-                        ta.href = `tel:${tel}`;
+                        ta.href = `tel:+55${tel}`;
                         ta.classList.add("help-tel-button");
                     document.body.append(ta);
                     let taa = document.querySelector(".help-tel-button");
