@@ -52,7 +52,8 @@ const formManager = {
                 if(e.target.checked){
                     submit.disabled = false;
                     submit.addEventListener("click", function(e){
-                        e.target.children[0].style.display = "inline-block";
+                        // e.target.children[0].style.display = "inline-block";
+                        e.target.innerHTML = `<div class="spinner-border" style="width: 1.3rem;height: 1.3rem; display: inline-block;" role="status"><span class="visually-hidden"></span></div> SALVANDO...`;
                     });
                 }else{
                     submit.disabled = true;
