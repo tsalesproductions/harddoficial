@@ -82,14 +82,20 @@ const formManager = {
                 item.style.cursor = "pointer";
                 item.addEventListener("click", function(e){
                     let tel = item.value.replace("-","").replace("(", "").replace(")", "").replace(/\s/g, '');
-                    window.open(`tel:${tel}`);
-                    // let ta = document.createElement("a");
-                    //     ta.href = `tel:+55${tel}`;
-                    //     ta.classList.add("tel-button");
-                    // document.body.append(ta);
-                    // let taa = document.querySelector(".tel-button");
-                    // taa.click();
-                    // setTimeout(() => taa.remove(), 1000);
+
+                    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                    if (isIOS) {
+                        window.open(`tel:${tel}`);
+                    } else {
+                        let ta = document.createElement("a");
+                        ta.href = `tel:+55${tel}`;
+                        ta.classList.add("tel-button");
+                        document.body.append(ta);
+                        let taa = document.querySelector(".tel-button");
+                        taa.click();
+                        setTimeout(() => taa.remove(), 1000);
+                    }
+                    
                 })
             });
 
@@ -108,14 +114,18 @@ const formManager = {
                     }
                     
                     let tel = input.children[0].innerText;
-                    window.open(`tel:${tel}`);
-                    // let ta = document.createElement("a");
-                    //     ta.href = `tel:${tel}`;
-                    //     ta.classList.add("help-tel-button");
-                    // document.body.append(ta);
-                    // let taa = document.querySelector(".help-tel-button");
-                    // taa.click();
-                    // setTimeout(() => taa.remove(), 1000);
+                    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                    if (isIOS) {
+                        window.open(`tel:${tel}`);
+                    } else {
+                        let ta = document.createElement("a");
+                        ta.href = `tel:+55${tel}`;
+                        ta.classList.add("tel-button");
+                        document.body.append(ta);
+                        let taa = document.querySelector(".tel-button");
+                        taa.click();
+                        setTimeout(() => taa.remove(), 1000);
+                    }
                 });
             });
 
