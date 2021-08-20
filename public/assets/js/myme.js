@@ -70,7 +70,7 @@ const formManager = {
     },
     checkIfEnabled: function(){
         if(this.myme.classList.contains("usado")){
-            // document.querySelector(".edit").remove();
+            document.querySelector(".edit").remove();
         }else{
             document.querySelector(".help").remove();
             this.triggetImages();
