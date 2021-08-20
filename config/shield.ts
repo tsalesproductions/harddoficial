@@ -179,7 +179,7 @@ export const dnsPrefetch: ShieldConfig['dnsPrefetch'] = {
 export const xFrame: ShieldConfig['xFrame'] = {
   enabled: true,
   action: 'ALLOW-FROM',
-  domain: 'https://www.hardd.com.br'
+  domain: 'www.hardd.com.br'
 }
 
 /*
