@@ -136,14 +136,6 @@ const formManager = {
         this.termsValidate();
         this.disableAllInputs();
         this.contactValidate();
-
-        let timer = setInterval(() => {
-            let vga = document.querySelector(".fancybox-overlay");
-            if(vga){
-                vga.remove();
-                clearInterval(timer);
-            }
-        }, 500);
     }
 }
 
