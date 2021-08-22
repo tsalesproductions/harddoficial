@@ -53,6 +53,103 @@
   <div class="container-fluid py-4">
     <div class="row mt-4">
       <div class="col-lg-8 col-md-12 col-sm-12">
+        <style>
+          section#myme-preview{
+            width: 812.63px;
+            height: 1178.29px;
+            
+            display: grid;
+            grid-template-columns: repeat(4, 190.55px);
+            grid-gap: 10px;
+        
+            justify-content: center;
+          }
+        
+          section#myme-preview article{
+            width: 190.55px;
+            height: 379.53px;
+            background-color: #231F20;
+            border-radius: 20px;
+            
+            display: grid;
+          }
+        
+          section#myme-preview article.myme{
+            grid-template-rows: 23.75px 105.28px 148.28px;
+            grid-gap: 30px;
+            justify-items: center;
+            align-content: center;
+          }
+        
+          section#myme-preview article.myme .name{
+            width: 78.77px;
+            height: 23.75px;
+            transform: rotate(180deg);
+          }
+        
+          section#myme-preview article.myme .logo{
+            width: 105.28px;
+            height: 105.28px;
+            transform: rotate(-90deg);
+          }
+        
+          section#myme-preview article.myme .qr{
+            width: 149.28px;
+            height: 148.28px;
+            border-radius: 10px;
+            transform: rotate(-90deg);
+          }
+        
+          section#myme-preview article.serial{
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 30px;
+            justify-items: center;
+            /* align-content: center; */
+          }
+        
+          section#myme-preview article.serial p{
+            margin: 0;
+            line-height: 1;
+            font-family: Arial, Helvetica, sans-serif;
+          }
+        
+          section#myme-preview article.serial p.serial,
+          section#myme-preview article.serial p.number{
+            /* writing-mode: vertical-rl; */
+            /* text-orientation: mixed; */
+            transform: rotate(270deg);
+            overflow: hidden;
+            height: 35px;
+            position: relative;
+            box-sizing: content-box;
+          }
+        
+          section#myme-preview article.serial p.serial{
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: left;
+            padding-right: 20px;
+            padding-top: 30px;
+            top: 250px;
+          }
+        
+          section#myme-preview article.serial p.number{
+            text-align: center;
+            color: #EE1D23;
+            font-size: 30px;
+            top: calc(100% - 55%);
+          }
+        
+          section#myme-preview article.serial p.name img{
+            width: 23.75px;
+            height: 78.77px;
+            padding-top: 30px;
+            padding-right: 20px;
+            box-sizing: content-box;
+          }
+        
+        </style>
         <h6 class="font-weight-bolder mb-0">Listar QrCode</h6>
         <div class="card z-index-2">
           <div class="card-body p-3">
@@ -85,7 +182,7 @@
                       <span class="badge badge-sm bg-gradient-success">Disponível</span>
                     </td>
                     <td class="align-middle text-center d-flex" width="30%" style="gap: 10px;height: 60px;align-items: center;">
-                      <a style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Baixar" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip" onclick="download64('{{ result.qr_code }}','{{ result.id }}')">
+                      <a style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Baixar" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip" onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.id }}'});">
                         <i class="fas fa-download fa-lg"></i>
                       </a>
                       <a style="cursor: pointer" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copiar" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="copyToClipBoard('{{ result.qr_id }}')">
@@ -105,6 +202,7 @@
             </div>
           </div>
         </div>
+        <div class="preview-target" style="opacity: 0;"></div>
       </div>
     </div>
   </div>
@@ -118,6 +216,7 @@
   })
 </script>
 
+<script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 {{-- include footer --}}
 @include('parts/footer')
 
