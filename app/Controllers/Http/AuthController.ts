@@ -4,8 +4,14 @@ import Env from '@ioc:Adonis/Core/Env';
 import { rules, schema } from '@ioc:Adonis/Core/Validator';
 
 export default class AuthController {
-  public showLogin({ view }: HttpContextContract) {
-    return view.render('auth/login')
+  public async showLogin({ view, auth, response }: HttpContextContract) {
+    await auth.use('web').check();
+
+    if (auth.use('web').isLoggedIn) {
+      return response.redirect('/dashboard');
+    }else{
+      return view.render('auth/login')
+    }
   }
 
   public showRegister({ view }: HttpContextContract) {
