@@ -23,8 +23,9 @@ import Env from '@ioc:Adonis/Core/Env';
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async ({ view }) => {
-  return view.render('welcome')
+Route.get('/', async ({ view, response }) => {
+  // return view.render('welcome')
+  return response.redirect('/dashboard');
 })
 
 Route.get('/login', 'AuthController.showLogin')
