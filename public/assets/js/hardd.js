@@ -145,16 +145,18 @@ $qrPapelDownload = {
   html2canvas(document.querySelector(`#myme-preview[data-id='${data.id}']`), {
       letterRendering: 1, 
       allowTaint : true,
-      useCORS:true
+      useCORS:true,
+      backgroundColor: 'rgba(0, 0, 0, 0)', 
+      removeContainer: true,
   }).then(canvas => {
-      document.body.appendChild(canvas)
+      // document.body.appendChild(canvas)
       var a = document.createElement('a');
       // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
-      a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-      a.download = data.id+'.jpg';
+      a.href = canvas.toDataURL("image/png");
+      a.download = data.id+'.png';
       a.click();
       a.remove();
-      canvas.remove();
+      // canvas.remove();
   });
   
     setTimeout(() => {
