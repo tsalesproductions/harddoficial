@@ -203,6 +203,16 @@
                         class="form-control"/>
                     </div>
                 </div>
+
+                @if(data.qr_status == 0)
+                <div class="gd m7">
+                    <div class="field field-password b">
+                        <strong>SENHA:</strong>
+                        <input type="password" name="qr_password" placeholder="digite sua senha aqui" class="form-control" required/>
+                        <small>Insira uma senha para poder editar ou recuperar seu cadastro futuramente.</small>
+                    </div>
+                </div>
+                @end
             </div>
 
             <input type="file" name="field_eu_foto" accept="image/*" id="field_eu_foto2"/>
@@ -214,7 +224,7 @@
                     <input required  type="checkbox" id="field_terms" name="field_terms">
                     <label for="terms">Eu concordo que <a target="_blank" href="../assets/termos-myme.pdf">sobre a lei LGPD</a> e estou ciente que os dados inseridos acima estarão disponíveis a qualquer momento através deste link.</label>
                 </div>
-
+                <div class="error" style="display: none"></div>
                 <button type="submit" disabled><div class="spinner-border" style="width: 1.3rem;height: 1.3rem; display: none;" role="status"><span class="visually-hidden"></span></div> SALVAR DADOS</button>
             </div>
 

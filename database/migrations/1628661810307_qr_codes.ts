@@ -29,6 +29,7 @@ export default class QrCodes extends BaseSchema {
         table.string('qr_id').notNullable().unique();
         table.string('qr_code').notNullable();
         table.string('qr_meu_foto').notNullable();
+        table.string('qr_password').notNullable();
     });
   }
 

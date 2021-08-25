@@ -47,15 +47,31 @@ const formManager = {
         if(this.q(".usado")) return;
         let terms = this.q("#field_terms"),
             submit = this.q("button[type='submit']");
-
+//error
             terms.addEventListener("change", function(e){
-                if(e.target.checked){
+                let fields = {
+                    my: document.querySelector("#field_eu_foto2").value,
+                    me: document.querySelector("#field_meu_foto2").value,
+                    error: document.querySelector(".error")
+                }
+
+                console.log(fields);
+
+                if(e.target.checked && fields.my !== '' && fields.me !== ''){
                     submit.disabled = false;
+
+                    fields.error.style.display = "none";
+                    fields.error.innerText = "";
+
                     submit.addEventListener("click", function(e){
                         // e.target.children[0].style.display = "inline-block";
                         e.target.innerHTML = `<div class="spinner-border" style="width: 1.3rem;height: 1.3rem; display: inline-block;" role="status"><span class="visually-hidden"></span></div> SALVANDO...`;
                     });
                 }else{
+                    fields.error.style.display = "block";
+                    fields.error.innerText = "Ops... você esqueceu de inserir as imagens. Por favor, revise os campos de fotos.";
+                    terms.checked = false;
+
                     submit.disabled = true;
                     submit.removeEventListener('click', myFunction, false);
                 }

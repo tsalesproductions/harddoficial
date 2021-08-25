@@ -67,6 +67,26 @@ main.myme textarea::placeholder{
     color: #333;
 }
 
+.field-password input,
+.field-password input::placeholder{
+    font-size: 13px !important;
+}
+
+.field-password small{
+    color: #f50e4e;
+    font-weight: 500;
+}
+
+.myme .error{
+    display: block;
+    background-color: #ea4c4c;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 0px #a0a0a0;
+    color: #fff;
+    margin-top: 20px;
+}
+
 main.myme input:focus,
 main.myme textarea:focus{
     outline: none;

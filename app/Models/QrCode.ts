@@ -73,4 +73,7 @@ export default class QrCode extends BaseModel {
 
     @column()
     public qr_meu_foto: string;
+
+    @column()
+    public qr_password: string;
 }
