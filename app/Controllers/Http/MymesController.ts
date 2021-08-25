@@ -64,7 +64,8 @@ export default class MymesController {
       field_meu_c_contato2,
       field_eu_foto,
       field_meu_foto,
-      qr_id
+      qr_id,
+      qr_password
     }
       = request.all();
 
@@ -106,7 +107,8 @@ export default class MymesController {
     qr_meu_obs = ?,
     qr_meu_emergencia = ?,
     qr_meu_foto = ?,
-    qr_status = ? 
+    qr_status = ? ,
+    qr_password = ?
     WHERE qr_id = ?
     `, [
       me_img,
@@ -130,6 +132,7 @@ export default class MymesController {
       JSON.stringify(qr_emergencia),
       my_img,
       '1',
+      qr_password,
       qr_id
     ]);
 
