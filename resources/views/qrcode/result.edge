@@ -56,48 +56,52 @@
         <style>
           section#myme-preview{
             width: 1116.54px;
-            height: 1376.15px;
+            height: 1406.15px;
             
             display: grid;
-            grid-template-columns: repeat(4, 190.55px);
-            grid-gap: 110.5px;
+            grid-template-columns: repeat(4, 188.55px);
+            grid-gap: 118.11px;
         
             justify-content: center;
           }
         
           section#myme-preview article{
-            width: 190.55px;
-            height: 379.53px;
-            background-color: #231F20;
-            border-radius: 20px;
+            width: 188.98px;
+            height: 389.76px;
+            background-color: #fff;
+            border-radius: 10px;
             
             display: grid;
           }
         
           section#myme-preview article.myme{
-            grid-template-rows: 23.75px 105.28px 148.28px;
-            grid-gap: 30px;
+            grid-template-rows: 162.41px 23.97px 162.41px;
+            grid-gap: 10px;
             justify-items: center;
             align-content: center;
           }
         
           section#myme-preview article.myme .name{
-            width: 78.77px;
-            height: 23.75px;
-            transform: rotate(180deg);
+            width: 79.5px;
+            height: 23.97px;
+            /* transform: rotate(180deg); */
           }
         
           section#myme-preview article.myme .logo{
-            width: 105.28px;
-            height: 105.28px;
-            transform: rotate(-90deg);
+            width: 162.41px;
+            height: 162.41px;
+            /* transform: rotate(-90deg); */
           }
         
           section#myme-preview article.myme .qr{
-            width: 149.28px;
-            height: 148.28px;
-            border-radius: 10px;
+            width: 162.41px;
+            height: 162.41px;
+            /* border-radius: 10px; */
             transform: rotate(-90deg);
+
+            background-repeat: no-repeat;
+            background-size: 200px;
+            background-position: center center;
           }
         
           section#myme-preview article.serial{
@@ -122,10 +126,11 @@
             height: 35px;
             position: relative;
             box-sizing: content-box;
+            font-weight: 600
           }
         
           section#myme-preview article.serial p.serial{
-            color: #fff;
+            color: #373435;
             font-size: 30px;
             font-weight: bold;
             text-align: left;
@@ -136,7 +141,7 @@
         
           section#myme-preview article.serial p.number{
             text-align: center;
-            color: #fff;
+            color: #373435;
             font-size: 40px;
             top: calc(100% - 55%);
           }

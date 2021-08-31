@@ -47,7 +47,7 @@ const formManager = {
         if(this.q(".usado")) return;
         let terms = this.q("#field_terms"),
             submit = this.q("button[type='submit']");
-//error
+
             terms.addEventListener("change", function(e){
                 let fields = {
                     my: document.querySelector("#field_eu_foto2").value,
@@ -79,7 +79,7 @@ const formManager = {
     },
     disableAllInputs: function(){
         if(!this.q(".usado")) return;
-        let inputs = this.qall("input,textarea");
+        let inputs = this.qall("input:not(.form),textarea");
         inputs.forEach(function(item){
             item.readOnly = true;
         })
@@ -149,11 +149,40 @@ const formManager = {
 
         
     },
+    modal: function(){
+        let a = document.querySelector("main.myme header > a");
+        let close = document.querySelectorAll("button[data-modal='close']");
+
+        if(close){
+            close.forEach((item) => {
+                item.addEventListener("click", function(e){
+                    document.querySelector(".modal").classList.remove("active");
+                });
+            });
+        }
+
+        if(!a) return;
+        a.addEventListener("click", function(e){
+            console.log("to aqui");
+            document.querySelector(".modal").classList.add("active");
+        });
+    },
+    modalValidator: function(){
+        let form = document.querySelector(".modal form");
+            if(!form) return;
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            console.log("teste");
+        });
+    },
     init: function(){
+        this.modal();
         this.checkIfEnabled();
         this.termsValidate();
         this.disableAllInputs();
         this.contactValidate();
+        this.modalValidator();
     }
 }
 
