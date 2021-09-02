@@ -83,8 +83,22 @@ export default class MymesController {
       contato2: field_eu_e_contato2
     }
 
-    let me_img = await this.uploadFile(request, 'field_eu_foto');
-    let my_img = await this.uploadFile(request, 'field_meu_foto');
+    let data = await QrData.findBy('qr_id', qr_id);
+
+    let me_img;
+    let my_img;
+
+    if(data?.qr_imagem){
+      me_img = data?.qr_imagem;
+    }else{
+      me_img = await this.uploadFile(request, 'field_eu_foto')
+    }
+
+    if(data?.qr_imagem){
+      my_img = data?.qr_meu_foto;
+    }else{
+      my_img = await this.uploadFile(request, 'field_meu_foto');
+    }
     
     let result = await Database.rawQuery(`UPDATE qr_codes SET
     qr_imagem = ?,
@@ -139,6 +153,26 @@ export default class MymesController {
     return response.redirect('/myme/'+qr_id);
     
     
+  }
+
+  public async login({ request, response, session }: HttpContextContract) {
+    const { serial, password } = request.all();
+
+    const userData = await QrData.findBy('qr_id', serial);
+
+    if (!userData) {
+        session.flash('notification', 'OPS! Serial não encontrado');
+        return response.redirect('back');
+    }
+    
+    if (userData.qr_password !== password) {
+      session.flash('notification', 'OPS! Serial e senha não conferem');
+      return response.redirect('back');
+    }
+
+    let result = await Database.rawQuery(`UPDATE qr_codes SET qr_status = ? WHERE qr_id = ? AND qr_password = ?`, ['0', serial, password]);
+    
+    return response.redirect('/myme/'+userData.qr_id);
   }
 }
 

@@ -8,30 +8,36 @@
     <link rel="stylesheet" href="../assets/css/myme.css"/>
 </head>
 <body class="identify">
+    <img src="../assets/img/precaucao_desktop.png" class="precaucao_desktop">
     <div class="container">
         <main class="myme">
-            <form enctype="multipart/form-data">
+            <div class="blur"></div>
+            <form action="{{ route('MymesController.login') }}" enctype="multipart/form-data">
                 {{ csrfField() }}
                 <div class="me">
-                    <h4>IDENTIFIQUE-SE</h4>
-    
+                    {{--  <h4>IDENTIFIQUE-SE</h4>  --}}
+                    @if (flashMessages.has('notification'))
+                        <p style="color: #9d1515">{{ flashMessages.get('notification') }}</p>
+                    @endif
                     <div class="gd">
                         <div class="field field-nome">
                             <strong>SERIAL:</strong>
-                            <input required  type="text" name="serial" placeholder="DIGITE AQUI" class="form-control"/>
+                            <input required type="text" name="serial" placeholder="" class="form-control"/>
+                        </div>
+                        <div class="field field-nome">
+                            <strong>SENHA:</strong>
+                            <input required type="password" name="password" placeholder="" class="form-control"/>
                         </div>
                         <div class="field field-submit">
-                            <button type="submit"><div class="spinner-border" style="width: 1.3rem;height: 1.3rem; display: none;" role="status"><span class="visually-hidden"></span></div> ACESSAR</button>
+                            <button type="submit"><div class="spinner-border" style="width: 1.3rem;height: 1.3rem; display: none;" role="status"><span class="visually-hidden"></span></div> ENTRAR</button>
                         </div>
                     </div>
                 </div>
     
-                <div class="edit">
-                    
-                </div>
+                {{--  <div class="edit"></div>  --}}
     
                 <footer>
-                    <a href="https://www.hardd.com.br/"><img src="../assets/img/hardd_logo_white.png"></a>
+                    {{--  <a href="https://www.hardd.com.br/"><img src="../assets/img/hardd_logo_white.png"></a>  --}}
                 </footer>
             </form>
             <div><img src="../assets/img/myme_logo_white.png" width="100"></div>
@@ -41,7 +47,7 @@
 </body>
 </html>
 
-<script>
+{{--  <script>
     window.addEventListener("load", function(){
         let form = document.querySelector(".identify form");
             if(!form) return;
@@ -52,4 +58,4 @@
                 location.href = location.origin+"/myme/"+input
             });
     })
-</script>
+</script>  --}}

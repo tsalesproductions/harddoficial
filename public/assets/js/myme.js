@@ -12,9 +12,14 @@ const formManager = {
             field_my_foto = this.q("#field_my_foto"),
             field_my_input = this.q("#field_meu_foto2");
 
-            field_me_foto.src = "../assets/img/perfil_redondo.png"
-            field_my_foto.src = "../assets/img/perfil_quadrado.png"
+            if(!field_me_foto.getAttribute("data-has")){
+                field_me_foto.src = "../assets/img/perfil_redondo.png"
+            }
 
+            if(!field_my_foto.getAttribute("data-has")){
+                field_my_foto.src = "../assets/img/perfil_quadrado.png"
+            }
+            
             field_me_foto.addEventListener("click", function(){
                 field_me_input.click();
             });
@@ -52,12 +57,32 @@ const formManager = {
                 let fields = {
                     my: document.querySelector("#field_eu_foto2").value,
                     me: document.querySelector("#field_meu_foto2").value,
+                    my_foto: document.querySelector("#field_me_foto").getAttribute('data-has'),
+                    me_foto: document.querySelector("#field_my_foto").getAttribute('data-has'),
                     error: document.querySelector(".error")
                 }
 
-                console.log(fields);
+                if(fields.my == ''){
+                    if(!document.querySelector("#field_me_foto").getAttribute('data-has')){
+                        fields.my_foto = undefined;
+                    }else{
+                        fields.my_foto = document.querySelector("#field_me_foto").getAttribute('data-has');
+                    }
+                }else{
+                    fields.my_foto = fields.my
+                }
 
-                if(e.target.checked && fields.my !== '' && fields.me !== ''){
+                if(fields.me == ''){
+                    if(!document.querySelector("#field_my_foto").getAttribute('data-has')){
+                        fields.me_foto = undefined;
+                    }else{
+                        fields.me_foto = document.querySelector("#field_my_foto").getAttribute('data-has');
+                    }
+                }else{
+                    fields.me_foto = fields.me
+                }
+
+                if(e.target.checked && fields.me_foto && fields.my_foto){
                     submit.disabled = false;
 
                     fields.error.style.display = "none";
@@ -68,8 +93,11 @@ const formManager = {
                         e.target.innerHTML = `<div class="spinner-border" style="width: 1.3rem;height: 1.3rem; display: inline-block;" role="status"><span class="visually-hidden"></span></div> SALVANDO...`;
                     });
                 }else{
-                    fields.error.style.display = "block";
-                    fields.error.innerText = "Ops... você esqueceu de inserir as imagens. Por favor, revise os campos de fotos.";
+                    if(!fields.me_foto || !fields.my_foto){
+                        fields.error.style.display = "block";
+                        fields.error.innerText = "Ops... você esqueceu de inserir as imagens. Por favor, revise os campos de fotos.";
+                    }
+                    
                     terms.checked = false;
 
                     submit.disabled = true;

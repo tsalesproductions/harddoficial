@@ -21,9 +21,15 @@
             {{ csrfField() }}
             <header>
                 <img src="../assets/img/capa.PNG" width="100%">
+                {{--  <a href="#">Alterar dados</a>  --}}
             </header>
             <div class="my">
-                <div class="photo"><img id="field_me_foto" src="{{data.qr_imagem}}"/></div>
+                <div class="photo"><img 
+                    id="field_me_foto" src="{{data.qr_imagem}}"
+                    @if (data.qr_imagem)
+                    data-has="true"
+                    @endif
+                    /></div>
                 <h1>EU</h1>
                 <div class="fields">
                     <div class="gd m1">
@@ -137,7 +143,11 @@
                         <input required  type="text" name="field_meu_dataano" value="{{data.qr_meu_data}}" class="form-control"/>
                     </div>
                     <div class="field field-foto">
-                        <img id="field_my_foto" src="{{data.qr_meu_foto}}"/>
+                        <img id="field_my_foto" src="{{data.qr_meu_foto}}"
+                        @if (data.qr_imagem)
+                        data-has="true"
+                        @endif
+                        />
                     </div>
                 </div>
 
@@ -208,7 +218,7 @@
                 <div class="gd m7">
                     <div class="field field-password b">
                         <strong>SENHA:</strong>
-                        <input type="password" name="qr_password" placeholder="digite sua senha aqui" class="form-control" required/>
+                        <input type="password" name="qr_password" value="{{data.qr_password}}" placeholder="digite sua senha aqui" class="form-control" required/>
                         <small>Insira uma senha para poder editar ou recuperar seu cadastro futuramente.</small>
                     </div>
                 </div>
@@ -246,6 +256,35 @@
             <h2 style="font-size: 32px; text-align: center;">MyMe não encontrado</h2>
         @endif
     </main>
+    <div class="modal modal-reset">
+        <div class="bg"></div>
+        <div class="wrapper">
+            <div class="container">
+                <div class="modal-header">
+                <h4>Alterar cadastro</h4>
+                <button data-modal="close" class="close"></button>
+                </div>
+                {{--  <div class="modal-body">
+                    <form method="POST">
+                        <p class="danger">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet voluptas magni tempora? Excepturi totam eum delectus ducimus at ratione ex consectetur iure, illum, libero necessitatibus doloribus dolorem a, corrupti beatae!</p>
+                        <div class="fields">
+                            <div class="gd">
+                                <div class="field field-password">
+                                    <strong>Insira a sua senha:</strong>
+                                    <input required type="password" class="form" name="qr_password" class="form-control"/>
+                                    <small>Insira a senha que foi inserida no momento do cadastro</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="options">
+                            <button data-modal="close">Não, cancelar</button>
+                            <button type="submit" class="success">Sim, desejo alterar</button>
+                        </div>
+                    </form>
+                </div>  --}}
+            </div>
+        </div>
+    </div>
     <script src="../assets/js/myme.js"></script>
 </body>
 </html>
