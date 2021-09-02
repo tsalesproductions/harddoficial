@@ -445,7 +445,7 @@ main.myme footer img{
         background-color: #0c0c0c;
         background-image: url(../img/login_mobile.png);
         background-size: contain;
-        background-position: center center;
+        background-position: top center;
         background-repeat: no-repeat;
     }
 
