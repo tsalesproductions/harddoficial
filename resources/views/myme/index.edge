@@ -35,58 +35,58 @@
                     <div class="gd m1">
                         <div class="field field-nome">
                             <strong>NOME:</strong>
-                            <input required  type="text" name="field_eu_nome" value="{{data.qr_cliente_nome}}" class="form-control"/>
+                            <input  required type="text" name="field_eu_nome" value="{{data.qr_cliente_nome}}" class="form-control"/>
                         </div>
         
                         <div class="field field-nascimento">
                             <strong>DATA DE NASCIMENTO:</strong>
-                            <input required  type="text" name="field_eu_nascimento" value="{{data.qr_cliente_nascimento}}" class="form-control"/>
+                            <input  type="text" name="field_eu_nascimento" value="{{data.qr_cliente_nascimento}}" class="form-control"/>
                         </div>
                     </div>
 
                     <div class="gd m2">
                         <div class="field field-endereco b">
                             <strong>ENDEREÇO:</strong>
-                            <input required  type="text" name="field_eu_endereco" value="{{data.qr_cliente_endereco_rua}}" class="form-control"/>
+                            <input  type="text" name="field_eu_endereco" value="{{data.qr_cliente_endereco_rua}}" class="form-control"/>
                         </div>
         
                         <div class="field field-numero b">
                             <strong>NUMERO:</strong>
-                            <input required  type="text" name="field_eu_numero" value="{{data.qr_cliente_endereco_numero}}" class="form-control"/>
+                            <input  type="text" name="field_eu_numero" value="{{data.qr_cliente_endereco_numero}}" class="form-control"/>
                         </div>
         
                         <div class="field field-cidade b">
                             <strong>CIDADE:</strong>
-                            <input required  type="text" name="field_eu_cidade" value="{{data.qr_cliente_endereco_cidade}}" class="form-control"/>
+                            <input  type="text" name="field_eu_cidade" value="{{data.qr_cliente_endereco_cidade}}" class="form-control"/>
                         </div>
                     </div>
 
                     <div class="gd m3">
                         <div class="field field-sangue">
                             <strong>TIPO SANGUINEO:</strong>
-                            <input required  type="text" name="field_eu_sangue" value="{{data.qr_cliente_tipo_sanguineo}}" class="form-control"/>
+                            <input  type="text" name="field_eu_sangue" value="{{data.qr_cliente_tipo_sanguineo}}" class="form-control"/>
                         </div>
 
                         <div class="field field-alergia">
                             <strong>ALERGIA:</strong>
-                            <input required  type="text" name="field_eu_alergia" value="{{data.qr_cliente_alergia}}" class="form-control"/>
+                            <input  type="text" name="field_eu_alergia" value="{{data.qr_cliente_alergia}}" class="form-control"/>
                         </div>
 
                         <div class="field field-peso">
                             <strong>PESO:</strong>
-                            <input required  type="text" name="field_eu_peso" value="{{data.qr_cliente_peso}}" class="form-control"/>
+                            <input  type="text" name="field_eu_peso" value="{{data.qr_cliente_peso}}" class="form-control"/>
                         </div>
                     </div>
 
                     <div class="gd m4">
                         <div class="field field-medicamento b">
                             <strong>USO MEDICAMENTO:</strong>
-                            <input required  type="text" name="field_eu_medicamento" value="{{data.qr_cliente_uso_medicamento}}" class="form-control"/>
+                            <input  type="text" name="field_eu_medicamento" value="{{data.qr_cliente_uso_medicamento}}" class="form-control"/>
                         </div>
 
                         <div class="field field-email b">
                             <strong>E-EMAIL:</strong>
-                            <input required  type="text" name="field_eu_email" value="{{data.qr_cliente_email}}" class="form-control"/>
+                            <input  type="text" name="field_eu_email" value="{{data.qr_cliente_email}}" class="form-control"/>
                         </div>
                     </div>
 
@@ -112,7 +112,7 @@
         
                         <div class="field field-nome">
                             <strong>NOME:</strong>
-                            <input required  type="text" name="field_eu_e_nome2" 
+                            <input  required type="text" name="field_eu_e_nome2" 
                             @if(emergencia.meu)
                             value="{{emergencia.meu.nome2}}"
                             @endif
@@ -136,11 +136,11 @@
                 <div class="gd m6">
                     <div class="field field-nome">
                         <strong>NOME:</strong>
-                        <input required  type="text" name="field_meu_nome" value="{{data.qr_meu_nome}}" class="form-control"/>
+                        <input  type="text" name="field_meu_nome" value="{{data.qr_meu_nome}}" class="form-control" required/>
                     </div>
                     <div class="field field-data-ano">
                         <strong>DATA/ANO:</strong>
-                        <input required  type="text" name="field_meu_dataano" value="{{data.qr_meu_data}}" class="form-control"/>
+                        <input  type="text" name="field_meu_dataano" value="{{data.qr_meu_data}}" class="form-control"/>
                     </div>
                     <div class="field field-foto">
                         <img id="field_my_foto" src="{{data.qr_meu_foto}}"
@@ -154,17 +154,17 @@
                 <div class="gd m2">
                     <div class="field field-endereco b">
                         <strong>ENDEREÇO:</strong>
-                        <input required  type="text" name="field_meu_endereco" value="{{data.qr_meu_endereco}}" class="form-control"/>
+                        <input  type="text" name="field_meu_endereco" value="{{data.qr_meu_endereco}}" class="form-control"/>
                     </div>
 
                     <div class="field field-numero b">
                         <strong>NUMERO:</strong>
-                        <input required  type="text" name="field_meu_numero" value="{{data.qr_meu_numero}}" class="form-control"/>
+                        <input  type="text" name="field_meu_numero" value="{{data.qr_meu_numero}}" class="form-control"/>
                     </div>
 
                     <div class="field field-cidade b">
                         <strong>CIDADE:</strong>
-                        <input required  type="text" name="field_meu_cidade" value="{{data.qr_meu_cidade}}" class="form-control"/>
+                        <input  type="text" name="field_meu_cidade" value="{{data.qr_meu_cidade}}" class="form-control"/>
                     </div>
                 </div>
 
@@ -218,7 +218,7 @@
                 <div class="gd m7">
                     <div class="field field-password b">
                         <strong>SENHA:</strong>
-                        <input type="password" name="qr_password" value="{{data.qr_password}}" placeholder="digite sua senha aqui" class="form-control" required/>
+                        <input required type="password" name="qr_password" value="{{data.qr_password}}" placeholder="digite sua senha aqui" class="form-control"/>
                         <small>Insira uma senha para poder editar ou recuperar seu cadastro futuramente.</small>
                     </div>
                 </div>
@@ -231,7 +231,7 @@
 
             <div class="edit">
                 <div class="terms">
-                    <input required  type="checkbox" id="field_terms" name="field_terms">
+                    <input  type="checkbox" id="field_terms" name="field_terms">
                     <label for="terms">Eu concordo que <a target="_blank" href="../assets/termos-myme.pdf">sobre a lei LGPD</a> e estou ciente que os dados inseridos acima estarão disponíveis a qualquer momento através deste link.</label>
                 </div>
                 <div class="error" style="display: none"></div>
@@ -271,7 +271,7 @@
                             <div class="gd">
                                 <div class="field field-password">
                                     <strong>Insira a sua senha:</strong>
-                                    <input required type="password" class="form" name="qr_password" class="form-control"/>
+                                    <input type="password" class="form" name="qr_password" class="form-control"/>
                                     <small>Insira a senha que foi inserida no momento do cadastro</small>
                                 </div>
                             </div>
