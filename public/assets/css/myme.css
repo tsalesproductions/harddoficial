@@ -532,6 +532,22 @@ main.myme footer img{
     font-weight: 800 !important;
 }
 
+.identify .field-nopass{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.identify .field-nopass input{
+    width: 17px !important;
+}
+
+.identify .field-nopass label{
+    color: #fff;
+}
+
+
 @media (min-width: 998px) {
     .identify main > div img{
         width: 125px;

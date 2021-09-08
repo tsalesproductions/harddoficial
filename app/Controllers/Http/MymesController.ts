@@ -155,15 +155,21 @@ export default class MymesController {
     
   }
 
+  private async validateWithoutPassword(response, userData){
+    return response.redirect('/myme/'+userData.qr_id);
+  }
+
   public async login({ request, response, session }: HttpContextContract) {
-    const { serial, password } = request.all();
-
+    const { serial, password, nopass } = request.all();
+    
     const userData = await QrData.findBy('qr_id', serial);
-
+    
     if (!userData) {
-        session.flash('notification', 'OPS! Serial não encontrado');
-        return response.redirect('back');
+      session.flash('notification', 'OPS! Serial não encontrado');
+      return response.redirect('back');
     }
+
+    if(nopass) return this.validateWithoutPassword(response, userData);
     
     if (userData.qr_password !== password) {
       session.flash('notification', 'OPS! Serial e senha não conferem');
