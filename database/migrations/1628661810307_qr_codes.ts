@@ -18,17 +18,13 @@ export default class QrCodes extends BaseSchema {
         table.string('qr_cliente_uso_medicamento').notNullable();
         table.string('qr_cliente_email').notNullable();
         table.string('qr_emergencia').notNullable();
-        table.string('qr_meu_nome').notNullable();
-        table.string('qr_meu_data').notNullable();
-        table.string('qr_meu_endereco').notNullable();
-        table.string('qr_meu_numero').notNullable();
-        table.string('qr_meu_cidade').notNullable();
-        table.string('qr_meu_obs').notNullable();
-        table.string('qr_meu_emergencia').notNullable();
+        table.string('qr_cliente_doenca').notNullable();
+        table.string('qr_cliente_anexo').notNullable();
+        table.string('qr_cliente_obs').notNullable();
+        table.string('qr_meus').notNullable();
         table.boolean('qr_status').defaultTo(0).notNullable();
-        table.string('qr_id').notNullable().unique();
+        table.string('qr_id').notNullable();
         table.string('qr_code').notNullable();
-        table.string('qr_meu_foto').notNullable();
         table.string('qr_password').notNullable();
     });
   }

@@ -1,4 +1,12 @@
 const formManager = {
+    dataInputs: {
+        eu: {
+            foto: null,
+            anexo: null,
+        },
+        meus: [],
+        anexo: null
+    },
     myme: document.querySelector("main.myme"),
     q: function(data){
         return document.querySelector(data);
@@ -6,47 +14,134 @@ const formManager = {
     qall: function(data){
         return document.querySelectorAll(data);
     },
+    formSend: function(data, target){
+        let self = this;
+
+        $.ajax({
+          url: 'https://api.imgbb.com/1/upload?expiration=600&key=dcec30faf072f6e164b080901e58e621',
+          type: 'post',
+          data: data,
+          contentType: false,
+          processData: false,
+          beforeSend: function(){
+              $("body").prepend(`<div class="loading-upload" style="position: fixed;top: 0;left: 0;padding: 20px;width: 100%;height: 100vh;background-color: rgba(0,0,0,.9);z-index: 999; display: flex; flex-direction: column; align-items: center;justify-content: center;"><div class="spinner-border" style="width: 5rem;height: 5rem; color: #fff" role="status"><span class="visually-hidden"></span></div> <span style="color: #fff; font-size: 20px; margin-top: 10px;">Enviando dados, não atualize a página...</span></div>`);
+          },
+          success: function(response){
+              $(".loading-upload").remove();
+            if(response.success){
+                switch(target.type){
+                    case "eu-foto":
+                        self.dataInputs.eu.foto = response.data.display_url;
+                    break;
+
+                    case "eu-anexo":
+                        self.dataInputs.eu.anexo = response.data.display_url;
+                    break;
+
+                    case "meu-foto":
+                        // self.dataInputs.meu = ;
+                        // MUDAR MEU
+                    break;
+
+                    
+                }
+
+                $("#data-upload").val(JSON.stringify(self.dataInputs))
+
+                target.img.src = response.data.display_url;
+            }else{
+                alert("houve um erro ao enviar, entre em contato com o administrador")
+            }
+          },
+        });
+    },
+    upload: async function(data, target){
+        if(data.length <= 0) return;
+        let fd = new FormData();
+        switch(data[0].type){
+            case "image/jpeg":
+                fd.append('image',data[0]);
+                    this.formSend(fd, target)
+                break;
+                
+                case "image/png":
+                    fd.append('image',data[0]);
+                    this.formSend(fd, target)
+                break;
+
+                case "application/pdf":
+                    fd.append('image',data[0]);
+                    this.formSend(fd, target)
+                break;
+                
+                default:
+                    alert("Envie imagens apenas nos formatos jpeg e png");
+                break;
+        }
+    },
     triggetImages: function(){
+        let self = this,
+            inputUpload = document.querySelector("#upload"),
+            tg = null;
+
         let field_me_foto = this.q("#field_me_foto"),
             field_me_input = this.q("#field_eu_foto2"),
             field_my_foto = this.q("#field_my_foto"),
             field_my_input = this.q("#field_meu_foto2");
 
             if(!field_me_foto.getAttribute("data-has")){
-                field_me_foto.src = "../assets/img/perfil_redondo.png"
+                field_me_foto.src = "../assets/img/eu-default.svg"
+                field_me_foto.style.border = "2px solid #E6E6E6"
             }
 
             if(!field_my_foto.getAttribute("data-has")){
-                field_my_foto.src = "../assets/img/perfil_quadrado.png"
+                field_my_foto.src = "../assets/img/meu-default.svg"
+                field_my_foto.style.border = "2px solid #E6E6E6"
+                field_my_foto.style.borderRadius = "50%"
+            }
+
+        $("input[type='file']").change(function(e){
+            let attr = e.target.parentElement.getAttribute('data-type');
+            self.upload(e.target.files, {type: attr, img: e.target.parentElement.children[0]})
+        });
+
+        $(".disponivel .without").click((e) => {
+            let target = null;
+
+            if(e.target.tagName == "DIV"){
+                target = e.target;
+            }else if(e.target.tagName == "IMG"){
+                target = e.target.parentElement;
+            }else{
+                target = e.currentTarget;
             }
             
-            field_me_foto.addEventListener("click", function(){
-                field_me_input.click();
-            });
+            target.children[1].click()
+        });
 
-            field_me_input.addEventListener("change", function(es){
-                if (es.target.files && es.target.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        field_me_foto.src =  e.target.result;
-                    }
-                    reader.readAsDataURL(es.target.files[0]);
-                }
-            });
+            // field_me_input.addEventListener("change", function(es){
+            //     if (es.target.files && es.target.files[0]) {
+            //         var reader = new FileReader();
+            //         reader.onload = function (e) {
+            //             field_me_foto.src =  e.target.result;
+            //         }
+            //         reader.readAsDataURL(es.target.files[0]);
+            //     }
+            // });
 
-            field_my_foto.addEventListener("click", function(){
-                field_my_input.click();
-            });
+            // field_my_foto.addEventListener("click", function(){
+            //     field_my_input.click();
+            // });
 
-            field_my_input.addEventListener("change", function(es){
-                if (es.target.files && es.target.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        field_my_foto.src =  e.target.result;
-                    }
-                    reader.readAsDataURL(es.target.files[0]);
-                }
-            });
+            // field_my_input.addEventListener("change", function(es){
+            //     if (es.target.files && es.target.files[0]) {
+            //         var reader = new FileReader();
+            //         reader.onload = function (e) {
+            //             field_my_foto.src =  e.target.result;
+            //         }
+            //         reader.readAsDataURL(es.target.files[0]);
+            //     }
+            // });
     },
     termsValidate: function(){
         if(this.q(".usado")) return;
@@ -107,7 +202,8 @@ const formManager = {
     },
     disableAllInputs: function(){
         if(!this.q(".usado")) return;
-        let inputs = this.qall("input:not(.form),textarea");
+        let inputs = this.qall("input:not(.form),textarea,select");
+        console.log(inputs)
         inputs.forEach(function(item){
             item.readOnly = true;
         })
@@ -177,40 +273,11 @@ const formManager = {
 
         
     },
-    modal: function(){
-        let a = document.querySelector("main.myme header > a");
-        let close = document.querySelectorAll("button[data-modal='close']");
-
-        if(close){
-            close.forEach((item) => {
-                item.addEventListener("click", function(e){
-                    document.querySelector(".modal").classList.remove("active");
-                });
-            });
-        }
-
-        if(!a) return;
-        a.addEventListener("click", function(e){
-            console.log("to aqui");
-            document.querySelector(".modal").classList.add("active");
-        });
-    },
-    modalValidator: function(){
-        let form = document.querySelector(".modal form");
-            if(!form) return;
-
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            console.log("teste");
-        });
-    },
     init: function(){
-        this.modal();
         this.checkIfEnabled();
         this.termsValidate();
         this.disableAllInputs();
         this.contactValidate();
-        this.modalValidator();
     }
 }
 

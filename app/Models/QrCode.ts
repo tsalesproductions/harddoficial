@@ -42,25 +42,16 @@ export default class QrCode extends BaseModel {
     public qr_emergencia: string;
 
     @column()
-    public qr_meu_nome: string;
+    public qr_cliente_doenca: string;
 
     @column()
-    public qr_meu_data: string;
+    public qr_cliente_anexo: string;
 
     @column()
-    public qr_meu_endereco: string;
+    public qr_cliente_obs: string;
 
     @column()
-    public qr_meu_numero: string;
-
-    @column()
-    public qr_meu_cidade: string;
-
-    @column()
-    public qr_meu_obs: string;
-
-    @column()
-    public qr_meu_emergencia: string;
+    public qr_meus: string;
 
     @column()
     public qr_status: string;
@@ -70,9 +61,6 @@ export default class QrCode extends BaseModel {
 
     @column()
     public qr_code: string;
-
-    @column()
-    public qr_meu_foto: string;
 
     @column()
     public qr_password: string;

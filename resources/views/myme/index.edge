@@ -24,12 +24,14 @@
                 {{--  <a href="#">Alterar dados</a>  --}}
             </header>
             <div class="my">
-                <div class="photo"><img 
-                    id="field_me_foto" src="{{data.qr_imagem}}"
-                    @if (data.qr_imagem)
-                    data-has="true"
-                    @endif
-                    /></div>
+                <div class="photo without" data-type="eu-foto">
+                <img id="field_me_foto" class="capa" src="{{(data.qr_imagem ? data.qr_imagem : '../assets/img/eu-default.svg')}}"
+                @if(data.qr_imagem)
+                    data-eu-foto="{{data.qr_imagem}}"
+                @endif
+                />
+                    <input type="file" accept="image/jpg,image/jpeg,image/png">
+                </div>
                 <h1>EU</h1>
                 <div class="fields">
                     <div class="gd m1">
@@ -43,190 +45,297 @@
                             <input  type="text" name="field_eu_nascimento" value="{{data.qr_cliente_nascimento}}" class="form-control"/>
                         </div>
                     </div>
-
-                    <div class="gd m2">
-                        <div class="field field-endereco b">
-                            <strong>ENDEREÇO:</strong>
-                            <input  type="text" name="field_eu_endereco" value="{{data.qr_cliente_endereco_rua}}" class="form-control"/>
-                        </div>
-        
-                        <div class="field field-numero b">
-                            <strong>NUMERO:</strong>
-                            <input  type="text" name="field_eu_numero" value="{{data.qr_cliente_endereco_numero}}" class="form-control"/>
-                        </div>
-        
-                        <div class="field field-cidade b">
-                            <strong>CIDADE:</strong>
-                            <input  type="text" name="field_eu_cidade" value="{{data.qr_cliente_endereco_cidade}}" class="form-control"/>
-                        </div>
-                    </div>
-
+                    
                     <div class="gd m3">
-                        <div class="field field-sangue">
-                            <strong>TIPO SANGUINEO:</strong>
-                            <input  type="text" name="field_eu_sangue" value="{{data.qr_cliente_tipo_sanguineo}}" class="form-control"/>
-                        </div>
-
-                        <div class="field field-alergia">
+                        <div class="field field-alergia b">
                             <strong>ALERGIA:</strong>
                             <input  type="text" name="field_eu_alergia" value="{{data.qr_cliente_alergia}}" class="form-control"/>
                         </div>
 
-                        <div class="field field-peso">
+                        <div class="field field-sangue b">
+                            <strong>TIPO SANGUINEO:</strong>
+                            <input  type="text" name="field_eu_sangue" value="{{data.qr_cliente_tipo_sanguineo}}" class="form-control"/>
+                        </div>
+
+                        <div class="field field-peso b">
                             <strong>PESO:</strong>
                             <input  type="text" name="field_eu_peso" value="{{data.qr_cliente_peso}}" class="form-control"/>
                         </div>
                     </div>
 
-                    <div class="gd m4">
+                    <div class="gd">
+                        <div class="field field-doenca">
+                            <strong>DOENÇA DIAGNOSTICADA:</strong>
+                            <input  type="text" name="field_eu_doenca" value="{{data.qr_cliente_doenca}}" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="gd m41">
                         <div class="field field-medicamento b">
                             <strong>USO MEDICAMENTO:</strong>
                             <input  type="text" name="field_eu_medicamento" value="{{data.qr_cliente_uso_medicamento}}" class="form-control"/>
                         </div>
 
+                        <div class="field field-anexo b
+                        @if (!data.qr_cliente_anexo)
+                        without
+                        @endif
+                        " data-type="eu-anexo"
+                        @if (data.qr_cliente_anexo)
+                        data-has="true"
+                        onclick="window.open('{{data.qr_cliente_anexo}}')"
+                        data-eu-anexo="{{data.qr_cliente_anexo}}"
+                        @end
+                        >
+                        <strong>ANEXO:</strong>
+                        <input type="file" name="upload" accept="application/pdf,image/jpg,image/jpeg,image/png">
+                            <div>
+                            @if (data.qr_cliente_anexo)
+                                <svg viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.62" fill-rule="evenodd" clip-rule="evenodd" d="M2.77 7.99999C2.87969 7.9703 2.97316 7.8984 3.03 7.8L5.38 3.58999C5.39005 3.56427 5.39005 3.53571 5.38 3.50999C5.38468 3.49026 5.38468 3.46972 5.38 3.44999L4.86 3.16C4.84189 3.14451 4.81883 3.13598 4.795 3.13598C4.77116 3.13598 4.74811 3.14451 4.73 3.16L2.61 6.99999C2.57781 7.05381 2.53248 7.09856 2.47826 7.13004C2.42403 7.16153 2.36269 7.17871 2.3 7.17999C2.24425 7.19438 2.18576 7.19438 2.13 7.17999C2.04904 7.1337 1.98919 7.05781 1.96307 6.96827C1.93696 6.87874 1.94662 6.78255 1.99001 6.69999L4.07001 2.97999C4.1211 2.88794 4.18984 2.80688 4.27232 2.74145C4.3548 2.67602 4.44938 2.62752 4.55064 2.59872C4.65191 2.56992 4.75786 2.56139 4.86243 2.57362C4.96699 2.58585 5.06812 2.6186 5.16 2.66999L5.69 2.96C5.87126 3.06797 6.00651 3.2388 6.07001 3.44C6.1246 3.64594 6.09586 3.8651 5.99001 4.05L3.64 8.25999C3.48978 8.52565 3.24247 8.72279 2.95 8.80999L2.28999 8.99C2.18053 9.00533 2.06947 9.00533 1.96001 8.99C1.68826 8.98938 1.4241 8.90021 1.20756 8.736C0.991033 8.5718 0.83391 8.3415 0.759994 8.08L0.580001 7.44C0.50032 7.14685 0.539866 6.83409 0.690002 6.57L2.03999 4.14999L3.46001 1.58999C3.53189 1.45751 3.63022 1.34122 3.74892 1.24833C3.86761 1.15544 4.00412 1.08793 4.14999 1.05L5.53999 0.649988C5.86088 0.560681 6.20409 0.602068 6.49455 0.765101C6.78501 0.928133 6.99909 1.19956 7.09 1.52L7.48 2.91C7.56271 3.20184 7.52677 3.51453 7.38 3.77999L6 6.27999C5.96935 6.33516 5.92437 6.38101 5.8698 6.4127C5.81523 6.44439 5.7531 6.46073 5.69 6.46C5.63012 6.45735 5.57178 6.44019 5.52 6.41C5.47979 6.38717 5.44449 6.3566 5.41615 6.32006C5.38782 6.28352 5.36702 6.24172 5.35493 6.19709C5.34285 6.15246 5.33971 6.10588 5.34573 6.06004C5.35175 6.01419 5.3668 5.96999 5.39 5.92999L6.82001 3.36999C6.85989 3.26361 6.85989 3.14637 6.82001 3.03999L6.42 1.64999C6.40151 1.58071 6.36941 1.51582 6.32558 1.45909C6.28174 1.40235 6.22704 1.3549 6.16467 1.31953C6.1023 1.28416 6.0335 1.26157 5.96231 1.25306C5.89112 1.24456 5.81894 1.25031 5.75 1.27L4.35001 1.66C4.24008 1.69492 4.14727 1.76987 4.09 1.86999L2.59 4.57L1.32001 6.85C1.28812 6.89993 1.26638 6.95567 1.25609 7.01402C1.24579 7.07236 1.24712 7.13216 1.25999 7.19L1.45 7.83C1.46849 7.89927 1.50059 7.96418 1.54443 8.02091C1.58827 8.07765 1.64297 8.12508 1.70534 8.16046C1.76771 8.19583 1.83649 8.21843 1.90768 8.22694C1.97888 8.23544 2.05105 8.22969 2.11999 8.21L2.77 7.99999Z" fill="#4D4D4D"/></svg>
+                            @else
+                                <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.2 4.24C6.27142 4.25299 6.33604 4.29063 6.38255 4.34637C6.42907 4.40211 6.45454 4.4724 6.45454 4.545C6.45454 4.6176 6.42907 4.6879 6.38255 4.74363C6.33604 4.79937 6.27142 4.83702 6.2 4.85H4.84V6.21C4.82701 6.28143 4.78936 6.34603 4.73363 6.39255C4.67789 6.43907 4.6076 6.46455 4.535 6.46455C4.4624 6.46455 4.3921 6.43907 4.33636 6.39255C4.28063 6.34603 4.24298 6.28143 4.23 6.21V4.85H2.87C2.79857 4.83702 2.73397 4.79937 2.68745 4.74363C2.64094 4.6879 2.61545 4.6176 2.61545 4.545C2.61545 4.4724 2.64094 4.40211 2.68745 4.34637C2.73397 4.29063 2.79857 4.25299 2.87 4.24H4.23V2.88C4.24298 2.80857 4.28063 2.74397 4.33636 2.69745C4.3921 2.65093 4.4624 2.62545 4.535 2.62545C4.6076 2.62545 4.67789 2.65093 4.73363 2.69745C4.78936 2.74397 4.82701 2.80857 4.84 2.88V4.24H6.2ZM7.95 0.600002H1.12C1.04918 0.599932 0.97907 0.614052 0.913803 0.641533C0.848536 0.669014 0.789444 0.709298 0.740005 0.760002V0.760002C0.647943 0.857005 0.597652 0.986285 0.599991 1.12V7.95C0.599384 8.01851 0.612335 8.08647 0.638077 8.14997C0.663819 8.21346 0.701854 8.27125 0.75 8.32C0.799438 8.37071 0.85853 8.41098 0.923798 8.43847C0.989065 8.46595 1.05919 8.48007 1.13 8.48H7.95999C8.0293 8.47987 8.09787 8.46562 8.16148 8.43811C8.2251 8.4106 8.28244 8.37041 8.33 8.32C8.38139 8.27321 8.42223 8.21601 8.44981 8.15222C8.4774 8.08843 8.4911 8.01949 8.49001 7.95V1.13C8.48504 0.991019 8.42759 0.85908 8.32925 0.760742C8.23092 0.662404 8.09897 0.604971 7.95999 0.600002H7.95ZM1.12 0C0.82032 0.000574809 0.532919 0.119128 0.319992 0.330002C0.118429 0.540117 0.0040782 0.818866 0 1.11V7.94C0.00105465 8.08919 0.0316407 8.2367 0.0899963 8.374C0.148352 8.51131 0.233318 8.6357 0.339996 8.74C0.444104 8.84624 0.568672 8.93025 0.706177 8.98697C0.843681 9.04369 0.991268 9.07194 1.14 9.07H7.97C8.11857 9.07081 8.26581 9.04204 8.40315 8.98539C8.5405 8.92873 8.66521 8.84532 8.77 8.74C8.97908 8.52589 9.0973 8.23925 9.09999 7.94V1.13C9.09999 0.830306 8.98094 0.542887 8.76903 0.330971C8.55711 0.119055 8.2697 0 7.97 0H1.12Z" fill="#4D4D4D"/></svg>
+                            @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gd m2">
+                        <div class="field field-endereco">
+                            <strong>ENDEREÇO:</strong>
+                            <input  type="text" name="field_eu_endereco" value="{{data.qr_cliente_endereco_rua}}" class="form-control"/>
+                        </div>
+        
+                        <div class="field field-numero">
+                            <strong>NUMERO:</strong>
+                            <input  type="text" name="field_eu_numero" value="{{data.qr_cliente_endereco_numero}}" class="form-control"/>
+                        </div>
+        
+                        <div class="field field-cidade">
+                            <strong>CIDADE:</strong>
+                            <input  type="text" name="field_eu_cidade" value="{{data.qr_cliente_endereco_cidade}}" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="gd">
                         <div class="field field-email b">
                             <strong>E-EMAIL:</strong>
                             <input  type="text" name="field_eu_email" value="{{data.qr_cliente_email}}" class="form-control"/>
                         </div>
                     </div>
 
+                    <div class="gd">
+                        <div class="field field-obs">
+                            <strong>OBS:</strong>
+                            <textarea name="field_meu_obs" class="form-control">{{data.qr_cliente_obs}}</textarea>
+                        </div>
+                    </div>
+
                     <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
-                    <div class="gd m5">
-                        <div class="field field-nome b">
-                            <strong>NOME:</strong>
-                            <input required  type="text" name="field_eu_e_nome1"
-                            @if(emergencia.meu) 
-                            value="{{emergencia.meu.nome1}}"
-                            @end
-                            class="form-control"/>
-                        </div>
-        
-                        <div class="field field-contato b">
-                            <strong>CONTATO:</strong>
-                            <input required  type="text" name="field_eu_e_contato1" 
-                            @if(emergencia.meu) 
-                            value="{{emergencia.meu.contato1}}"
-                            @end 
-                            class="form-control"/>
-                        </div>
-        
+                    <div class="gd m5 emergencia-form">
                         <div class="field field-nome">
                             <strong>NOME:</strong>
-                            <input  required type="text" name="field_eu_e_nome2" 
-                            @if(emergencia.meu)
-                            value="{{emergencia.meu.nome2}}"
-                            @endif
+                            <input required  type="text" name="field_eu_e_nome1"
+                            @if(meu_emergencia[0]) 
+                            value="{{meu_emergencia[0].nome}}"
+                            @end
                             class="form-control"/>
                         </div>
         
                         <div class="field field-contato">
                             <strong>CONTATO:</strong>
+                            <input required  type="text" name="field_eu_e_contato1" 
+                            @if(meu_emergencia[0]) 
+                            value="{{meu_emergencia[0].contato}}"
+                            @end 
+                            class="form-control"/>
+                        </div>
+        
+                        <div class="field field-nome b">
+                            <strong>NOME:</strong>
+                            <input  required type="text" name="field_eu_e_nome2" 
+                            @if(meu_emergencia[0])
+                            value="{{meu_emergencia[1].nome}}"
+                            @endif
+                            class="form-control"/>
+                        </div>
+        
+                        <div class="field field-contato b">
+                            <strong>CONTATO:</strong>
                             <input required  type="text" name="field_eu_e_contato2" 
-                            @if(emergencia.meu)
-                            value="{{emergencia.meu.contato2}}"
+                            @if(meu_emergencia[0])
+                            value="{{meu_emergencia[1].contato}}"
                             @end
                             class="form-control"/>
                         </div>
                     </div>
                 </div>
             </div>
+            {{--  <img src="../assets/img/myme-logo-meu.png" class="logo-mid">  --}}
             <div class="me">
                 <h1>MEU</h1>
-
-                <div class="gd m6">
-                    <div class="field field-nome">
-                        <strong>NOME:</strong>
-                        <input  type="text" name="field_meu_nome" value="{{data.qr_meu_nome}}" class="form-control" required/>
-                    </div>
-                    <div class="field field-data-ano">
-                        <strong>DATA/ANO:</strong>
-                        <input  type="text" name="field_meu_dataano" value="{{data.qr_meu_data}}" class="form-control"/>
-                    </div>
-                    <div class="field field-foto">
-                        <img id="field_my_foto" src="{{data.qr_meu_foto}}"
-                        @if (data.qr_imagem)
-                        data-has="true"
+                <div class="meus">
+                    @each(meu in meus)
+                    <div class="meu" data-id="{{meu.field_id}}">
+                        <div class="gd 
+                        @if (data.qr_status == 0)
+                        m3
+                        @else
+                        m5
                         @endif
-                        />
+                        " style="position: relative">
+                            <div class="field field-nome b">
+                                <strong>NOME/OBJETO:</strong>
+                                <input  type="text" name="meu_nome" value="{{meu.meu_nome}}" class="form-control" required/>
+                            </div>
+                            <div class="field field-data-ano b">
+                                <strong>DATA/ANO:</strong>
+                                <input  type="text" name="meu_data" value="{{meu.meu_data}}" class="form-control"/>
+                            </div>
+                            <div class="field field-foto without" data-type="meu-foto">
+                                <img id="field_my_foto" src="{{(meu.meu_foto ? meu.meu_foto : '../assets/img/meu-default.svg')}}"
+                                @if(meu.meu_foto)
+                                    data-meu-imagem="{{meu.meu_foto}}"
+                                @endif
+                                />
+                                <input type="file" name="upload" accept="image/jpg,image/jpeg,image/png">
+                            </div>
+                            @if (data.qr_status == 0)
+                            <div class="opt-del">
+                                <img title="deletar" src="../assets/img/trash-can.png"/>
+                            </div>
+                            @endif
+                        </div>
+
+                        <div id="triangulo-para-baixo">aaa</div>
+                    
+                        <div class="gd">
+                            <div class="field field-alergia">
+                                <strong>RAÇA / MODELO:</strong>
+                                <input  type="text" name="meu_modelo" value="{{meu.meu_modelo}}" class="form-control"/>
+                            </div>
+                        </div>
+                    
+                        <div class="gd m3">
+                            <div class="field field-alergia b">
+                                <strong>ALERGIA:</strong>
+                                <input  type="text" name="meu_alergia" value="{{meu.meu_alergia}}" class="form-control"/>
+                            </div>
+                            
+                            <div class="field field-sangue b">
+                                <strong>TIPO SANGUINEO:</strong>
+                                <input  type="text" name="meu_sangue" value="{{meu.meu_sangue}}" class="form-control"/>
+                            </div>
+                            
+                            <div class="field field-peso b">
+                                <strong>PESO:</strong>
+                                <input  type="text" name="meu_peso" value="{{meu.meu_peso}}" class="form-control"/>
+                            </div>
+                        </div>
+                            
+                        <div class="gd">
+                            <div class="field field-doenca">
+                                <strong>DOENÇA DIAGNOSTICADA:</strong>
+                                <input  type="text" name="meu_doenca" value="{{meu.meu_doenca}}" class="form-control"/>
+                            </div>
+                        </div>
+                            
+                        <div class="gd m41">
+                            <div class="field field-medicamento b">
+                                <strong>USO MEDICAMENTO:</strong>
+                                <input  type="text" name="meu_medicamento" value="{{meu.meu_medicamento}}" class="form-control"/>
+                            </div>
+                            
+                            <div class="field field-anexo b without" data-type="meu-anexo"
+                            @if(meu.meu_anexo)
+                            data-has="true" 
+                            onclick="window.open('{{meu.meu_anexo}}')"
+                            data-meu-anexo="{{meu.meu_anexo}}"
+                            @endif
+                            >
+                            <strong>ANEXO:</strong>
+                            <input type="file" name="upload" accept="application/pdf,image/jpg,image/jpeg,image/png">
+                                <div>
+                                    @if(meu.meu_anexo)
+                                    <svg class="has" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.62" fill-rule="evenodd" clip-rule="evenodd" d="M2.77 7.99999C2.87969 7.9703 2.97316 7.8984 3.03 7.8L5.38 3.58999C5.39005 3.56427 5.39005 3.53571 5.38 3.50999C5.38468 3.49026 5.38468 3.46972 5.38 3.44999L4.86 3.16C4.84189 3.14451 4.81883 3.13598 4.795 3.13598C4.77116 3.13598 4.74811 3.14451 4.73 3.16L2.61 6.99999C2.57781 7.05381 2.53248 7.09856 2.47826 7.13004C2.42403 7.16153 2.36269 7.17871 2.3 7.17999C2.24425 7.19438 2.18576 7.19438 2.13 7.17999C2.04904 7.1337 1.98919 7.05781 1.96307 6.96827C1.93696 6.87874 1.94662 6.78255 1.99001 6.69999L4.07001 2.97999C4.1211 2.88794 4.18984 2.80688 4.27232 2.74145C4.3548 2.67602 4.44938 2.62752 4.55064 2.59872C4.65191 2.56992 4.75786 2.56139 4.86243 2.57362C4.96699 2.58585 5.06812 2.6186 5.16 2.66999L5.69 2.96C5.87126 3.06797 6.00651 3.2388 6.07001 3.44C6.1246 3.64594 6.09586 3.8651 5.99001 4.05L3.64 8.25999C3.48978 8.52565 3.24247 8.72279 2.95 8.80999L2.28999 8.99C2.18053 9.00533 2.06947 9.00533 1.96001 8.99C1.68826 8.98938 1.4241 8.90021 1.20756 8.736C0.991033 8.5718 0.83391 8.3415 0.759994 8.08L0.580001 7.44C0.50032 7.14685 0.539866 6.83409 0.690002 6.57L2.03999 4.14999L3.46001 1.58999C3.53189 1.45751 3.63022 1.34122 3.74892 1.24833C3.86761 1.15544 4.00412 1.08793 4.14999 1.05L5.53999 0.649988C5.86088 0.560681 6.20409 0.602068 6.49455 0.765101C6.78501 0.928133 6.99909 1.19956 7.09 1.52L7.48 2.91C7.56271 3.20184 7.52677 3.51453 7.38 3.77999L6 6.27999C5.96935 6.33516 5.92437 6.38101 5.8698 6.4127C5.81523 6.44439 5.7531 6.46073 5.69 6.46C5.63012 6.45735 5.57178 6.44019 5.52 6.41C5.47979 6.38717 5.44449 6.3566 5.41615 6.32006C5.38782 6.28352 5.36702 6.24172 5.35493 6.19709C5.34285 6.15246 5.33971 6.10588 5.34573 6.06004C5.35175 6.01419 5.3668 5.96999 5.39 5.92999L6.82001 3.36999C6.85989 3.26361 6.85989 3.14637 6.82001 3.03999L6.42 1.64999C6.40151 1.58071 6.36941 1.51582 6.32558 1.45909C6.28174 1.40235 6.22704 1.3549 6.16467 1.31953C6.1023 1.28416 6.0335 1.26157 5.96231 1.25306C5.89112 1.24456 5.81894 1.25031 5.75 1.27L4.35001 1.66C4.24008 1.69492 4.14727 1.76987 4.09 1.86999L2.59 4.57L1.32001 6.85C1.28812 6.89993 1.26638 6.95567 1.25609 7.01402C1.24579 7.07236 1.24712 7.13216 1.25999 7.19L1.45 7.83C1.46849 7.89927 1.50059 7.96418 1.54443 8.02091C1.58827 8.07765 1.64297 8.12508 1.70534 8.16046C1.76771 8.19583 1.83649 8.21843 1.90768 8.22694C1.97888 8.23544 2.05105 8.22969 2.11999 8.21L2.77 7.99999Z" fill="#4D4D4D"/></svg>
+                                    @else
+                                    <svg class="not" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.2 4.24C6.27142 4.25299 6.33604 4.29063 6.38255 4.34637C6.42907 4.40211 6.45454 4.4724 6.45454 4.545C6.45454 4.6176 6.42907 4.6879 6.38255 4.74363C6.33604 4.79937 6.27142 4.83702 6.2 4.85H4.84V6.21C4.82701 6.28143 4.78936 6.34603 4.73363 6.39255C4.67789 6.43907 4.6076 6.46455 4.535 6.46455C4.4624 6.46455 4.3921 6.43907 4.33636 6.39255C4.28063 6.34603 4.24298 6.28143 4.23 6.21V4.85H2.87C2.79857 4.83702 2.73397 4.79937 2.68745 4.74363C2.64094 4.6879 2.61545 4.6176 2.61545 4.545C2.61545 4.4724 2.64094 4.40211 2.68745 4.34637C2.73397 4.29063 2.79857 4.25299 2.87 4.24H4.23V2.88C4.24298 2.80857 4.28063 2.74397 4.33636 2.69745C4.3921 2.65093 4.4624 2.62545 4.535 2.62545C4.6076 2.62545 4.67789 2.65093 4.73363 2.69745C4.78936 2.74397 4.82701 2.80857 4.84 2.88V4.24H6.2ZM7.95 0.600002H1.12C1.04918 0.599932 0.97907 0.614052 0.913803 0.641533C0.848536 0.669014 0.789444 0.709298 0.740005 0.760002V0.760002C0.647943 0.857005 0.597652 0.986285 0.599991 1.12V7.95C0.599384 8.01851 0.612335 8.08647 0.638077 8.14997C0.663819 8.21346 0.701854 8.27125 0.75 8.32C0.799438 8.37071 0.85853 8.41098 0.923798 8.43847C0.989065 8.46595 1.05919 8.48007 1.13 8.48H7.95999C8.0293 8.47987 8.09787 8.46562 8.16148 8.43811C8.2251 8.4106 8.28244 8.37041 8.33 8.32C8.38139 8.27321 8.42223 8.21601 8.44981 8.15222C8.4774 8.08843 8.4911 8.01949 8.49001 7.95V1.13C8.48504 0.991019 8.42759 0.85908 8.32925 0.760742C8.23092 0.662404 8.09897 0.604971 7.95999 0.600002H7.95ZM1.12 0C0.82032 0.000574809 0.532919 0.119128 0.319992 0.330002C0.118429 0.540117 0.0040782 0.818866 0 1.11V7.94C0.00105465 8.08919 0.0316407 8.2367 0.0899963 8.374C0.148352 8.51131 0.233318 8.6357 0.339996 8.74C0.444104 8.84624 0.568672 8.93025 0.706177 8.98697C0.843681 9.04369 0.991268 9.07194 1.14 9.07H7.97C8.11857 9.07081 8.26581 9.04204 8.40315 8.98539C8.5405 8.92873 8.66521 8.84532 8.77 8.74C8.97908 8.52589 9.0973 8.23925 9.09999 7.94V1.13C9.09999 0.830306 8.98094 0.542887 8.76903 0.330971C8.55711 0.119055 8.2697 0 7.97 0H1.12Z" fill="#4D4D4D"/></svg>
+                                    @end
+                                </div>
+                            </div>
+                        </div>
+                            
+                        <div class="gd m2">
+                            <div class="field field-endereco">
+                                <strong>ENDEREÇO:</strong>
+                                <input  type="text" name="meu_endereco" value="{{meu.meu_endereco}}" class="form-control"/>
+                            </div>
+                            
+                            <div class="field field-numero">
+                                <strong>NUMERO:</strong>
+                                <input  type="text" name="meu_numero" value="{{meu.meu_numero}}" class="form-control"/>
+                            </div>
+                            
+                            <div class="field field-cidade">
+                                <strong>CIDADE:</strong>
+                                <input  type="text" name="meu_cidade" value="{{meu.meu_cidade}}" class="form-control"/>
+                            </div>
+                        </div>
+                            
+                        <div class="gd">
+                            <div class="field field-obs">
+                                <strong>OBS:</strong>
+                                <textarea name="meu_obs" class="form-control">{{meu.meu_obs}}</textarea>
+                            </div>
+                        </div>
+                            
+                        <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
+                        <div class="gd m5 emergencia-form">
+                            <div class="field field-nome">
+                                <strong>NOME:</strong>
+                                <input type="text" name="meu_emergencia1_nome" value="{{meu.meu_emergencia1_nome}}" class="form-control"/>
+                            </div>
+                            
+                            <div class="field field-contato">
+                                <strong>CONTATO:</strong>
+                                <input type="text" name="meu_emergencia1_contato" value="{{meu.meu_emergencia1_contato}}" class="form-control"/>
+                            </div>
+                            
+                            <div class="field field-nome b">
+                                <strong>NOME:</strong>
+                                <input type="text" name="meu_emergencia2_nome" value="{{meu.meu_emergencia2_nome}}" class="form-control"/>
+                            </div>
+                            
+                            <div class="field field-contato b">
+                                <strong>CONTATO:</strong>
+                                <input type="text" name="meu_emergencia2_contato" value="{{meu.meu_emergencia2_contato}}" class="form-control"/>
+                            </div>
+                        </div>
                     </div>
+                    @end
                 </div>
 
-                <div class="gd m2">
-                    <div class="field field-endereco b">
-                        <strong>ENDEREÇO:</strong>
-                        <input  type="text" name="field_meu_endereco" value="{{data.qr_meu_endereco}}" class="form-control"/>
-                    </div>
-
-                    <div class="field field-numero b">
-                        <strong>NUMERO:</strong>
-                        <input  type="text" name="field_meu_numero" value="{{data.qr_meu_numero}}" class="form-control"/>
-                    </div>
-
-                    <div class="field field-cidade b">
-                        <strong>CIDADE:</strong>
-                        <input  type="text" name="field_meu_cidade" value="{{data.qr_meu_cidade}}" class="form-control"/>
-                    </div>
+                <div class="default-reset">
+                    Prezado cliente, para quem cadastrou os dados MY ME até a data 24/09/2021
+                    favor recadastrar, pois fizemos melhorias no sistema operacional, e para que
+                    todos os clientes possam usufruir das melhorias, essa operação do
+                    recadastramento é necessária! Atenciosamente.
                 </div>
-
-                <div class="gd m7">
-                    <div class="field field-obs b">
-                        <strong>OBS:</strong>
-                        <textarea name="field_meu_obs" class="form-control">{{data.qr_meu_obs}}</textarea>
-                    </div>
-                </div>
-
-                <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
-                <div class="gd m5">
-                    <div class="field field-nome b">
-                        <strong>NOME:</strong>
-                        <input required  type="text" name="field_meu_c_nome1"
-                        @if(emergencia.eu)
-                        value="{{emergencia.eu.nome1}}"
-                        @end
-                        class="form-control"/>
-                    </div>
-
-                    <div class="field field-contato b">
-                        <strong>CONTATO:</strong>
-                        <input required  type="text" name="field_meu_c_contato1"
-                        @if(emergencia.eu)
-                        value="{{emergencia.eu.contato1}}"
-                        @endif 
-                        class="form-control"/>
-                    </div>
-
-                    <div class="field field-nome">
-                        <strong>NOME:</strong>
-                        <input required  type="text" name="field_meu_c_nome2" 
-                        @if(emergencia.eu)
-                        value="{{emergencia.eu.nome2}}"
-                        @end
-                        class="form-control"/>
-                    </div>
-
-                    <div class="field field-contato">
-                        <strong>CONTATO:</strong>
-                        <input required  type="text" name="field_meu_c_contato2" 
-                        @if(emergencia.eu)
-                        value="{{emergencia.eu.contato2}}"
-                        @end
-                        class="form-control"/>
-                    </div>
+                
+                <div class="add-more">
+                    ADICIONAR MAIS MEU. <span>+</span>
                 </div>
 
                 @if(data.qr_status == 0)
                 <div class="gd m7">
                     <div class="field field-password b">
                         <strong>SENHA:</strong>
-                        <input required type="password" name="qr_password" value="{{data.qr_password}}" placeholder="digite sua senha aqui" class="form-control"/>
+                        <input required type="password" name="qr_password" placeholder="digite sua senha aqui" class="form-control"/>
                         <small>Insira uma senha para poder editar ou recuperar seu cadastro futuramente.</small>
                     </div>
                 </div>
                 @end
             </div>
-
-            <input type="file" name="field_eu_foto" accept="image/*" id="field_eu_foto2"/>
-            <input type="file" name="field_meu_foto" accept="image/*" id="field_meu_foto2"/>
+            <input type="hidden" name="qr_meus"/>
             <input type="hidden" name="qr_id" value="{{ qr_id }}"/>
 
             <div class="edit">
@@ -239,52 +348,27 @@
             </div>
 
             <div class="help">
-                <div class="ic" style="margin-bottom: 55px"><img src="../assets/img/atencao.PNG"></div>
+                <div class="ic">
+                    <svg viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d)"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.84 2.25L5.62999 13C5.55176 13.1334 5.51053 13.2853 5.51053 13.44C5.51053 13.5947 5.55176 13.7466 5.62999 13.88C5.70705 14.0135 5.81781 14.1244 5.95119 14.2016C6.08456 14.2788 6.23588 14.3196 6.38999 14.32H18.81C18.9641 14.3196 19.1154 14.2788 19.2488 14.2016C19.3822 14.1244 19.4929 14.0135 19.57 13.88C19.6482 13.7466 19.6895 13.5947 19.6895 13.44C19.6895 13.2853 19.6482 13.1334 19.57 13L13.36 2.23999C13.2837 2.10584 13.1731 1.99438 13.0396 1.91705C12.906 1.83973 12.7543 1.79933 12.6 1.79999C12.4459 1.80036 12.2946 1.84118 12.1612 1.9184C12.0278 1.99562 11.917 2.10652 11.84 2.23999V2.25ZM18.84 15.25H6.38999C6.06826 15.2528 5.75172 15.1689 5.47367 15.007C5.19563 14.8451 4.96636 14.6112 4.80999 14.33C4.64839 14.0522 4.56326 13.7364 4.56326 13.415C4.56326 13.0935 4.64839 12.7779 4.80999 12.5L11.01 1.75C11.1704 1.47011 11.402 1.23762 11.6812 1.07605C11.9604 0.914486 12.2774 0.829614 12.6 0.830019C12.9226 0.829614 13.2396 0.914486 13.5188 1.07605C13.798 1.23762 14.0296 1.47011 14.19 1.75L20.4 12.5C20.5589 12.7792 20.6419 13.0951 20.6408 13.4163C20.6397 13.7376 20.5545 14.0529 20.3937 14.331C20.2329 14.6091 20.0021 14.8402 19.7243 15.0015C19.4464 15.1627 19.1312 15.2484 18.81 15.25H18.84Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.6 4.75C12.7627 4.7502 12.9235 4.78496 13.0718 4.85193C13.2201 4.91889 13.3525 5.01656 13.4603 5.13849C13.568 5.26042 13.6487 5.4038 13.6969 5.5592C13.7451 5.71461 13.7598 5.87847 13.74 6.03998L13.24 10.25C13.24 10.4197 13.1726 10.5826 13.0525 10.7026C12.9325 10.8226 12.7697 10.89 12.6 10.89C12.4303 10.89 12.2675 10.8226 12.1474 10.7026C12.0274 10.5826 11.96 10.4197 11.96 10.25L11.46 6.03998C11.4402 5.87847 11.4549 5.71461 11.5031 5.5592C11.5513 5.4038 11.632 5.26042 11.7397 5.13849C11.8475 5.01656 11.9799 4.91889 12.1282 4.85193C12.2765 4.78496 12.4373 4.7502 12.6 4.75Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12 12.87C11.8311 12.6961 11.7376 12.4624 11.74 12.22C11.7373 12.0993 11.7589 11.9793 11.8036 11.8671C11.8482 11.7549 11.915 11.6529 11.9999 11.567C12.0848 11.4812 12.1861 11.4133 12.2978 11.3674C12.4095 11.3216 12.5293 11.2986 12.65 11.3C12.894 11.3 13.128 11.3969 13.3005 11.5695C13.4731 11.742 13.57 11.976 13.57 12.22C13.5714 12.3407 13.5484 12.4605 13.5026 12.5722C13.4567 12.6839 13.3888 12.7852 13.303 12.8701C13.2171 12.955 13.1151 13.0218 13.0029 13.0664C12.8907 13.1111 12.7707 13.1327 12.65 13.13C12.4075 13.1324 12.1739 13.0389 12 12.87Z" fill="white"/></g><defs><filter id="filter0_d" x="0.563263" y="0.830017" width="24.0775" height="22.4201" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="4"/><feGaussianBlur stdDeviation="2"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/></filter></defs></svg>
+                </div>
                 <ul>
-                    <li class="field b"><span>193</span> - CORPO DE BOMBEIROS</li>
-                    <li class="field b"><span>194</span> - POLÍCIA FEDERAL</li>
-                    <li class="field"><span>197</span> - POLÍCIA CIVIL</li>
-                    <li class="field"><span>190</span> - POLÍCIA MILITAR</li>
+                    <li class=""><span>193</span> - CORPO DE BOMBEIROS</li>
+                    <li class=""><span>194</span> - POLÍCIA FEDERAL</li>
+                    <li class=""><span>197</span> - POLÍCIA CIVIL</li>
+                    <li class=""><span>190</span> - POLÍCIA MILITAR</li>
                 </ul>
-            </div>
 
-            <footer>
-                <a href="https://www.hardd.com.br/"><img src="https://cdn.awsli.com.br/400x300/1916/1916880/logo/b778bd9eee.png"></a>
-            </footer>
+                <footer>
+                    <a href="https://www.hardd.com.br/"><svg width="80"  viewBox="0 0 33 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0.919998 7.89001H2.38V0.48999H0.940002V7.89001H0.919998ZM2.92 3.46002V4.91998H5.92V9.91998H7.36V0.450012H5.9V3.45001L2.92 3.46002ZM12.8 7.89001H14.22V1.89001H11.22C10.8341 1.88393 10.4513 1.9591 10.0963 2.11072C9.74142 2.26233 9.4224 2.487 9.16 2.77002C8.60822 3.33697 8.30271 4.09891 8.31 4.89001C8.2991 5.28036 8.36798 5.66881 8.51241 6.03162C8.65685 6.39442 8.87381 6.72394 9.15 7C9.41732 7.28013 9.74079 7.50068 10.0992 7.64716C10.4577 7.79363 10.843 7.86272 11.23 7.84998H12.23V6.41998H11.23C11.042 6.41976 10.856 6.38054 10.6839 6.30481C10.5118 6.22908 10.3572 6.11847 10.23 5.97998C10.0889 5.83645 9.97804 5.66596 9.90417 5.4787C9.83029 5.29144 9.79487 5.09126 9.8 4.89001C9.79467 4.68961 9.82903 4.49011 9.90112 4.30304C9.9732 4.11597 10.0816 3.945 10.22 3.79999C10.3487 3.66336 10.5035 3.55404 10.6753 3.47845C10.8471 3.40287 11.0323 3.36255 11.22 3.35999H12.77V7.84998L12.8 7.89001ZM15.19 7.89001H16.67V4.15002C16.6693 4.04996 16.6884 3.9507 16.7262 3.85803C16.7639 3.76536 16.8196 3.68108 16.89 3.60999C16.9594 3.54075 17.0422 3.48643 17.1333 3.45032C17.2245 3.41421 17.322 3.3971 17.42 3.40002H18.67V2H17.42C17.1365 1.9912 16.8543 2.04281 16.5922 2.15143C16.3301 2.26005 16.0942 2.4232 15.9 2.63C15.4831 3.04643 15.2339 3.6017 15.2 4.19V7.94L15.19 7.89001ZM25.43 0.47998H24V6.47998H22.43C22.2413 6.47789 22.0551 6.43687 21.883 6.35944C21.7109 6.282 21.5567 6.16986 21.43 6.03003C21.2882 5.88905 21.1768 5.72045 21.1029 5.53467C21.0289 5.34889 20.9939 5.14988 21 4.95001C20.9897 4.74839 21.0208 4.54678 21.0913 4.3576C21.1618 4.16843 21.2703 3.99567 21.41 3.84998C21.5447 3.70409 21.7088 3.58857 21.8916 3.51099C22.0743 3.4334 22.2715 3.39558 22.47 3.40002H23.47V1.95001H22.47C22.0836 1.94433 21.7002 2.01867 21.344 2.1684C20.9877 2.31812 20.6663 2.54 20.4 2.82001C20.1224 3.09964 19.904 3.43242 19.7579 3.7984C19.6119 4.16438 19.5412 4.55606 19.55 4.95001C19.5406 5.33956 19.6112 5.72688 19.7574 6.08807C19.9036 6.44927 20.1223 6.77665 20.4 7.04999C20.6702 7.32971 20.9954 7.55055 21.3551 7.69855C21.7147 7.84655 22.1012 7.9185 22.49 7.90997H25.49V0.5L25.43 0.47998ZM32.33 0.47998H30.88V6.47998H29.31C29.122 6.47976 28.936 6.44054 28.7639 6.36481C28.5917 6.28907 28.4372 6.17847 28.31 6.03998C28.0401 5.73909 27.8909 5.34918 27.8909 4.94501C27.8909 4.54083 28.0401 4.15086 28.31 3.84998C28.4467 3.7074 28.6115 3.59471 28.7939 3.51898C28.9764 3.44325 29.1725 3.40613 29.37 3.40997H30.37V1.95001H29.37C28.9826 1.94377 28.5982 2.01883 28.2417 2.17041C27.8851 2.32199 27.5643 2.54673 27.3 2.83002C27.0227 3.10779 26.8044 3.43877 26.6583 3.8031C26.5122 4.16743 26.4414 4.55758 26.45 4.95001C26.4398 5.34115 26.51 5.73021 26.6562 6.09314C26.8024 6.45607 27.0215 6.78514 27.3 7.06C27.5702 7.33972 27.8954 7.56056 28.2551 7.70856C28.6148 7.85656 29.0012 7.92851 29.39 7.91998H32.39L32.33 0.47998Z" fill="#1A1A1A"/></svg></a>
+                </footer>
+            </div>
         </form> 
         @else
             <h2 style="font-size: 32px; text-align: center;">MyMe não encontrado</h2>
         @endif
     </main>
-    <div class="modal modal-reset">
-        <div class="bg"></div>
-        <div class="wrapper">
-            <div class="container">
-                <div class="modal-header">
-                <h4>Alterar cadastro</h4>
-                <button data-modal="close" class="close"></button>
-                </div>
-                {{--  <div class="modal-body">
-                    <form method="POST">
-                        <p class="danger">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet voluptas magni tempora? Excepturi totam eum delectus ducimus at ratione ex consectetur iure, illum, libero necessitatibus doloribus dolorem a, corrupti beatae!</p>
-                        <div class="fields">
-                            <div class="gd">
-                                <div class="field field-password">
-                                    <strong>Insira a sua senha:</strong>
-                                    <input type="password" class="form" name="qr_password" class="form-control"/>
-                                    <small>Insira a senha que foi inserida no momento do cadastro</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="options">
-                            <button data-modal="close">Não, cancelar</button>
-                            <button type="submit" class="success">Sim, desejo alterar</button>
-                        </div>
-                    </form>
-                </div>  --}}
-            </div>
-        </div>
-    </div>
-    <script src="../assets/js/myme.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/mymev2.js"></script>
 </body>
 </html>

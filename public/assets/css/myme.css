@@ -38,6 +38,10 @@ main.myme{
     padding: 40px;  
 }
 
+[data-has]{
+    cursor: pointer;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -55,6 +59,8 @@ main.myme input[type='file']{
 }
 
 main.myme input,
+main.myme select,
+main.myme select[disabled],
 main.myme textarea,
 main.myme input::placeholder,
 main.myme textarea::placeholder{
@@ -65,6 +71,8 @@ main.myme textarea::placeholder{
     font-weight: 700;
     font-size: 16px;
     color: #333;
+    outline: none !important;
+    opacity: 1;
 }
 
 .field-password input,
@@ -73,8 +81,23 @@ main.myme textarea::placeholder{
 }
 
 .field-password small{
-    color: #f50e4e;
+    color: #990000;
     font-weight: 500;
+}
+
+.field-anexo {
+    position: relative;
+}
+
+.field-anexo > div{
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: 45%;
+}
+
+.field-anexo svg{
+    width: 25px;
 }
 
 .myme .error{
@@ -115,18 +138,33 @@ main.myme header > a{
     text-decoration: none;
 }
 
+
 /****** GRID ******/
 .m1{
-    grid-template-columns: 50% 3fr 1fr;
+    grid-template-columns: 3fr 1fr;
     margin-top: 10px;
 }
 
 .m2{
-    grid-template-columns: 50% 20% 1fr;
+    grid-template-columns: 50% 10% 1fr;
 }
 
 .m3{
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 70% 20% 1fr;
+}
+
+@media(max-width: 767px){
+    .m3{
+        grid-template-columns: 2fr 2fr 1fr !important;
+    }
+
+    .m2{
+        grid-template-columns: 2fr 1fr 2fr !important;
+    }
+}
+
+.m41{
+    grid-template-columns: 1fr 25%;
 }
 
 .m4,
@@ -160,8 +198,14 @@ main.myme .my .photo{
     z-index: 1;
 }
 
-main.myme .my img{
-    border: 4px solid #fff;
+@media(max-width: 992px){
+    main.myme .my .photo {
+        width: calc(100% - 5px) !important;
+    }
+}
+
+main.myme .my img.capa{
+    border: 4px solid #E6E6E6;
     border-radius: 50%;
     width: 186px;
     height: 186px;
@@ -169,8 +213,13 @@ main.myme .my img{
     background-color: #fff;
 }
 
+.myme .meu #field_my_foto{
+    border: 1px solid #E6E6E6;
+    border-radius: 50%;
+}
+
 main.myme h1{
-    color:#1A1A1A;
+    color:#333333;
     font-weight: bold;
     font-size: 75px;
 }
@@ -216,19 +265,58 @@ main.myme .field strong{
 }
 /****** MEU ******/
 main.myme .me{
-    margin-top: 55px;
+    margin-top: 110px;
+}
+
+main.myme .me .meu:not(:first-child){
+    margin-top: 185px;
+}
+
+main.myme .logo-mid{
+    margin-top: 25px;
 }
 
 main.myme h4.emergencia{
-    color: #990000;
+    background-color: #990000;
+    color: #fff;
     text-align: center;
-    font-size: 27px;
+    font-size: 16px;
     font-weight: 800;
     margin: 15px 0px;
+    padding: 2px 0;
+}
+
+.default-reset{
+    position: relative;
+    background-color: #FFF9AE;
+    padding: 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+.default-reset:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 35px solid transparent;
+    border-top: 25px solid #FFF9AE;
+    bottom: -25px;
+    left: 100px;
+}
+
+main.myme .emergencia-form .field{
+    border: 1px solid #990000;
 }
 
 main.myme .field-foto{
-    position: relative;
+    position: absolute;
+    width: 150px;
+    right: 0;
+    top: -20px;
     background-color: transparent;
 }
 
@@ -238,20 +326,138 @@ main.myme .field-foto img{
     bottom: 0;
     height: 150px;
     object-fit: cover;
-    object-position: center;
+    object-position: top center;
+}
+
+/***** DELETAR *****/
+.opt-del{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.opt-del img{
+    width: 20px;
+    transition: all .2s ease-out;
+}
+
+.opt-del img:hover{
+    opacity: .8;
+    width: 25px;
+}
+
+.removed-item {
+    -webkit-animation: removed-item-animation .6s cubic-bezier(.55,-0.04,.91,.94) forwards !important;
+    -o-animation: removed-item-animation .6s cubic-bezier(.55,-0.04,.91,.94) forwards !important;
+    animation: removed-item-animation .6s cubic-bezier(.55,-0.04,.91,.94) forwards !important
+}
+
+@keyframes removed-item-animation {
+    from {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1)
+    }
+
+    to {
+        -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        -o-transform: scale(0);
+        transform: scale(0);
+        opacity: 0
+    }
+}
+
+@-webkit-keyframes removed-item-animation {
+    from {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    to {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0
+    }
+}
+
+@-o-keyframes removed-item-animation {
+    from {
+        opacity: 1;
+        -o-transform: scale(1);
+        transform: scale(1)
+    }
+
+    to {
+        -o-transform: scale(0);
+        transform: scale(0);
+        opacity: 0
+    }
+}
+
+
+/***** ADD MORE *****/
+.add-more{
+    margin: 20px 0;
+    background-color: #CCCCCC;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .2s ease-out;
+}
+
+.add-more span{
+    float: right;
+    margin-right: 15px;
+    font-size: 35px;
+    color: #990000;
+    line-height: 0.7;
+}
+
+.add-more:hover{
+    background-color: #990000;
+    color: #fff;
+}
+
+.add-more:hover span{
+    color: #fff;
 }
 
 /****** HELP ******/
 .help{
     margin-top: 55px;
+    border: 1px solid #990000;
 }
 
 .help .ic{
     text-align: center;
+    background-color: #990000;;
+    color: #fff;
+    margin-bottom: 20px;
+    position: relative;
 }
 
-.help .ic img{
+.help .ic .svg{
+    color: #fff;
     width: 50px;
+}
+
+.help .ic svg{
+    width: 80px;
+    position: relative;
+    top: 15px;
+}
+
+@media(max-width: 992px){
+    .help .ic svg{
+        width: 40px;
+        top: 8px;
+    }
 }
 
 .help ul{
@@ -311,7 +517,14 @@ main.myme footer img{
 /***** MOBILE *****/
 @media(max-width:992px){
     main.myme{
-        padding: 10px;  
+        padding: 0;
+    }
+    main.myme form > div{
+        padding: 5px;  
+    }
+
+    main.myme form > img{
+        padding-left: 5px;
     }
 
     main.myme .field strong{
@@ -324,14 +537,6 @@ main.myme footer img{
 
     main.myme .help{
         margin: 0;
-    }
-
-    .help .ic img{
-        width: 40px;
-    }
-
-    .help .ic{
-        margin: 20px !important
     }
 
     .help ul li{
@@ -744,6 +949,25 @@ main.myme footer img{
     border: 1px solid #d2cece;
 }
 
+.disponivel .meu{
+    -webkit-animation: 0.40s linear teste;
+    animation: 0.40s linear teste;
+}
+
+@keyframes teste {
+    0% {
+        border: 1px solid #fff;
+        padding: 0;
+    }
+    50% {
+        border: 1px solid #990000;
+        padding: 5px;
+    }
+    100% {
+        border: 1px solid #fff;
+        padding: 0;
+    }
+}
 
 @media(max-width: 992px){
     .modal.active .wrapper .container{

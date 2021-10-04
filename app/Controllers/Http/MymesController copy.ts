@@ -9,13 +9,21 @@ export default class MymesController {
     let body = params;
 
     let data = await QrData.findBy('qr_id', body.id);
+    // console.log(body.id);
 
-    return view.render('myme/index', {
-      data: data, 
-      qr_id: body.id,
-      meu_emergencia: (data?.qr_emergencia ? JSON.parse(data?.qr_emergencia) : []),
-      meus: (data?.qr_meus ? JSON.parse(data?.qr_meus) : []),
-    });
+    let qr_emergencia,
+        qr_meu_emergencia;
+
+        if(data?.qr_emergencia){
+          qr_emergencia = JSON.parse(data.qr_emergencia);
+        }
+
+        if(data?.qr_meu_emergencia){
+          qr_meu_emergencia = JSON.parse(data.qr_meu_emergencia);
+        }
+
+
+    return view.render('myme/index', {data: data, qr_id: body.id, emergencia: {eu: qr_emergencia, meu: qr_meu_emergencia}});
   }
 
   private async uploadFile(request, name){
@@ -30,65 +38,94 @@ export default class MymesController {
 
   public async mymeSend({view, request, response }: HttpContextContract) {
     const { 
-      field_eu_nome,
+      field_eu_nome, 
       field_eu_nascimento,
-      field_eu_alergia,
-      field_eu_sangue,
-      field_eu_peso,
-      field_eu_doenca,
-      field_eu_medicamento,
       field_eu_endereco,
       field_eu_numero,
       field_eu_cidade,
+      field_eu_sangue,
+      field_eu_alergia,
+      field_eu_peso,
+      field_eu_medicamento,
       field_eu_email,
-      field_meu_obs,
       field_eu_e_nome1,
       field_eu_e_contato1,
       field_eu_e_nome2,
       field_eu_e_contato2,
-      qr_meus,
+      field_meu_nome,
+      field_meu_dataano,
+      field_meu_endereco,
+      field_meu_numero,
+      field_meu_cidade,
+      field_meu_obs,
+      field_meu_c_nome1,
+      field_meu_c_contato1,
+      field_meu_c_nome2,
+      field_meu_c_contato2,
+      field_eu_foto,
+      field_meu_foto,
       qr_id,
       qr_password
-    } = request.all();
+    }
+      = request.all();
 
-    const {eu, meus} = JSON.parse(qr_meus);
+    let qr_meu_emergencia = {
+      nome1: field_meu_c_nome1,
+      contato1: field_meu_c_contato1,
+      nome2: field_meu_c_nome2,
+      contato2: field_meu_c_contato2
+    }
+
+    let qr_emergencia = {
+      nome1: field_eu_e_nome1,
+      contato1: field_eu_e_contato1,
+      nome2: field_eu_e_nome2,
+      contato2: field_eu_e_contato2
+    }
 
     let data = await QrData.findBy('qr_id', qr_id);
 
-    let emergencia = [
-      {
-        nome: field_eu_e_nome1,
-        contato: field_eu_e_contato1,
-      },
-      {
-        nome: field_eu_e_nome2,
-        contato: field_eu_e_contato2,
-      }
-    ]
+    let me_img;
+    let my_img;
 
-    let result = await Database.rawQuery(
-      `UPDATE qr_codes SET
-      qr_imagem = ?,
-      qr_cliente_nome = ?,
-      qr_cliente_nascimento = ?,
-      qr_cliente_endereco_rua = ?,
-      qr_cliente_endereco_numero = ?,
-      qr_cliente_endereco_cidade = ?,
-      qr_cliente_tipo_sanguineo = ?,
-      qr_cliente_alergia = ?,
-      qr_cliente_peso = ?,
-      qr_cliente_uso_medicamento = ?,
-      qr_cliente_email = ?,
-      qr_cliente_doenca = ?,
-      qr_cliente_anexo = ?,
-      qr_cliente_obs = ?,
-      qr_emergencia = ?,
-      qr_meus = ?,
-      qr_password = ?,
-      qr_status = ?
-      WHERE qr_id = ?
+    if(data?.qr_imagem){
+      me_img = data?.qr_imagem;
+    }else{
+      me_img = await this.uploadFile(request, 'field_eu_foto')
+    }
+
+    if(data?.qr_imagem){
+      my_img = data?.qr_meu_foto;
+    }else{
+      my_img = await this.uploadFile(request, 'field_meu_foto');
+    }
+    
+    let result = await Database.rawQuery(`UPDATE qr_codes SET
+    qr_imagem = ?,
+    qr_cliente_nome = ?,
+    qr_cliente_nascimento = ?,
+    qr_cliente_endereco_rua = ?,
+    qr_cliente_endereco_numero = ?,
+    qr_cliente_endereco_cidade = ?,
+    qr_cliente_tipo_sanguineo = ?,
+    qr_cliente_alergia = ?,
+    qr_cliente_peso = ?,
+    qr_cliente_uso_medicamento = ?,
+    qr_cliente_email = ?,
+    qr_emergencia = ?,
+    qr_meu_nome = ?,
+    qr_meu_data = ?,
+    qr_meu_endereco = ?,
+    qr_meu_numero = ?,
+    qr_meu_cidade = ?,
+    qr_meu_obs = ?,
+    qr_meu_emergencia = ?,
+    qr_meu_foto = ?,
+    qr_status = ? ,
+    qr_password = ?
+    WHERE qr_id = ?
     `, [
-      eu.foto,
+      me_img,
       field_eu_nome,
       field_eu_nascimento,
       field_eu_endereco,
@@ -99,13 +136,17 @@ export default class MymesController {
       field_eu_peso,
       field_eu_medicamento,
       field_eu_email,
-      field_eu_doenca,
-      eu.anexo,
+      JSON.stringify(qr_meu_emergencia),
+      field_meu_nome,
+      field_meu_dataano,
+      field_meu_endereco,
+      field_meu_numero,
+      field_meu_cidade,
       field_meu_obs,
-      JSON.stringify(emergencia),
-      JSON.stringify(meus),
+      JSON.stringify(qr_emergencia),
+      my_img,
+      '1',
       qr_password,
-      1,
       qr_id
     ]);
 
