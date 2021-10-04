@@ -1,0 +1,99 @@
+section#myme-preview{
+    width: 1116.54px;
+    height: 1406.15px;
+    
+    display: grid;
+    grid-template-columns: repeat(4, 188.55px);
+    grid-gap: 118.11px;
+
+    justify-content: center;
+  }
+
+  section#myme-preview article{
+    width: 188.98px;
+    height: 389.76px;
+    background-color: #fff;
+    border-radius: 10px;
+    
+    display: grid;
+  }
+
+  section#myme-preview article.myme{
+    grid-template-rows: 162.41px 23.97px 162.41px;
+    grid-gap: 10px;
+    justify-items: center;
+    align-content: center;
+  }
+
+  section#myme-preview article.myme .name{
+    width: 79.5px;
+    height: 23.97px;
+    /* transform: rotate(180deg); */
+  }
+
+  section#myme-preview article.myme .logo{
+    width: 162.41px;
+    height: 162.41px;
+    /* transform: rotate(-90deg); */
+  }
+
+  section#myme-preview article.myme .qr{
+    width: 162.41px;
+    height: 162.41px;
+    /* border-radius: 10px; */
+    transform: rotate(-90deg);
+
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-position: center center;
+  }
+
+  section#myme-preview article.serial{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    justify-items: center;
+    /* align-content: center; */
+  }
+
+  section#myme-preview article.serial p{
+    margin: 0;
+    line-height: 1;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  section#myme-preview article.serial p.serial,
+  section#myme-preview article.serial p.number{
+    /* writing-mode: vertical-rl; */
+    /* text-orientation: mixed; */
+    transform: rotate(270deg);
+    overflow: hidden;
+    height: 35px;
+    position: relative;
+    box-sizing: content-box;
+    font-weight: 600
+  }
+
+  section#myme-preview article.serial p.serial{
+    color: #373435;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+    padding-right: 20px;
+    padding-top: 30px;
+    top: 250px;
+  }
+
+  section#myme-preview article.serial p.number{
+    text-align: center;
+    color: #373435;
+    font-size: 40px;
+    top: calc(100% - 55%);
+  }
+
+  section#myme-preview article.serial p.name img{
+    width: 23.75px;
+    height: 78.77px;
+    padding-top: 30px;
+    padding-right: 20px;
+    box-sizing: content-box;
+  }

@@ -113,7 +113,8 @@ export default class QrsController {
 
     return view.render('qrcode/result', {
       results: result,
-      name
+      name,
+      modo: data.modo
     });
 
       
