@@ -17,10 +17,15 @@ export default class QrCodes extends BaseSchema {
         table.string('qr_cliente_peso').notNullable();
         table.string('qr_cliente_uso_medicamento').notNullable();
         table.string('qr_cliente_email').notNullable();
+        table.string('qr_cliente_escola_nome').notNullable();
+        table.string('qr_cliente_escola_serie').notNullable();
         table.string('qr_emergencia').notNullable();
         table.string('qr_cliente_doenca').notNullable();
         table.string('qr_cliente_anexo').notNullable();
         table.string('qr_cliente_obs').notNullable();
+        table.string('qr_cliente_sus_numero').notNullable();
+        table.string('qr_cliente_plano_nome').notNullable();
+        table.string('qr_cliente_plano_numero').notNullable();
         table.string('qr_meus').notNullable();
         table.boolean('qr_status').defaultTo(0).notNullable();
         table.string('qr_id').notNullable();

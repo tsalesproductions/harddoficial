@@ -1,14 +1,16 @@
 {{-- include header --}}
 @include('parts/header')
 
-{{-- include aside --}}
-@include('parts/aside')
-
 @if(modo == 11)
   <link rel="stylesheet" href="./assets/css/qr-result-new.css"/>
 @else
   <link rel="stylesheet" href="./assets/css/qr-result-old.css"/>
 @endif
+
+{{-- include aside --}}
+@include('parts/aside')
+
+
 
 <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
   <!-- Navbar -->

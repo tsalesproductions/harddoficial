@@ -39,6 +39,12 @@ export default class QrCode extends BaseModel {
     public qr_cliente_email: string;
 
     @column()
+    public qr_cliente_escola_nome: string;
+
+    @column()
+    public qr_cliente_escola_serie: string;
+
+    @column()
     public qr_emergencia: string;
 
     @column()
@@ -49,6 +55,15 @@ export default class QrCode extends BaseModel {
 
     @column()
     public qr_cliente_obs: string;
+
+    @column()
+    public qr_cliente_sus_numero: string;
+
+    @column()
+    public qr_cliente_plano_nome: string;
+
+    @column()
+    public qr_cliente_plano_numero: string;
 
     @column()
     public qr_meus: string;
