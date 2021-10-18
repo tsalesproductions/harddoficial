@@ -82,7 +82,7 @@
                             <input  type="text" name="field_eu_escola" value="{{data.qr_cliente_escola_nome}}" class=".form-control"/>
                         </div>
 
-                        <div class="field field-sangue">
+                        <div class="field field-serie">
                             <strong>SÉRIE:</strong>
                             <input  type="text" name="field_eu_serie" value="{{data.qr_cliente_escola_serie}}" class=".form-control"/>
                         </div>
@@ -206,11 +206,411 @@
             {{--  <img src="../assets/img/myme-logo-meu.png" class="logo-mid">  --}}
             <div class="me">
                 <div class="meus">
-                    
-                    
-                    
                     @each(meu in meus)
-                    <div class="meu" data-id="{{meu.field_id}}">
+                    @if (meu.field_type === "human")
+                        <div class="meu" data-type="human" data-id="{{meu.field_id}}">
+                            <header>
+                                <object type="image/svg+xml" class="meu-bg" data="../assets/img/v3/meu-bg.svg"></object>
+                                <h1>MEU</h1>
+                                <div class="field field-foto without" data-type="meu-foto">
+                                    <img id="field_my_foto"
+                                    src="{{(meu.meu_foto ? meu.meu_foto : '../assets/img/v3/nophoto.svg')}}"
+                                    @if(meu.meu_foto)
+                                        data-meu-imagem="{{meu.meu_foto}}"
+                                    @endif
+                                    />
+                                    <input type="file" name="upload" accept="image/jpg,image/jpeg,image/png">
+                                </div>
+                                @if(data.qr_status == 0)
+                                    <img src="../assets/img/v3/trash.svg" class="opt-del"/>
+                                @endif
+                                <object type="image/svg+xml" data="../assets/img/v3/type-human.svg" class="meu-tipo"></object>
+                            </header>
+                            <div class="gd m1">
+                                <div class="field field-nome b">
+                                    <strong>NOME:</strong>
+                                    <input  required type="text" name="meu_nome" value="{{meu.meu_nome}}" class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-nascimento b">
+                                    <strong>DATA DE NASC:</strong>
+                                    <input  type="text" name="meu_data" value="{{meu.meu_data}}" class=".form-control"/>
+                                </div>
+                            </div>
+        
+                            <div class="gd m1">
+                                <div class="field field-email">
+                                    <strong>E-EMAIL:</strong>
+                                    <input  type="text" name="meu_email" value="{{meu.meu_email}}" class=".form-control"/>
+                                </div>
+        
+                                <div class="field field-anexo without" data-type="meu-anexo"
+                                @if(meu.meu_anexo)
+                                data-has="true" 
+                                onclick="window.open('{{meu.meu_anexo}}')"
+                                data-meu-anexo="{{meu.meu_anexo}}"
+                                @endif
+                                >
+                                    <strong>ANEXO:</strong>
+                                    <input type="file" name="upload" accept="application/pdf,image/jpg,image/jpeg,image/png">
+                                        <div>
+                                            @if(meu.meu_anexo)
+                                                <img class="has" src="../assets/img/v3/anexo-has.svg"/>
+                                            @else
+                                                <img class="not" src="../assets/img/v3/anexo-not.svg"/>
+                                            @end
+                                        </div>
+                                </div>
+                            </div>
+        
+                            <div class="gd m1">
+                                <div class="field field-alergia">
+                                    <strong>ESCOLA:</strong>
+                                    <input  type="text" name="meu_escola" value="{{meu.meu_escola}}" class=".form-control"/>
+                                </div>
+        
+                                <div class="field field-serie">
+                                    <strong>SÉRIE:</strong>
+                                    <input  type="text" name="meu_serie" value="{{meu.meu_serie}}" class=".form-control"/>
+                                </div>
+                            </div>
+        
+                            <div class="gd m2">
+                                <div class="field field-endereco b">
+                                    <strong>ENDEREÇO:</strong>
+                                    <input  type="text" name="meu_endereco" value="{{meu.meu_endereco}}" class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-numero b">
+                                    <strong>NUMERO:</strong>
+                                    <input  type="text" name="meu_numero" value="{{meu.meu_numero}}" class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-cidade b">
+                                    <strong>CIDADE:</strong>
+                                    <input  type="text" name="meu_cidade" value="{{meu.meu_cidade}}" class=".form-control"/>
+                                </div>
+                            </div>
+        
+                            <div class="gd">
+                                <div class="field field-doenca">
+                                    <strong>DOENÇA DIAGNOSTICADA:</strong>
+                                    <input  type="text" name="meu_doenca" value="{{meu.meu_doenca}}" class=".form-control"/>
+                                </div>
+                            </div>
+        
+                            <div class="gd m3">
+                                <div class="field field-medicamento b">
+                                    <strong>USO MEDICAMENTO:</strong>
+                                    <input  type="text" name="meu_medicamento" value="{{meu.meu_medicamento}}" class=".form-control"/>
+                                </div>
+        
+                                <div class="field field-peso b">
+                                    <strong>PESO:</strong>
+                                    <input  type="text" name="meu_peso" value="{{meu.meu_peso}}" class=".form-control"/>
+                                </div>
+                            </div>
+                            
+                            <div class="gd m1">
+                                <div class="field field-alergia">
+                                    <strong>ALERGIA:</strong>
+                                    <input  type="text" name="meu_alergia" value="{{meu.meu_alergia}}" class=".form-control"/>
+                                </div>
+        
+                                <div class="field field-sangue">
+                                    <strong>TIPO SANGUINEO:</strong>
+                                    <input  type="text" name="meu_sangue" value="{{meu.meu_sangue}}" class=".form-control"/>
+                                </div>
+                            </div>
+        
+                            <div class="gd">
+                                <div class="field field-sus-numero b">
+                                    <strong>SUS Nº:</strong>
+                                    <input  type="text" name="meu_sus_numero" value="{{meu.meu_sus_numero}}" class=".form-control"/>
+                                    <img src="../assets/img/v3/sus-mini.svg" id="susTrigger"/>
+                                </div>
+                            </div>
+        
+                            <div class="gd m5">
+                                <div class="field field-sus-numero">
+                                    <strong>PLANO DE SÁUDE:</strong>
+                                    <input  type="text" name="meu_plano_nome" value="{{meu.meu_plano_nome}}" class=".form-control"/>
+                                </div>
+        
+                                <div class="field field-sus-numero">
+                                    <strong>Nº:</strong>
+                                    <input  type="text" name="meu_plano_numero" value="{{meu.meu_plano_numero}}" class=".form-control"/>
+                                </div>
+                            </div>
+        
+                            <div class="gd">
+                                <div class="field field-obs b">
+                                    <strong>OBS:</strong>
+                                    <textarea name="meu_obs" class=".form-control">{{meu.meu_obs}}</textarea>
+                                </div>
+                            </div>
+        
+                            <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
+                            <div class="gd m5 emergencia-form">
+                                <div class="field field-nome">
+                                    <strong>NOME:</strong>
+                                    <input required  type="text" name="meu_emergencia1_nome" value="{{meu.meu_emergencia1_nome}}"
+                                    class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-contato">
+                                    <strong>CONTATO:</strong>
+                                    <input required  type="text" name="meu_emergencia1_contato" value="{{meu.meu_emergencia1_contato}}"
+                                    class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-nome b">
+                                    <strong>NOME:</strong>
+                                    <input  required type="text" name="meu_emergencia2_nome" value="{{meu.meu_emergencia2_nome}}"
+                                    class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-contato b">
+                                    <strong>CONTATO:</strong>
+                                    <input required  type="text" name="meu_emergencia2_contato" value="{{meu.meu_emergencia2_contato}}"
+                                    class=".form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                    @elseif (meu.field_type === "pet")
+                        <div class="meu" data-type="pet" data-id="{{meu.field_id}}">
+                            <header>
+                                <object type="image/svg+xml" class="meu-bg" data="../assets/img/v3/meu-bg.svg"></object>
+                                <h1>MEU</h1>
+                                <div class="field field-foto without" data-type="meu-foto">
+                                    <img id="field_my_foto"
+                                    src="{{(meu.meu_foto ? meu.meu_foto : '../assets/img/v3/nophoto.svg')}}"
+                                    @if(meu.meu_foto)
+                                        data-meu-imagem="{{meu.meu_foto}}"
+                                    @endif
+                                    />
+                                    <input type="file" name="upload" accept="image/jpg,image/jpeg,image/png">
+                                </div>
+                                @if(data.qr_status == 0)
+                                    <img src="../assets/img/v3/trash.svg" class="opt-del"/>
+                                @endif
+                                
+                                <object type="image/svg+xml" data="../assets/img/v3/type-pet.svg" class="meu-tipo"></object>
+                            </header>
+                            <div class="gd m1">
+                                <div class="field field-nome b">
+                                    <strong>NOME:</strong>
+                                    <input  required type="text" name="meu_nome" value="{{meu.meu_nome}}" class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-nascimento b">
+                                    <strong>DATA DE NASC:</strong>
+                                    <input  type="text" name="meu_data" value="{{meu.meu_data}}" class=".form-control"/>
+                                </div>
+                            </div>
+        
+                            <div class="gd m1">
+                                <div class="field field-email">
+                                    <strong>RAÇA:</strong>
+                                    <input  type="text" name="meu_raca" value="{{meu.meu_raca}}" class=".form-control"/>
+                                </div>
+        
+                                <div class="field field-anexo without" data-type="meu-anexo"
+                                @if(meu.meu_anexo)
+                                data-has="true" 
+                                onclick="window.open('{{meu.meu_anexo}}')"
+                                data-meu-anexo="{{meu.meu_anexo}}"
+                                @endif
+                                >
+                                    <strong>ANEXO:</strong>
+                                    <input type="file" name="upload" accept="application/pdf,image/jpg,image/jpeg,image/png">
+                                        <div>
+                                            @if(meu.meu_anexo)
+                                                <img class="has" src="../assets/img/v3/anexo-has.svg"/>
+                                            @else
+                                                <img class="not" src="../assets/img/v3/anexo-not.svg"/>
+                                            @end
+                                        </div>
+                                </div>
+                            </div>
+        
+                            <div class="gd m2">
+                                <div class="field field-endereco b">
+                                    <strong>ENDEREÇO:</strong>
+                                    <input  type="text" name="meu_endereco" value="{{meu.meu_endereco}}" class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-numero b">
+                                    <strong>NUMERO:</strong>
+                                    <input  type="text" name="meu_numero" value="{{meu.meu_numero}}" class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-cidade b">
+                                    <strong>CIDADE:</strong>
+                                    <input  type="text" name="meu_cidade" value="{{meu.meu_cidade}}" class=".form-control"/>
+                                </div>
+                            </div>
+                            
+                            <div class="gd m6">
+                                <div class="field field-alergia">
+                                    <strong>ALERGIA:</strong>
+                                    <input  type="text" name="meu_alergia" value="{{meu.meu_alergia}}" class=".form-control"/>
+                                </div>
+        
+                                <div class="field field-sangue">
+                                    <strong>TIPO SANGUINEO:</strong>
+                                    <input  type="text" name="meu_sangue" value="{{meu.meu_sangue}}" class=".form-control"/>
+                                </div>
+        
+                                <div class="field field-peso">
+                                    <strong>PESO:</strong>
+                                    <input  type="text" name="meu_peso" value="{{meu.meu_peso}}" class=".form-control"/>
+                                </div>
+                            </div>
+        
+                            <div class="gd">
+                                <div class="field field-obs b">
+                                    <strong>DESCREVA SEU PET:</strong>
+                                    <textarea name="meu_obs" class=".form-control">{{meu.meu_obs}}</textarea>
+                                </div>
+                            </div>
+        
+                            <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
+                            <div class="gd m5 emergencia-form">
+                                <div class="field field-nome">
+                                    <strong>NOME:</strong>
+                                    <input required  type="text" name="meu_emergencia1_nome" value="{{meu.meu_emergencia1_nome}}"
+                                    class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-contato">
+                                    <strong>CONTATO:</strong>
+                                    <input required  type="text" name="meu_emergencia1_contato" value="{{meu.meu_emergencia1_contato}}"
+                                    class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-nome b">
+                                    <strong>NOME:</strong>
+                                    <input  required type="text" name="meu_emergencia2_nome" value="{{meu.meu_emergencia2_nome}}"
+                                    class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-contato b">
+                                    <strong>CONTATO:</strong>
+                                    <input required  type="text" name="meu_emergencia2_contato" value="{{meu.meu_emergencia2_contato}}"
+                                    class=".form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="meu" data-type="object" data-id="{{meu.field_id}}">
+                            <header>
+                                <object type="image/svg+xml" class="meu-bg" data="../assets/img/v3/meu-bg.svg"></object>
+                                <h1>MEU</h1>
+                                <div class="field field-foto without" data-type="meu-foto">
+                                    <img id="field_my_foto"
+                                    src="{{(meu.meu_foto ? meu.meu_foto : '../assets/img/v3/nophoto.svg')}}"
+                                    @if(meu.meu_foto)
+                                        data-meu-imagem="{{meu.meu_foto}}"
+                                    @endif
+                                    />
+                                    <input type="file" name="upload" accept="image/jpg,image/jpeg,image/png">
+                                </div>
+                                @if(data.qr_status == 0)
+                                    <img src="../assets/img/v3/trash.svg" class="opt-del"/>
+                                @endif
+                                <object type="image/svg+xml" data="../assets/img/v3/type-object.svg" class="meu-tipo"></object>
+                            </header>
+                            <div class="gd m1">
+                                <div class="field field-nome b">
+                                    <strong>NOME:</strong>
+                                    <input  required type="text" name="meu_nome" value="{{meu.meu_nome}}" class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-nascimento b">
+                                    <strong>ANO:</strong>
+                                    <input  type="text" name="meu_ano" value="{{meu.meu_ano}}" class=".form-control"/>
+                                </div>
+                            </div>
+        
+                            <div class="gd m1">
+                                <div class="field field-email">
+                                    <strong>MODELO:</strong>
+                                    <input  type="text" name="meu_modelo" value="{{meu.meu_modelo}}" class=".form-control"/>
+                                </div>
+        
+                                <div class="field field-anexo without" data-type="meu-anexo"
+                                @if(meu.meu_anexo)
+                                data-has="true" 
+                                onclick="window.open('{{meu.meu_anexo}}')"
+                                data-meu-anexo="{{meu.meu_anexo}}"
+                                @endif
+                                >
+                                    <strong>ANEXO:</strong>
+                                    <input type="file" name="upload" accept="application/pdf,image/jpg,image/jpeg,image/png">
+                                        <div>
+                                            @if(meu.meu_anexo)
+                                                <img class="has" src="../assets/img/v3/anexo-has.svg"/>
+                                            @else
+                                                <img class="not" src="../assets/img/v3/anexo-not.svg"/>
+                                            @end
+                                        </div>
+                                </div>
+                            </div>
+        
+                            <div class="gd m2">
+                                <div class="field field-endereco b">
+                                    <strong>ENDEREÇO:</strong>
+                                    <input  type="text" name="meu_endereco" value="{{meu.meu_endereco}}" class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-numero b">
+                                    <strong>NUMERO:</strong>
+                                    <input  type="text" name="meu_numero" value="{{meu.meu_numero}}" class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-cidade b">
+                                    <strong>CIDADE:</strong>
+                                    <input  type="text" name="meu_cidade" value="{{meu.meu_cidade}}" class=".form-control"/>
+                                </div>
+                            </div>
+        
+                            <div class="gd">
+                                <div class="field field-obs">
+                                    <strong>DESCREVA SEU OBJETO:</strong>
+                                    <textarea name="meu_obs" class=".form-control">{{meu.meu_obs}}</textarea>
+                                </div>
+                            </div>
+        
+                            <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
+                            <div class="gd m5 emergencia-form">
+                                <div class="field field-nome">
+                                    <strong>NOME:</strong>
+                                    <input required  type="text" name="meu_emergencia1_nome" value="{{meu.meu_emergencia1_nome}}"
+                                    class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-contato">
+                                    <strong>CONTATO:</strong>
+                                    <input required  type="text" name="meu_emergencia1_contato" value="{{meu.meu_emergencia1_contato}}"
+                                    class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-nome b">
+                                    <strong>NOME:</strong>
+                                    <input  required type="text" name="meu_emergencia2_nome" value="{{meu.meu_emergencia2_nome}}"
+                                    class=".form-control"/>
+                                </div>
+                
+                                <div class="field field-contato b">
+                                    <strong>CONTATO:</strong>
+                                    <input required  type="text" name="meu_emergencia2_contato" value="{{meu.meu_emergencia2_contato}}"
+                                    class=".form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    {{--  <div class="meu" data-id="{{meu.field_id}}">
                         <div class="gd 
                         @if (data.qr_status == 0)
                         m3
@@ -291,9 +691,9 @@
                             <input type="file" name="upload" accept="application/pdf,image/jpg,image/jpeg,image/png">
                                 <div>
                                     @if(meu.meu_anexo)
-                                    <object class="has" type="image/svg+xml" data="../assets/img/v3/has.svg"></object>
+                                    <object class="has" data="../assets/img/v3/has.svg"></object>
                                     @else
-                                    <object class="not" type="image/svg+xml" data="../assets/img/v3/not.svg"></object>
+                                    <object class="not" data="../assets/img/v3/not.svg"></object>
                                     @end
                                 </div>
                             </div>
@@ -345,7 +745,7 @@
                                 <input type="text" name="meu_emergencia2_contato" value="{{meu.meu_emergencia2_contato}}" class=".form-control"/>
                             </div>
                         </div>
-                    </div>
+                    </div>  --}}
                     @end
                 </div>
 
@@ -381,24 +781,24 @@
                 </div>
                 <div class="error" style="display: none"></div>
                 <button type="submit" disabled><div class="spinner-border" style="width: 1.3rem;height: 1.3rem; display: none;" role="status"><span class="visually-hidden"></span></div> SALVAR DADOS MY ME
-                    <object type="image/svg+xml" data="../assets/img/v3/cloud.svg"></object>
+                    <object data="../assets/img/v3/cloud.svg"></object>
                 </button>
             </div>
 
             <div class="help">
                 <div class="ic">
-                    <object type="image/svg+xml" data="../assets/img/v3/divider-emergencia.svg"></object>
+                    <object data="../assets/img/v3/divider-emergencia.svg"></object>
                 </div>
                 <div class="items">
-                    <object data-emergencia="192" type="image/svg+xml" data="../assets/img/v3/192.svg"></object>
-                    <object data-emergencia="193" type="image/svg+xml" data="../assets/img/v3/193.svg"></object>
-                    <object data-emergencia="197" type="image/svg+xml" data="../assets/img/v3/197.svg"></object>
-                    <object data-emergencia="136" type="image/svg+xml" data="../assets/img/v3/136.svg"></object>
-                    <object data-emergencia="194" type="image/svg+xml" data="../assets/img/v3/194.svg"></object>
-                    <object data-emergencia="190" type="image/svg+xml" data="../assets/img/v3/190.svg"></object>
+                    <img data-emergencia="192" src="../assets/img/v3/192.svg"/>
+                    <img data-emergencia="193" src="../assets/img/v3/193.svg"/>
+                    <img data-emergencia="197" src="../assets/img/v3/197.svg"/>
+                    <img data-emergencia="136" src="../assets/img/v3/136.svg"/>
+                    <img data-emergencia="194" src="../assets/img/v3/194.svg"/>
+                    <img data-emergencia="190" src="../assets/img/v3/190.svg"/>
                 </div>
                 <footer>
-                    <object type="image/svg+xml" data="../assets/img/v3/footer.svg"></object>
+                    <object data="../assets/img/v3/footer.svg"></object>
                 </footer>
             </div>
         </form> 

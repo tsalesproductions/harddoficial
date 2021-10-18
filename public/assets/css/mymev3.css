@@ -157,12 +157,26 @@ main.myme header > a{
 }
 
 @media(max-width: 767px){
+    main.myme .terms label{
+        -webkit-line-clamp: 2 !important;
+    }
+}
+
+@media(max-width: 767px){
+    .m1{
+        grid-template-columns: 3fr 2fr !important;
+    }
+
     .m3{
-        grid-template-columns: 2fr 2fr 1fr !important;
+        grid-template-columns: 3fr 2fr !important;
     }
 
     .m2{
         grid-template-columns: 2fr 1fr 2fr !important;
+    }
+
+    .m6 {
+        grid-template-columns: 3fr 2fr 1fr !important;
     }
 }
 
@@ -626,10 +640,6 @@ main.myme footer img{
         opacity: 1;
     }
 
-    .m1{
-        grid-template-columns: 50% 3fr !important;
-    }
-
     main.myme header img{
         height: 100%;
         object-fit: cover;
@@ -915,6 +925,7 @@ main.myme footer img{
 .meu header .opt-del{
     position: absolute;
     width: 50px;
+    height: 50px;
     bottom: 10px;
     right: 10px;
     transition: all .2s ease-out;
@@ -924,6 +935,13 @@ main.myme footer img{
 
 .meu header .field-foto img{
     height: 140px !important;
+}
+
+@media(max-width: 767px){
+    .meu header .field-foto{
+        top: 30px !important;
+        left: 120px !important;
+    }
 }
 
 .meu header .meu-tipo{
@@ -1008,7 +1026,7 @@ main.myme footer img{
 
     #susCard suscard span#sus-nome{
         left: 87px;
-        top: -15px;
+        top: -16px;
     }
     #susCard suscard span#sus-nascimento{
         right: 132px;

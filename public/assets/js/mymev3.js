@@ -95,7 +95,7 @@ const formManager = {
     },
     meManager: function(){
         let self = this,
-            limit = 4,
+            limit = 3,
             total = this.qall(".meus > .meu").length;
 
         function addMoreBtn(){
@@ -236,7 +236,7 @@ const formManager = {
                             <input  type="text" name="meu_escola" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-sangue">
+                        <div class="field field-serie">
                             <strong>SÉRIE:</strong>
                             <input  type="text" name="meu_serie" value="" class=".form-control"/>
                         </div>
@@ -476,14 +476,14 @@ const formManager = {
         
                         <div class="field field-nascimento b">
                             <strong>ANO:</strong>
-                            <input  type="text" name="" value="meu_ano" class=".form-control"/>
+                            <input  type="text" name="meu_ano" value="" class=".form-control"/>
                         </div>
                     </div>
 
                     <div class="gd m1">
                         <div class="field field-email">
                             <strong>MODELO:</strong>
-                            <input  type="text" name="" value="meu_modelo" class=".form-control"/>
+                            <input  type="text" name="meu_modelo" value="" class=".form-control"/>
                         </div>
 
                         <div class="field field-anexo without" data-type="meu-anexo">
@@ -560,7 +560,8 @@ const formManager = {
             document.querySelectorAll("#susTrigger").forEach((item) => {
                 $(item).unbind("click");
                 $(item).click(({target}) => {
-                   target = $(target).closest("div.meu, div.eu")[0];
+                    target = $(target).closest("div.meu, div.my")[0];
+
                    $("#sus-nome").text($(target).find('.field-nome input').val());
                    $("#sus-nascimento").text($(target).find('.field-nascimento input').val())
                    $("#sus-sexo").text('-')
@@ -670,7 +671,7 @@ const formManager = {
             let items = document.querySelectorAll("div.meu[data-id]");
         
             items.forEach((item) => {
-                let fields = self.meManager().fields();
+                let fields = self.meManager().fields(item.getAttribute('data-id'), item.getAttribute('data-type'));
 
                 let inputs = item.querySelectorAll("input[type='text'], textarea"),
                     foto = (item.querySelector('[data-meu-imagem]') ? item.querySelector('[data-meu-imagem]').getAttribute('data-meu-imagem') : ''),
@@ -731,21 +732,12 @@ const formManager = {
                 })
             });
 
-        let help = document.querySelectorAll(".help li");
+        let help = document.querySelectorAll(".help .items img");
             help.forEach(function(item){
                 item.style.cursor = "pointer";
                 item.addEventListener("click", function(e){
-                    let input = null;
-                    switch(e.target.tagName){
-                        case "LI":
-                            input = e.target;
-                        break;
-                        case "SPAN":
-                            input = e.target.parentElement;
-                        break;
-                    }
-                    
-                    let tel = input.children[0].innerText;
+
+                    let tel = e.target.getAttribute("data-emergencia");
                     var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
                     if(tel === '') return;
@@ -762,9 +754,7 @@ const formManager = {
                         setTimeout(() => taa.remove(), 1000);
                     }
                 });
-            });
-
-        
+            });   
     },
     checkIfEnabled: function(){
         this.meManager().msg();
@@ -773,6 +763,7 @@ const formManager = {
             if(document.querySelector(".edit")){
                 document.querySelector(".edit").remove();
                 document.querySelector(".add-more").remove();
+                this.meManager().sus();
             }
         }else{
             document.querySelector(".help").remove();
