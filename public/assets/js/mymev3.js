@@ -52,7 +52,7 @@ const formManager = {
                                 meu['meu_foto'] = response.data.display_url;
                             break;
                         }
-                    break; 
+                    break;
                 }
 
                 $("#data-upload").val(JSON.stringify(self.dataInputs))
@@ -72,7 +72,7 @@ const formManager = {
                 fd.append('image',data[0]);
                     this.formSend(fd, target)
                 break;
-                
+
                 case "image/png":
                     fd.append('image',data[0]);
                     this.formSend(fd, target)
@@ -82,7 +82,7 @@ const formManager = {
                     fd.append('image',data[0]);
                     this.formSend(fd, target)
                 break;
-                
+
                 default:
                     alert("Envie imagens apenas nos formatos jpeg e png");
                 break;
@@ -207,7 +207,7 @@ const formManager = {
                             <strong>NOME:</strong>
                             <input  required type="text" name="meu_nome" value="" class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-nascimento b">
                             <strong>DATA DE NASC:</strong>
                             <input  type="text" name="meu_data" value="" class=".form-control"/>
@@ -247,12 +247,12 @@ const formManager = {
                             <strong>ENDEREÇO:</strong>
                             <input  type="text" name="meu_endereco" value="" class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-numero b">
                             <strong>NUMERO:</strong>
                             <input  type="text" name="meu_numero" value="" class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-cidade b">
                             <strong>CIDADE:</strong>
                             <input  type="text" name="meu_cidade" value="" class=".form-control"/>
@@ -277,7 +277,7 @@ const formManager = {
                             <input  type="text" name="meu_peso" value="" class=".form-control"/>
                         </div>
                     </div>
-                    
+
                     <div class="gd m1">
                         <div class="field field-alergia">
                             <strong>ALERGIA:</strong>
@@ -324,19 +324,19 @@ const formManager = {
                             <input required  type="text" name="meu_emergencia1_nome" value=""
                             class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-contato">
                             <strong>CONTATO:</strong>
                             <input required  type="text" name="meu_emergencia1_contato" value=""
                             class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-nome b">
                             <strong>NOME:</strong>
                             <input  required type="text" name="meu_emergencia2_nome" value=""
                             class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-contato b">
                             <strong>CONTATO:</strong>
                             <input required  type="text" name="meu_emergencia2_contato" value=""
@@ -363,7 +363,7 @@ const formManager = {
                             <strong>NOME:</strong>
                             <input  required type="text" name="meu_nome" value="" class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-nascimento b">
                             <strong>DATA DE NASC:</strong>
                             <input  type="text" name="meu_data" value="" class=".form-control"/>
@@ -391,18 +391,18 @@ const formManager = {
                             <strong>ENDEREÇO:</strong>
                             <input  type="text" name="meu_endereco" value="" class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-numero b">
                             <strong>NUMERO:</strong>
                             <input  type="text" name="meu_numero" value="" class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-cidade b">
                             <strong>CIDADE:</strong>
                             <input  type="text" name="meu_cidade" value="" class=".form-control"/>
                         </div>
                     </div>
-                    
+
                     <div class="gd m6">
                         <div class="field field-alergia">
                             <strong>ALERGIA:</strong>
@@ -434,19 +434,19 @@ const formManager = {
                             <input required  type="text" name="meu_emergencia1_nome" value=""
                             class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-contato">
                             <strong>CONTATO:</strong>
                             <input required  type="text" name="meu_emergencia1_contato" value=""
                             class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-nome b">
                             <strong>NOME:</strong>
                             <input  required type="text" name="meu_emergencia2_nome" value=""
                             class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-contato b">
                             <strong>CONTATO:</strong>
                             <input required  type="text" name="meu_emergencia2_contato" value=""
@@ -473,7 +473,7 @@ const formManager = {
                             <strong>NOME:</strong>
                             <input  required type="text" name="meu_nome" value="" class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-nascimento b">
                             <strong>ANO:</strong>
                             <input  type="text" name="meu_ano" value="" class=".form-control"/>
@@ -501,12 +501,12 @@ const formManager = {
                             <strong>ENDEREÇO:</strong>
                             <input  type="text" name="meu_endereco" value="" class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-numero b">
                             <strong>NUMERO:</strong>
                             <input  type="text" name="meu_numero" value="" class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-cidade b">
                             <strong>CIDADE:</strong>
                             <input  type="text" name="meu_cidade" value="" class=".form-control"/>
@@ -527,19 +527,19 @@ const formManager = {
                             <input required  type="text" name="meu_emergencia1_nome" value=""
                             class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-contato">
                             <strong>CONTATO:</strong>
                             <input required  type="text" name="meu_emergencia1_contato" value=""
                             class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-nome b">
                             <strong>NOME:</strong>
                             <input  required type="text" name="meu_emergencia2_nome" value=""
                             class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-contato b">
                             <strong>CONTATO:</strong>
                             <input required  type="text" name="meu_emergencia2_contato" value=""
@@ -570,7 +570,7 @@ const formManager = {
                    $("#susCard").modal("show");
                 })
             })
-            
+
         }
 
         function triggetInputs(){
@@ -587,7 +587,7 @@ const formManager = {
                 }else{
                     target = e.currentTarget;
                 }
-                
+
                 target = $(target).closest('div[data-type]')[0]
 
                 target.querySelector("input").click()
@@ -669,7 +669,7 @@ const formManager = {
 
         function my(){
             let items = document.querySelectorAll("div.meu[data-id]");
-        
+
             items.forEach((item) => {
                 let fields = self.meManager().fields(item.getAttribute('data-id'), item.getAttribute('data-type'));
 
@@ -728,7 +728,7 @@ const formManager = {
                         taa.click();
                         setTimeout(() => taa.remove(), 1000);
                     }
-                    
+
                 })
             });
 
@@ -754,7 +754,7 @@ const formManager = {
                         setTimeout(() => taa.remove(), 1000);
                     }
                 });
-            });   
+            });
     },
     checkIfEnabled: function(){
         this.meManager().msg();
@@ -803,7 +803,7 @@ const formManager = {
                         fields.error.style.display = "block";
                         fields.error.innerText = "Ops... você esqueceu de inserir as imagens. Por favor, revise os campos de fotos.";
                     }
-                    
+
                     terms.checked = false;
 
                     submit.disabled = true;
@@ -812,6 +812,8 @@ const formManager = {
             });
     },
     init: function(){
+        //$('input[name="field_eu_nascimento"]').mask('11/11/1111');
+        //$('.phone_with_ddd').mask('(99) 9999-9999');
         this.checkIfEnabled();
         this.termsValidate();
         this.meManager().trigger();

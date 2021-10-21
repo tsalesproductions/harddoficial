@@ -35,7 +35,7 @@ main.myme{
 
     max-width: 700px;
     margin: 0 auto;
-    padding: 40px;  
+    padding: 40px;
 }
 
 [data-has]{
@@ -117,7 +117,7 @@ main.myme input:focus,
 main.myme textarea:focus{
     outline: none;
     border: none;
-    
+
 }
 
 main.myme .gd{
@@ -423,7 +423,7 @@ main.myme .field-foto img{
     justify-content: center;
     cursor: pointer;
 } */
-/* 
+/*
 .opt-del{
     transition: all .2s ease-out;
 }
@@ -547,6 +547,20 @@ main.myme .field-foto img{
     margin: 0 30px;
 }
 
+@media (max-width: 991px){
+    .help .items{
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px;
+
+    }
+    .help .items img {
+        width: 100%;
+    }
+
+}
+
+
+
 .help .items object{
     max-width: 100%;
 }
@@ -599,7 +613,7 @@ main.myme footer img{
         padding: 0;
     }
     main.myme form > div{
-        padding: 5px;  
+        padding: 5px;
     }
 
     main.myme form > img{
@@ -645,7 +659,7 @@ main.myme footer img{
         object-fit: cover;
         object-position: right;
     }
-    
+
 }
 
 /***** SPINNER *****/
@@ -741,7 +755,7 @@ main.myme footer img{
         background-color: rgba(255,255,255,.1);
     }
 
-    
+
 }
 
 @media(min-width: 768px){
@@ -1017,7 +1031,7 @@ main.myme footer img{
 
 @media (max-width: 992px) {
     #susCard suscard span{
-        font-size: 11px;
+        font-size: 10px;
     }
 
     #susCard suscard img{
@@ -1026,11 +1040,11 @@ main.myme footer img{
 
     #susCard suscard span#sus-nome{
         left: 87px;
-        top: -16px;
+        top: -14px;
     }
     #susCard suscard span#sus-nascimento{
         right: 132px;
-        top: 2px;
+        top: 1px;
     }
     #susCard suscard span#sus-sexo{
         left: 201px;

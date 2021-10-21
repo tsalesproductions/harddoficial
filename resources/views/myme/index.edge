@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../assets/css/mymev3.css"/>
 </head>
 <body>
-    <main class="myme 
+    <main class="myme
     @if(data && data.qr_status == 0)
         disponivel
     @else
@@ -40,7 +40,7 @@
                             <strong>NOME:</strong>
                             <input  required type="text" name="field_eu_nome" value="{{data.qr_cliente_nome}}" class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-nascimento b">
                             <strong>DATA DE NASC:</strong>
                             <input  type="text" name="field_eu_nascimento" value="{{data.qr_cliente_nascimento}}" class=".form-control"/>
@@ -93,12 +93,12 @@
                             <strong>ENDEREÇO:</strong>
                             <input  type="text" name="field_eu_endereco" value="{{data.qr_cliente_endereco_rua}}" class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-numero b">
                             <strong>NUMERO:</strong>
                             <input  type="text" name="field_eu_numero" value="{{data.qr_cliente_endereco_numero}}" class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-cidade b">
                             <strong>CIDADE:</strong>
                             <input  type="text" name="field_eu_cidade" value="{{data.qr_cliente_endereco_cidade}}" class=".form-control"/>
@@ -123,7 +123,7 @@
                             <input  type="text" name="field_eu_peso" value="{{data.qr_cliente_peso}}" class=".form-control"/>
                         </div>
                     </div>
-                    
+
                     <div class="gd m1">
                         <div class="field field-alergia">
                             <strong>ALERGIA:</strong>
@@ -168,33 +168,33 @@
                         <div class="field field-nome">
                             <strong>NOME:</strong>
                             <input required  type="text" name="field_eu_e_nome1"
-                            @if(meu_emergencia[0]) 
+                            @if(meu_emergencia[0])
                             value="{{meu_emergencia[0].nome}}"
                             @end
                             class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-contato">
                             <strong>CONTATO:</strong>
-                            <input required  type="text" name="field_eu_e_contato1" 
-                            @if(meu_emergencia[0]) 
+                            <input required  type="text" name="field_eu_e_contato1"
+                            @if(meu_emergencia[0])
                             value="{{meu_emergencia[0].contato}}"
-                            @end 
+                            @end
                             class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-nome b">
                             <strong>NOME:</strong>
-                            <input  required type="text" name="field_eu_e_nome2" 
+                            <input  required type="text" name="field_eu_e_nome2"
                             @if(meu_emergencia[0])
                             value="{{meu_emergencia[1].nome}}"
                             @endif
                             class=".form-control"/>
                         </div>
-        
+
                         <div class="field field-contato b">
                             <strong>CONTATO:</strong>
-                            <input required  type="text" name="field_eu_e_contato2" 
+                            <input required  type="text" name="field_eu_e_contato2"
                             @if(meu_emergencia[0])
                             value="{{meu_emergencia[1].contato}}"
                             @end
@@ -231,22 +231,22 @@
                                     <strong>NOME:</strong>
                                     <input  required type="text" name="meu_nome" value="{{meu.meu_nome}}" class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-nascimento b">
                                     <strong>DATA DE NASC:</strong>
                                     <input  type="text" name="meu_data" value="{{meu.meu_data}}" class=".form-control"/>
                                 </div>
                             </div>
-        
+
                             <div class="gd m1">
                                 <div class="field field-email">
                                     <strong>E-EMAIL:</strong>
                                     <input  type="text" name="meu_email" value="{{meu.meu_email}}" class=".form-control"/>
                                 </div>
-        
+
                                 <div class="field field-anexo without" data-type="meu-anexo"
                                 @if(meu.meu_anexo)
-                                data-has="true" 
+                                data-has="true"
                                 onclick="window.open('{{meu.meu_anexo}}')"
                                 data-meu-anexo="{{meu.meu_anexo}}"
                                 @endif
@@ -262,67 +262,67 @@
                                         </div>
                                 </div>
                             </div>
-        
+
                             <div class="gd m1">
                                 <div class="field field-alergia">
                                     <strong>ESCOLA:</strong>
                                     <input  type="text" name="meu_escola" value="{{meu.meu_escola}}" class=".form-control"/>
                                 </div>
-        
+
                                 <div class="field field-serie">
                                     <strong>SÉRIE:</strong>
                                     <input  type="text" name="meu_serie" value="{{meu.meu_serie}}" class=".form-control"/>
                                 </div>
                             </div>
-        
+
                             <div class="gd m2">
                                 <div class="field field-endereco b">
                                     <strong>ENDEREÇO:</strong>
                                     <input  type="text" name="meu_endereco" value="{{meu.meu_endereco}}" class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-numero b">
                                     <strong>NUMERO:</strong>
                                     <input  type="text" name="meu_numero" value="{{meu.meu_numero}}" class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-cidade b">
                                     <strong>CIDADE:</strong>
                                     <input  type="text" name="meu_cidade" value="{{meu.meu_cidade}}" class=".form-control"/>
                                 </div>
                             </div>
-        
+
                             <div class="gd">
                                 <div class="field field-doenca">
                                     <strong>DOENÇA DIAGNOSTICADA:</strong>
                                     <input  type="text" name="meu_doenca" value="{{meu.meu_doenca}}" class=".form-control"/>
                                 </div>
                             </div>
-        
+
                             <div class="gd m3">
                                 <div class="field field-medicamento b">
                                     <strong>USO MEDICAMENTO:</strong>
                                     <input  type="text" name="meu_medicamento" value="{{meu.meu_medicamento}}" class=".form-control"/>
                                 </div>
-        
+
                                 <div class="field field-peso b">
                                     <strong>PESO:</strong>
                                     <input  type="text" name="meu_peso" value="{{meu.meu_peso}}" class=".form-control"/>
                                 </div>
                             </div>
-                            
+
                             <div class="gd m1">
                                 <div class="field field-alergia">
                                     <strong>ALERGIA:</strong>
                                     <input  type="text" name="meu_alergia" value="{{meu.meu_alergia}}" class=".form-control"/>
                                 </div>
-        
+
                                 <div class="field field-sangue">
                                     <strong>TIPO SANGUINEO:</strong>
                                     <input  type="text" name="meu_sangue" value="{{meu.meu_sangue}}" class=".form-control"/>
                                 </div>
                             </div>
-        
+
                             <div class="gd">
                                 <div class="field field-sus-numero b">
                                     <strong>SUS Nº:</strong>
@@ -330,26 +330,26 @@
                                     <img src="../assets/img/v3/sus-mini.svg" id="susTrigger"/>
                                 </div>
                             </div>
-        
+
                             <div class="gd m5">
                                 <div class="field field-sus-numero">
                                     <strong>PLANO DE SÁUDE:</strong>
                                     <input  type="text" name="meu_plano_nome" value="{{meu.meu_plano_nome}}" class=".form-control"/>
                                 </div>
-        
+
                                 <div class="field field-sus-numero">
                                     <strong>Nº:</strong>
                                     <input  type="text" name="meu_plano_numero" value="{{meu.meu_plano_numero}}" class=".form-control"/>
                                 </div>
                             </div>
-        
+
                             <div class="gd">
                                 <div class="field field-obs b">
                                     <strong>OBS:</strong>
                                     <textarea name="meu_obs" class=".form-control">{{meu.meu_obs}}</textarea>
                                 </div>
                             </div>
-        
+
                             <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
                             <div class="gd m5 emergencia-form">
                                 <div class="field field-nome">
@@ -357,19 +357,19 @@
                                     <input required  type="text" name="meu_emergencia1_nome" value="{{meu.meu_emergencia1_nome}}"
                                     class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-contato">
                                     <strong>CONTATO:</strong>
                                     <input required  type="text" name="meu_emergencia1_contato" value="{{meu.meu_emergencia1_contato}}"
                                     class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-nome b">
                                     <strong>NOME:</strong>
                                     <input  required type="text" name="meu_emergencia2_nome" value="{{meu.meu_emergencia2_nome}}"
                                     class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-contato b">
                                     <strong>CONTATO:</strong>
                                     <input required  type="text" name="meu_emergencia2_contato" value="{{meu.meu_emergencia2_contato}}"
@@ -394,7 +394,7 @@
                                 @if(data.qr_status == 0)
                                     <img src="../assets/img/v3/trash.svg" class="opt-del"/>
                                 @endif
-                                
+
                                 <object type="image/svg+xml" data="../assets/img/v3/type-pet.svg" class="meu-tipo"></object>
                             </header>
                             <div class="gd m1">
@@ -402,22 +402,22 @@
                                     <strong>NOME:</strong>
                                     <input  required type="text" name="meu_nome" value="{{meu.meu_nome}}" class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-nascimento b">
                                     <strong>DATA DE NASC:</strong>
                                     <input  type="text" name="meu_data" value="{{meu.meu_data}}" class=".form-control"/>
                                 </div>
                             </div>
-        
+
                             <div class="gd m1">
                                 <div class="field field-email">
                                     <strong>RAÇA:</strong>
                                     <input  type="text" name="meu_raca" value="{{meu.meu_raca}}" class=".form-control"/>
                                 </div>
-        
+
                                 <div class="field field-anexo without" data-type="meu-anexo"
                                 @if(meu.meu_anexo)
-                                data-has="true" 
+                                data-has="true"
                                 onclick="window.open('{{meu.meu_anexo}}')"
                                 data-meu-anexo="{{meu.meu_anexo}}"
                                 @endif
@@ -433,48 +433,48 @@
                                         </div>
                                 </div>
                             </div>
-        
+
                             <div class="gd m2">
                                 <div class="field field-endereco b">
                                     <strong>ENDEREÇO:</strong>
                                     <input  type="text" name="meu_endereco" value="{{meu.meu_endereco}}" class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-numero b">
                                     <strong>NUMERO:</strong>
                                     <input  type="text" name="meu_numero" value="{{meu.meu_numero}}" class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-cidade b">
                                     <strong>CIDADE:</strong>
                                     <input  type="text" name="meu_cidade" value="{{meu.meu_cidade}}" class=".form-control"/>
                                 </div>
                             </div>
-                            
+
                             <div class="gd m6">
                                 <div class="field field-alergia">
                                     <strong>ALERGIA:</strong>
                                     <input  type="text" name="meu_alergia" value="{{meu.meu_alergia}}" class=".form-control"/>
                                 </div>
-        
+
                                 <div class="field field-sangue">
                                     <strong>TIPO SANGUINEO:</strong>
                                     <input  type="text" name="meu_sangue" value="{{meu.meu_sangue}}" class=".form-control"/>
                                 </div>
-        
+
                                 <div class="field field-peso">
                                     <strong>PESO:</strong>
                                     <input  type="text" name="meu_peso" value="{{meu.meu_peso}}" class=".form-control"/>
                                 </div>
                             </div>
-        
+
                             <div class="gd">
                                 <div class="field field-obs b">
                                     <strong>DESCREVA SEU PET:</strong>
                                     <textarea name="meu_obs" class=".form-control">{{meu.meu_obs}}</textarea>
                                 </div>
                             </div>
-        
+
                             <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
                             <div class="gd m5 emergencia-form">
                                 <div class="field field-nome">
@@ -482,19 +482,19 @@
                                     <input required  type="text" name="meu_emergencia1_nome" value="{{meu.meu_emergencia1_nome}}"
                                     class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-contato">
                                     <strong>CONTATO:</strong>
                                     <input required  type="text" name="meu_emergencia1_contato" value="{{meu.meu_emergencia1_contato}}"
                                     class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-nome b">
                                     <strong>NOME:</strong>
                                     <input  required type="text" name="meu_emergencia2_nome" value="{{meu.meu_emergencia2_nome}}"
                                     class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-contato b">
                                     <strong>CONTATO:</strong>
                                     <input required  type="text" name="meu_emergencia2_contato" value="{{meu.meu_emergencia2_contato}}"
@@ -526,22 +526,22 @@
                                     <strong>NOME:</strong>
                                     <input  required type="text" name="meu_nome" value="{{meu.meu_nome}}" class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-nascimento b">
                                     <strong>ANO:</strong>
                                     <input  type="text" name="meu_ano" value="{{meu.meu_ano}}" class=".form-control"/>
                                 </div>
                             </div>
-        
+
                             <div class="gd m1">
                                 <div class="field field-email">
                                     <strong>MODELO:</strong>
                                     <input  type="text" name="meu_modelo" value="{{meu.meu_modelo}}" class=".form-control"/>
                                 </div>
-        
+
                                 <div class="field field-anexo without" data-type="meu-anexo"
                                 @if(meu.meu_anexo)
-                                data-has="true" 
+                                data-has="true"
                                 onclick="window.open('{{meu.meu_anexo}}')"
                                 data-meu-anexo="{{meu.meu_anexo}}"
                                 @endif
@@ -557,31 +557,31 @@
                                         </div>
                                 </div>
                             </div>
-        
+
                             <div class="gd m2">
                                 <div class="field field-endereco b">
                                     <strong>ENDEREÇO:</strong>
                                     <input  type="text" name="meu_endereco" value="{{meu.meu_endereco}}" class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-numero b">
                                     <strong>NUMERO:</strong>
                                     <input  type="text" name="meu_numero" value="{{meu.meu_numero}}" class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-cidade b">
                                     <strong>CIDADE:</strong>
                                     <input  type="text" name="meu_cidade" value="{{meu.meu_cidade}}" class=".form-control"/>
                                 </div>
                             </div>
-        
+
                             <div class="gd">
                                 <div class="field field-obs">
                                     <strong>DESCREVA SEU OBJETO:</strong>
                                     <textarea name="meu_obs" class=".form-control">{{meu.meu_obs}}</textarea>
                                 </div>
                             </div>
-        
+
                             <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
                             <div class="gd m5 emergencia-form">
                                 <div class="field field-nome">
@@ -589,19 +589,19 @@
                                     <input required  type="text" name="meu_emergencia1_nome" value="{{meu.meu_emergencia1_nome}}"
                                     class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-contato">
                                     <strong>CONTATO:</strong>
                                     <input required  type="text" name="meu_emergencia1_contato" value="{{meu.meu_emergencia1_contato}}"
                                     class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-nome b">
                                     <strong>NOME:</strong>
                                     <input  required type="text" name="meu_emergencia2_nome" value="{{meu.meu_emergencia2_nome}}"
                                     class=".form-control"/>
                                 </div>
-                
+
                                 <div class="field field-contato b">
                                     <strong>CONTATO:</strong>
                                     <input required  type="text" name="meu_emergencia2_contato" value="{{meu.meu_emergencia2_contato}}"
@@ -611,7 +611,7 @@
                         </div>
                     @endif
                     {{--  <div class="meu" data-id="{{meu.field_id}}">
-                        <div class="gd 
+                        <div class="gd
                         @if (data.qr_status == 0)
                         m3
                         @else
@@ -642,47 +642,47 @@
                         </div>
 
                         <div id="triangulo-para-baixo">aaa</div>
-                    
+
                         <div class="gd">
                             <div class="field field-alergia">
                                 <strong>RAÇA / MODELO:</strong>
                                 <input  type="text" name="meu_modelo" value="{{meu.meu_modelo}}" class=".form-control"/>
                             </div>
                         </div>
-                    
+
                         <div class="gd m3">
                             <div class="field field-alergia b">
                                 <strong>ALERGIA:</strong>
                                 <input  type="text" name="meu_alergia" value="{{meu.meu_alergia}}" class=".form-control"/>
                             </div>
-                            
+
                             <div class="field field-sangue b">
                                 <strong>TIPO SANGUINEO:</strong>
                                 <input  type="text" name="meu_sangue" value="{{meu.meu_sangue}}" class=".form-control"/>
                             </div>
-                            
+
                             <div class="field field-peso b">
                                 <strong>PESO:</strong>
                                 <input  type="text" name="meu_peso" value="{{meu.meu_peso}}" class=".form-control"/>
                             </div>
                         </div>
-                            
+
                         <div class="gd">
                             <div class="field field-doenca">
                                 <strong>DOENÇA DIAGNOSTICADA:</strong>
                                 <input  type="text" name="meu_doenca" value="{{meu.meu_doenca}}" class=".form-control"/>
                             </div>
                         </div>
-                            
+
                         <div class="gd m41">
                             <div class="field field-medicamento b">
                                 <strong>USO MEDICAMENTO:</strong>
                                 <input  type="text" name="meu_medicamento" value="{{meu.meu_medicamento}}" class=".form-control"/>
                             </div>
-                            
+
                             <div class="field field-anexo b without" data-type="meu-anexo"
                             @if(meu.meu_anexo)
-                            data-has="true" 
+                            data-has="true"
                             onclick="window.open('{{meu.meu_anexo}}')"
                             data-meu-anexo="{{meu.meu_anexo}}"
                             @endif
@@ -698,48 +698,48 @@
                                 </div>
                             </div>
                         </div>
-                            
+
                         <div class="gd m2">
                             <div class="field field-endereco">
                                 <strong>ENDEREÇO:</strong>
                                 <input  type="text" name="meu_endereco" value="{{meu.meu_endereco}}" class=".form-control"/>
                             </div>
-                            
+
                             <div class="field field-numero">
                                 <strong>NUMERO:</strong>
                                 <input  type="text" name="meu_numero" value="{{meu.meu_numero}}" class=".form-control"/>
                             </div>
-                            
+
                             <div class="field field-cidade">
                                 <strong>CIDADE:</strong>
                                 <input  type="text" name="meu_cidade" value="{{meu.meu_cidade}}" class=".form-control"/>
                             </div>
                         </div>
-                            
+
                         <div class="gd">
                             <div class="field field-obs">
                                 <strong>OBS:</strong>
                                 <textarea name="meu_obs" class=".form-control">{{meu.meu_obs}}</textarea>
                             </div>
                         </div>
-                            
+
                         <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
                         <div class="gd m5 emergencia-form">
                             <div class="field field-nome">
                                 <strong>NOME:</strong>
                                 <input type="text" name="meu_emergencia1_nome" value="{{meu.meu_emergencia1_nome}}" class=".form-control"/>
                             </div>
-                            
+
                             <div class="field field-contato">
                                 <strong>CONTATO:</strong>
                                 <input type="text" name="meu_emergencia1_contato" value="{{meu.meu_emergencia1_contato}}" class=".form-control"/>
                             </div>
-                            
+
                             <div class="field field-nome b">
                                 <strong>NOME:</strong>
                                 <input type="text" name="meu_emergencia2_nome" value="{{meu.meu_emergencia2_nome}}" class=".form-control"/>
                             </div>
-                            
+
                             <div class="field field-contato b">
                                 <strong>CONTATO:</strong>
                                 <input type="text" name="meu_emergencia2_contato" value="{{meu.meu_emergencia2_contato}}" class=".form-control"/>
@@ -749,8 +749,8 @@
                     @end
                 </div>
 
-                
-                
+
+
                 <div class="add-more sec-badgee">
                     <div class="badgee left">
                         Prezado cliente, para quem cadastrou os dados MY ME até a data 24/09/2021
@@ -801,12 +801,12 @@
                     <object data="../assets/img/v3/footer.svg"></object>
                 </footer>
             </div>
-        </form> 
+        </form>
         @else
             <h2 style="font-size: 32px; text-align: center;">MyMe não encontrado</h2>
         @endif
     </main>
-  
+
   <!-- Modal -->
   <div class="modal fade" id="selectOpt" tabindex="-1" aria-labelledby="selectOptLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -841,13 +841,14 @@
     </div>
   </div>
 
-  
+
 
     <script src="../assets/vendor/jquery/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/core/popper.min.js"></script> 
+    <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/mymev3.js"></script>
 
-    
+
 </body>
 </html>
