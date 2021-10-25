@@ -562,10 +562,10 @@ const formManager = {
                 $(item).click(({target}) => {
                     target = $(target).closest("div.meu, div.my")[0];
 
-                   $("#sus-nome").text($(target).find('.field-nome input').val());
-                   $("#sus-nascimento").text($(target).find('.field-nascimento input').val())
-                   $("#sus-sexo").text('-')
-                   $("#sus-numero").text($(target).find('.field-sus-numero input').val())
+                   $("#sus-nome").text("NOME: "+$(target).find('.field-nome input').val());
+                   $("#sus-nascimento").text("NASCIMENTO: "+$(target).find('.field-nascimento input').val())
+                   $("#sus-sexo").text('SEXO: -')
+                   $("#sus-numero").text("Nº: "+$(target).find('.field-sus-numero input').val())
 
                    $("#susCard").modal("show");
                 })
