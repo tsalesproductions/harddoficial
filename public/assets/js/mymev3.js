@@ -1,4 +1,8 @@
 const formManager = {
+    api: {
+        files: 'https://files.hardd.com.br/uploads/',
+        uploads: 'https://files.hardd.com.br/lib/upload.php'
+    },
     dataInputs: {
         eu: {
             foto: null,
@@ -17,9 +21,10 @@ const formManager = {
         let self = this;
 
         $.ajax({
-          url: 'https://api.imgbb.com/1/upload?expiration=600&key=dcec30faf072f6e164b080901e58e621',
+          url: self.api.uploads,
           type: 'post',
           data: data,
+          dataType: 'json',
           contentType: false,
           processData: false,
           beforeSend: function(){
@@ -27,14 +32,15 @@ const formManager = {
           },
           success: function(response){
               $(".loading-upload").remove();
-            if(response.success){
+              console.log(response)
+            if(response.status){
                 switch(target.type){
                     case "eu-foto":
-                        self.dataInputs.eu.foto = response.data.display_url;
+                        self.dataInputs.eu.foto = self.api.files+response.file;
                     break;
 
                     case "eu-anexo":
-                        self.dataInputs.eu.anexo = response.data.display_url;
+                        self.dataInputs.eu.anexo = self.api.files+response.file;
                     break;
 
                     default:
@@ -43,13 +49,13 @@ const formManager = {
                         let meu = self.findMy(t.getAttribute('data-id'));
                         switch(target.type){
                             case "meu-anexo":
-                                meu['meu_anexo'] =  response.data.display_url;
+                                meu['meu_anexo'] =  self.api.files+response.file;
                                 $(t).find(".has").show();
                                 $(t).find(".not").hide();
                             break;
 
                             case "meu-foto":
-                                meu['meu_foto'] = response.data.display_url;
+                                meu['meu_foto'] = self.api.files+response.file;
                             break;
                         }
                     break;
@@ -57,9 +63,9 @@ const formManager = {
 
                 $("#data-upload").val(JSON.stringify(self.dataInputs))
 
-                target.img.src = response.data.display_url;
+                target.img.src = self.api.files+response.file;
             }else{
-                alert("houve um erro ao enviar, entre em contato com o administrador")
+                alert(response.msg)
             }
           },
         });
@@ -69,17 +75,12 @@ const formManager = {
         let fd = new FormData();
         switch(data[0].type){
             case "image/jpeg":
-                fd.append('image',data[0]);
+                fd.append('upload',data[0]);
                     this.formSend(fd, target)
                 break;
 
                 case "image/png":
-                    fd.append('image',data[0]);
-                    this.formSend(fd, target)
-                break;
-
-                case "application/pdf":
-                    fd.append('image',data[0]);
+                    fd.append('upload',data[0]);
                     this.formSend(fd, target)
                 break;
 
