@@ -767,7 +767,7 @@ const formManager = {
                 this.meManager().sus();
             }
         }else{
-            document.querySelector(".help").remove();
+            // document.querySelector(".help").remove();
             this.checkifHasMe();
             this.meManager().delete();
 

@@ -53,7 +53,7 @@
                             <input  type="text" name="field_eu_email" value="{{data.qr_cliente_email}}" class=".form-control"/>
                         </div>
 
-                        <div class="field field-anexo
+                        <div class="field field-anexo sec-badgee
                             @if (!data.qr_cliente_anexo)
                             without
                             @endif
@@ -64,6 +64,9 @@
                             data-eu-anexo="{{data.qr_cliente_anexo}}"
                             @end
                             >
+                            <div class="badgee right leftside">
+                                Olá usuario MY ME! Aqui você pode anexare documentos, anotações e o que desejar com acesso a câmera!
+                            </div>
                             <strong>ANEXO:</strong>
                             <input type="file" name="upload" accept="application/pdf,image/jpg,image/jpeg,image/png">
                                 <div>
@@ -137,7 +140,10 @@
                     </div>
 
                     <div class="gd">
-                        <div class="field field-sus-numero b">
+                        <div class="field field-sus-numero b sec-badgee">
+                            <div class="badgee right r12 l18 b30">
+                                Com os campos nome, data de nascimento e número do SUS preenchidos. Seu cartão digital estará disponível para visualização.
+                            </div>
                             <strong>SUS Nº:</strong>
                             <input  type="text" name="field_sus_numero" value="{{data.qr_cliente_sus_numero}}" class=".form-control"/>
                             <img src="../assets/img/v3/sus-mini.svg" id="susTrigger"/>
@@ -163,7 +169,11 @@
                         </div>
                     </div>
 
-                    <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
+                    <h4 class="emergencia sec-badgee">
+                        <div class="badgee left l20">
+                            Nos campos de contatos para emergência sugerimos que preencha com familiares, ou responsáveis maiores de 18 anos.<br><br>Obs: Os números cadastrados possuem discagem rápida!
+                        </div>
+                        CONTATO DE EMERGÊNCIA</h4>
                     <div class="gd m5 emergencia-form">
                         <div class="field field-nome">
                             <strong>NOME:</strong>
@@ -764,6 +774,26 @@
             <input type="hidden" name="qr_meus"/>
             <input type="hidden" name="qr_id" value="{{ qr_id }}"/>
 
+            <div class="help">
+                <div class="ic sec-badgee">
+                    <div class="badgee bottom r12 l18 b30">
+                        Aqui você encontrará os números de emergência que possuem discagem rápida para um socorro imediato!
+                    </div>
+                    <object data="../assets/img/v3/divider-emergencia.svg"></object>
+                </div>
+                <div class="items">
+                    <img data-emergencia="192" src="../assets/img/v3/192.svg"/>
+                    <img data-emergencia="193" src="../assets/img/v3/193.svg"/>
+                    <img data-emergencia="197" src="../assets/img/v3/197.svg"/>
+                    <img data-emergencia="136" src="../assets/img/v3/136.svg"/>
+                    <img data-emergencia="194" src="../assets/img/v3/194.svg"/>
+                    <img data-emergencia="190" src="../assets/img/v3/190.svg"/>
+                </div>
+                <footer>
+                    <object data="../assets/img/v3/footer.svg"></object>
+                </footer>
+            </div>
+
             <div class="edit">
                 @if(data.qr_status == 0)
                 <div class="gd m7">
@@ -785,22 +815,6 @@
                 </button>
             </div>
 
-            <div class="help">
-                <div class="ic">
-                    <object data="../assets/img/v3/divider-emergencia.svg"></object>
-                </div>
-                <div class="items">
-                    <img data-emergencia="192" src="../assets/img/v3/192.svg"/>
-                    <img data-emergencia="193" src="../assets/img/v3/193.svg"/>
-                    <img data-emergencia="197" src="../assets/img/v3/197.svg"/>
-                    <img data-emergencia="136" src="../assets/img/v3/136.svg"/>
-                    <img data-emergencia="194" src="../assets/img/v3/194.svg"/>
-                    <img data-emergencia="190" src="../assets/img/v3/190.svg"/>
-                </div>
-                <footer>
-                    <object data="../assets/img/v3/footer.svg"></object>
-                </footer>
-            </div>
         </form>
         @else
             <h2 style="font-size: 32px; text-align: center;">MyMe não encontrado</h2>
@@ -849,6 +863,15 @@
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/mymev3.js"></script>
 
+    @if(data)
+    @if(data.qr_cliente_nome)
+        <script>
+            $(document).ready(() => {
+                $(".badgee").remove();
+            })
+        </script>
+    @endif
+    @endif
 
 </body>
 </html>
