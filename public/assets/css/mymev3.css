@@ -1,5 +1,12 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{margin: 0; padding: 0; box-sizing: border-box;}
+*{margin: 0; padding: 0; -webkit-box-sizing: border-box; box-sizing: border-box;}
 
 ::-webkit-scrollbar-track
 {
@@ -46,6 +53,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
+    -webkit-transition: background-color 50000000s ease-in-out 0s;
     transition: background-color 50000000s ease-in-out 0s;
 }
 
@@ -56,6 +64,54 @@ input:-webkit-autofill:active {
 
 main.myme input[type='file']{
     display: none;
+}
+
+main.myme input::-webkit-input-placeholder, main.myme textarea::-webkit-input-placeholder{
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    outline: none !important;
+    opacity: 1;
+}
+
+main.myme input::-moz-placeholder, main.myme textarea::-moz-placeholder{
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    outline: none !important;
+    opacity: 1;
+}
+
+main.myme input:-ms-input-placeholder, main.myme textarea:-ms-input-placeholder{
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    outline: none !important;
+    opacity: 1;
+}
+
+main.myme input::-ms-input-placeholder, main.myme textarea::-ms-input-placeholder{
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    outline: none !important;
+    opacity: 1;
 }
 
 main.myme input,
@@ -73,6 +129,22 @@ main.myme textarea::placeholder{
     color: #333;
     outline: none !important;
     opacity: 1;
+}
+
+.field-password input::-webkit-input-placeholder{
+    font-size: 13px !important;
+}
+
+.field-password input::-moz-placeholder{
+    font-size: 13px !important;
+}
+
+.field-password input:-ms-input-placeholder{
+    font-size: 13px !important;
+}
+
+.field-password input::-ms-input-placeholder{
+    font-size: 13px !important;
 }
 
 .field-password input,
@@ -108,7 +180,8 @@ main.myme textarea::placeholder{
     background-color: #ea4c4c;
     padding: 15px;
     border-radius: 5px;
-    box-shadow: 0px 0px 3px 0px #a0a0a0;
+    -webkit-box-shadow: 0px 0px 3px 0px #a0a0a0;
+            box-shadow: 0px 0px 3px 0px #a0a0a0;
     color: #fff;
     margin-top: 20px;
 }
@@ -121,6 +194,7 @@ main.myme textarea:focus{
 }
 
 main.myme .gd{
+    display: -ms-grid;
     display: grid;
     grid-gap: 5px;
     margin-bottom: 5px;
@@ -144,15 +218,18 @@ main.myme header > a{
 
 /****** GRID ******/
 .m1{
+    -ms-grid-columns: 3fr 1fr;
     grid-template-columns: 3fr 1fr;
     /* margin-top: 10px; */
 }
 
 .m2{
+    -ms-grid-columns: 50% 15% 1fr;
     grid-template-columns: 50% 15% 1fr;
 }
 
 .m3{
+    -ms-grid-columns: 85% 1fr;
     grid-template-columns: 85% 1fr;
 }
 
@@ -164,37 +241,45 @@ main.myme header > a{
 
 @media(max-width: 767px){
     .m1{
+        -ms-grid-columns: 3fr 2fr !important;
         grid-template-columns: 3fr 2fr !important;
     }
 
     .m3{
+        -ms-grid-columns: 3fr 2fr !important;
         grid-template-columns: 3fr 2fr !important;
     }
 
     .m2{
+        -ms-grid-columns: 2fr 1fr 2fr !important;
         grid-template-columns: 2fr 1fr 2fr !important;
     }
 
     .m6 {
+        -ms-grid-columns: 3fr 2fr 1fr !important;
         grid-template-columns: 3fr 2fr 1fr !important;
     }
 }
 
 .m41{
+    -ms-grid-columns: 1fr 25%;
     grid-template-columns: 1fr 25%;
 }
 
 .m4,
 .m5{
     /* grid-template-columns: repeat(2, 1fr); */
+    -ms-grid-columns: 60% 1fr;
     grid-template-columns: 60% 1fr;
 }
 
 .m6{
+    -ms-grid-columns: 1fr 1fr 150px;
     grid-template-columns: 1fr 1fr 150px;
 }
 
 .m7{
+    -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
 }
 
@@ -244,7 +329,8 @@ main.myme .my img.capa{
     border-radius: 50%;
     width: 145px;
     height: 145px;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     background-color: #fff;
 }
 
@@ -288,9 +374,17 @@ main.myme button[type='submit']{
     margin-top: 10px;
     cursor: pointer;
 
+    display: -webkit-box;
+
+    display: -ms-flexbox;
+
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     gap: 10px;
 
     border-radius: 15px;
@@ -394,8 +488,10 @@ main.myme .field-foto img{
     width: 100%;
     bottom: 0;
     height: 150px;
-    object-fit: cover;
-    object-position: top center;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top center;
+       object-position: top center;
 }
 
 /***** EDITAR *****/
@@ -410,6 +506,22 @@ main.myme .field-foto img{
     border-radius: 10px;
     padding: 10px;
     margin: 5px 0;
+}
+
+.myme .edit .field-password input::-webkit-input-placeholder{
+    color: #980000;
+}
+
+.myme .edit .field-password input::-moz-placeholder{
+    color: #980000;
+}
+
+.myme .edit .field-password input:-ms-input-placeholder{
+    color: #980000;
+}
+
+.myme .edit .field-password input::-ms-input-placeholder{
+    color: #980000;
 }
 
 .myme .edit .field-password input::placeholder{
@@ -435,7 +547,6 @@ main.myme .field-foto img{
 
 .removed-item {
     -webkit-animation: removed-item-animation .6s cubic-bezier(.55,-0.04,.91,.94) forwards !important;
-    -o-animation: removed-item-animation .6s cubic-bezier(.55,-0.04,.91,.94) forwards !important;
     animation: removed-item-animation .6s cubic-bezier(.55,-0.04,.91,.94) forwards !important
 }
 
@@ -444,14 +555,12 @@ main.myme .field-foto img{
         opacity: 1;
         -webkit-transform: scale(1);
         -ms-transform: scale(1);
-        -o-transform: scale(1);
         transform: scale(1)
     }
 
     to {
         -webkit-transform: scale(0);
         -ms-transform: scale(0);
-        -o-transform: scale(0);
         transform: scale(0);
         opacity: 0
     }
@@ -471,20 +580,6 @@ main.myme .field-foto img{
     }
 }
 
-@-o-keyframes removed-item-animation {
-    from {
-        opacity: 1;
-        -o-transform: scale(1);
-        transform: scale(1)
-    }
-
-    to {
-        -o-transform: scale(0);
-        transform: scale(0);
-        opacity: 0
-    }
-}
-
 
 /***** ADD MORE *****/
 .add-more{
@@ -494,6 +589,8 @@ main.myme .field-foto img{
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
+    -webkit-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
     transition: all .2s ease-out;
     color: #323232;
 }
@@ -541,7 +638,9 @@ main.myme .field-foto img{
 }
 
 .help .items{
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 1fr 40px 1fr 40px 1fr;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px 40px;
     margin: 0 30px;
@@ -549,6 +648,7 @@ main.myme .field-foto img{
 
 @media (max-width: 991px){
     .help .items{
+        -ms-grid-columns: 1fr 10px 1fr !important;
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 10px;
 
@@ -574,10 +674,14 @@ main.myme .field-foto img{
 
 /***** EDIT *****/
 main.myme .terms{
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 25px 5px 1fr;
     grid-template-columns: 25px 1fr;
     font-size: 15px;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     gap: 5px;
     line-height: 1;
 
@@ -644,7 +748,15 @@ main.myme footer img{
     }
 
     main.myme .terms{
-        align-items: normal;
+        -webkit-box-align: normal;
+            -ms-flex-align: normal;
+                align-items: normal;
+    }
+
+    input:-moz-read-only{
+        -webkit-text-fill-color:#333; /* Override iOS / Android font color change */
+        -webkit-opacity:1;
+        opacity: 1;
     }
 
     input:read-only,
@@ -656,8 +768,10 @@ main.myme footer img{
 
     main.myme header img{
         height: 100%;
-        object-fit: cover;
-        object-position: right;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: right;
+           object-position: right;
     }
 
 }
@@ -665,12 +779,14 @@ main.myme footer img{
 /***** SPINNER *****/
 @-webkit-keyframes spinner-border {
     to {
-        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
     }
 }
 @keyframes spinner-border {
     to {
-        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
     }
 }
 .spinner-border {
@@ -691,20 +807,24 @@ main.myme footer img{
 }
 @-webkit-keyframes spinner-grow {
     0% {
-        transform: scale(0);
+        -webkit-transform: scale(0);
+                transform: scale(0);
     }
     50% {
         opacity: 1;
-        transform: none;
+        -webkit-transform: none;
+                transform: none;
     }
 }
 @keyframes spinner-grow {
     0% {
-        transform: scale(0);
+        -webkit-transform: scale(0);
+                transform: scale(0);
     }
     50% {
         opacity: 1;
-        transform: none;
+        -webkit-transform: none;
+                transform: none;
     }
 }
 .spinner-grow {
@@ -749,7 +869,8 @@ main.myme footer img{
         top: 0;
         left: 0;
         height: 100%;
-        filter: blur(15px);
+        -webkit-filter: blur(15px);
+                filter: blur(15px);
         border-radius: 10px;
         z-index: -1;
         background-color: rgba(255,255,255,.1);
@@ -768,13 +889,18 @@ main.myme footer img{
     }
 
     .identify .container{
-        justify-content: unset !important;
+        -webkit-box-pack: unset !important;
+            -ms-flex-pack: unset !important;
+                justify-content: unset !important;
     }
 
     .identify main{
         margin: 0;
         margin-left: 15% !important;
-        flex-direction: column-reverse;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+            -ms-flex-direction: column-reverse;
+                flex-direction: column-reverse;
         grid-gap: 40px;
     }
 
@@ -785,15 +911,27 @@ main.myme footer img{
 
 .identify .container{
     height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 .identify main{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     /* background-color: rgba(0,0,0,.2); */
     border-radius: 5px;
     position: relative;
@@ -827,10 +965,16 @@ main.myme footer img{
 }
 
 .identify .field-nopass{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     gap: 10px;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 .identify .field-nopass input{
@@ -857,7 +1001,10 @@ main.myme footer img{
 
 @media (max-width: 997px){
     .identify main{
-        flex-direction: column-reverse;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+            -ms-flex-direction: column-reverse;
+                flex-direction: column-reverse;
         margin: 0 5px;
     }
 
@@ -877,17 +1024,37 @@ main.myme footer img{
 }
 
 .identify main form {
-    flex: 0 1 60%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 60%;
+            flex: 0 1 60%;
     width: 300px;
 }
 
 .identify main > div{
-    flex: 0 1 35%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 35%;
+            flex: 0 1 35%;
     text-align: center;
 }
 
 .identify input{
     text-transform: uppercase;
+}
+
+.identify input::-webkit-input-placeholder{
+    font-size: 13px !important;
+}
+
+.identify input::-moz-placeholder{
+    font-size: 13px !important;
+}
+
+.identify input:-ms-input-placeholder{
+    font-size: 13px !important;
+}
+
+.identify input::-ms-input-placeholder{
+    font-size: 13px !important;
 }
 
 .identify input::placeholder{
@@ -942,6 +1109,8 @@ main.myme footer img{
     height: 50px;
     bottom: 10px;
     right: 10px;
+    -webkit-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
     transition: all .2s ease-out;
 
     cursor: pointer;
@@ -967,6 +1136,21 @@ main.myme footer img{
 
 .sec-badgee{
     position: relative;
+}
+
+@-webkit-keyframes teste {
+    0% {
+        border: 1px solid #fff;
+        padding: 0;
+    }
+    50% {
+        border: 1px solid #980000;
+        padding: 5px;
+    }
+    100% {
+        border: 1px solid #fff;
+        padding: 0;
+    }
 }
 
 @keyframes teste {
@@ -996,12 +1180,22 @@ main.myme footer img{
 }
 
 #selectOpt section{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     gap: 20px;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 #selectOpt section img{
