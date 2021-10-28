@@ -1050,7 +1050,7 @@ main.myme footer img{
     }
     #susCard suscard span#sus-sexo{
         right: 90px;
-        top: 10px;
+        bottom:-25px;
     }
     #susCard suscard span#sus-numero{
         left: 55px;
@@ -1077,7 +1077,7 @@ main.myme footer img{
     }
     #susCard suscard span#sus-sexo{
         right: 95px;
-        top: 10px;
+        bottom: -35px;
     }
     #susCard suscard span#sus-numero{
         left: 80px;
