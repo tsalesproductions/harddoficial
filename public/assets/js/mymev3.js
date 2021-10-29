@@ -643,8 +643,9 @@ const formManager = {
         }
 
         function deleteMsg(){
-            $(".badgee").click(({target}) => {
-                $(target).remove();
+            $(".badgee").click((e) => {
+                e.preventDefault();
+                $(e.target).remove();
             });
             
             if($(".meus .meu").length > 0){
