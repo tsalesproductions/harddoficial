@@ -643,6 +643,10 @@ const formManager = {
         }
 
         function deleteMsg(){
+            $(".badgee").click(({target}) => {
+                $(target).remove();
+            });
+            
             if($(".meus .meu").length > 0){
                 $(".badgee").remove();
             }else{
