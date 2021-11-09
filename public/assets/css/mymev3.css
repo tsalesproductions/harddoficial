@@ -37,6 +37,10 @@ img[src=""] {
     display: none !important ;
 }
 
+img{
+    max-width: 100%;
+}
+
 main.myme{
     font-family: 'Montserrat', sans-serif;
 
@@ -325,13 +329,16 @@ main.myme .my .photo{
 }
 
 main.myme .my img.capa{
-    border: 4px solid #E6E6E6;
     border-radius: 50%;
     width: 145px;
     height: 145px;
     -o-object-fit: cover;
        object-fit: cover;
     background-color: #fff;
+}
+
+main.myme .my img.capa:not(.uploading){
+    border: 4px solid #E6E6E6;
 }
 
 .myme .meu #field_my_foto{
@@ -1341,3 +1348,22 @@ main.myme footer img{
         bottom: -35px;
     }
 }
+
+.circle {
+    animation: spin 2s linear infinite;
+}
+  
+  @keyframes spin {
+    0% {
+        transform: scale(1.1);
+        border-color: #F0D500;
+    } 
+    50%{
+        transform: scale(1.0);
+        border-color: #980000;
+    }
+    100% { 
+        transform: scale(1.1);
+        border-color: #ea4c4c;
+    }
+  }

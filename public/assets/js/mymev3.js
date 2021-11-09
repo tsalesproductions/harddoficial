@@ -27,8 +27,31 @@ const formManager = {
           dataType: 'json',
           contentType: false,
           processData: false,
+          xhr: function() {
+            var xhr = new window.XMLHttpRequest();
+            xhr.upload.addEventListener("progress", function(evt) {
+                if (evt.lengthComputable) {
+                    var percentComplete = evt.loaded / evt.total;
+                    if(percentComplete < 1){
+                        if(target.type == "eu-foto" || target.type === "meu-foto"){
+                            if(!$(target.img).hasClass("circle")){
+                                $(target.img).addClass("circle");
+                            }
+                        }
+                        NProgress.set(percentComplete);
+                    }else{
+                        NProgress.set(1.0);
+                        $(target.img).removeClass("circle");
+                    }
+                }
+            }, false);
+            return xhr;
+            },
           beforeSend: function(){
               $("body").prepend(`<div class="loading-upload" style="position: fixed;top: 0;left: 0;padding: 20px;width: 100%;height: 100vh;background-color: rgba(0,0,0,.9);z-index: 999; display: flex; flex-direction: column; align-items: center;justify-content: center;"><div class="spinner-border" style="width: 5rem;height: 5rem; color: #fff" role="status"><span class="visually-hidden"></span></div> <span style="color: #fff; font-size: 20px; margin-top: 10px;">Enviando dados, não atualize a página...</span></div>`);
+              setTimeout(() => {
+                $(".loading-upload").remove();
+              }, 2000)
           },
           success: function(response){
               $(".loading-upload").remove();
@@ -68,7 +91,10 @@ const formManager = {
                 alert(response.msg)
             }
           },
-        });
+        }).fail(function() {
+            $(".loading-upload").remove();
+            alert( "Houve um erro ao enviar a imagem, por favor, entre em contato com o suporte hardd imediatamente!!" );
+        })
     },
     upload: async function(data, target){
         if(data.length <= 0) return;
@@ -597,6 +623,37 @@ const formManager = {
             $("input[type='file']").change(function(e){
                 let attr = e.target.parentElement.getAttribute('data-type');
                 self.upload(e.target.files, {type: attr, img: e.target.parentElement.children[0]})
+                let file = URL.createObjectURL(e.target.files[0]);
+                let target = e.target.parentElement.children[0];
+                switch(attr){
+                case "eu-foto":
+                    target.src = file;
+                    self.dataInputs.eu.foto = '';
+                break;
+
+                case "eu-anexo":
+                    target.src = file;
+                    self.dataInputs.eu.anexo = '';
+                break;
+
+                default:
+                    let t = e.target.parentElement.parentElement.parentElement;
+                    if(!t.getAttribute('data-id')) return;
+                    let meu = self.findMy(t.getAttribute('data-id'));
+
+                    switch(attr){
+                        case "meu-anexo":
+                            target.src = file;
+                            meu['meu_anexo'] = '';
+                        break;
+
+                        case "meu-foto":
+                            target.src = file;
+                            meu['meu_foto'] = '';
+                        break;
+                    }
+                break;
+            }
             });
 
             $(".meus .meu input[type='text'],.meus .meu textarea").change("change", (e) => {
