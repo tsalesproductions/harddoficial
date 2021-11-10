@@ -159,7 +159,7 @@
         <div class="card z-index-2">
           <div class="card-body p-3">
             <div class="table-responsive p-0">
-              <table class="table align-items-center mb-0 first">
+              <table class="table align-items-center mb-0">
                 <thead>
                   <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Código</th>
@@ -169,7 +169,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @each(result in results)
+                  @each(result in posts)
                   <tr>
                     <td width="10%">
                       <div class="d-flex px-2 py-1">
@@ -211,6 +211,17 @@
                 </tbody>
               </table>
             </div>
+            <ul class="pagination pagination-primary">
+              @each(anchor in posts.getUrlsForRange(1, posts.lastPage))
+              <li class="page-item 
+              @if(anchor.isActive)
+              active
+              @endif
+              ">
+                <a class="page-link" href="{{ anchor.url }}">{{ anchor.page }}</a>
+              </li>
+              @endeach
+            </ul>
           </div>
         </div>
         <div class="preview-target" style="opacity: 0;"></div>

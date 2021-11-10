@@ -4,5 +4,9 @@ coverage
 .vscode
 .DS_STORE
 tmp
+<<<<<<< HEAD
 resources/views/parts/header.edge
 .gitignore
+=======
+resources\views\parts\header.edge
+>>>>>>> 9b1cd4c6d90bca5a9e8dca6d7872cfc0defb6ea6
