@@ -47,6 +47,15 @@ Route.group(() => {
 }).middleware(['auth']);
 
 Route.group(() => {
+  Route.get('/prefeituras', 'PrefeiturasController.index');
+  Route.get('/prefeituras/criar', 'PrefeiturasController.createView');
+  Route.post('/prefeituras/criar', 'PrefeiturasController.create');
+  Route.get('/prefeitura/editar/:id', 'PrefeiturasController.edit');
+  Route.post('/prefeitura/editar', 'PrefeiturasController.editList');
+  Route.get('/prefeitura/:id', 'PrefeiturasController.list');
+}).middleware(['auth']);
+
+Route.group(() => {
   Route.get('/ecommerce/get/:id', 'ApisController.getList')
   Route.post('/ecommerce/set/:id', 'ApisController.setList')
 

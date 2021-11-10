@@ -2,6 +2,8 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User';
 import QrData from 'App/Models/QrCode';
 import { rules, schema } from '@ioc:Adonis/Core/Validator';
+import Database from '@ioc:Adonis/Lucid/Database';
+
 const QRCode = require('qrcode');
 const url = "https://www.hardd.com.br/myme?id=";
 
@@ -29,7 +31,7 @@ export default class QrsController {
     });
   }
 
-  public async showList({ view, auth, response }: HttpContextContract) {
+  public async showList({ request, view, auth, response }: HttpContextContract) {
     await auth.use('web').authenticate();
 
     const userData = await User.findBy('email', auth.user?.email);
@@ -39,14 +41,20 @@ export default class QrsController {
         return response.redirect('/login');
     }
 
-    let data = await QrData.query().select('*');
+    // let data = await QrData.query().select('*');
+
+    const page = request.input('page', 1)
+    const limit = 100
+
+    const posts = await Database.from('qr_codes').orderBy('qr_status', 'asc').paginate(page, limit)
+          posts.baseUrl('/qrcode/listar')
 
     const name = userData.name;
 
     return view.render('qrcode/list',{
       user: userData,
       name,
-      results: data,
+      posts
     });
   }
 
