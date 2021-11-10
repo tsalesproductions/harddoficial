@@ -138,7 +138,7 @@ export default class QrsController {
       
       r.qr_status = "0";
       r.qr_emergencia = "";
-      r.qr_meu_emergencia = "";
+      // r.qr_meu_emergencia = "";
 
       await r.save();
       response.json([{status: "success", msg: "Código resetado com sucesso"}]);
