@@ -1,11 +1,14 @@
 {{-- include header --}}
 @include('parts/header')
 
-@if(modo == 11)
+
+@if(modo == "prefeitura")
   <link rel="stylesheet" href="./assets/css/qr-result-new.css"/>
 @else
-  <link rel="stylesheet" href="./assets/css/qr-result-old.css"/>
+  <link rel="stylesheet" href="./assets/css/qr-result-new.css"/>
+  {{--  <link rel="stylesheet" href="./assets/css/qr-result-old.css"/>  --}}
 @endif
+
 
 {{-- include aside --}}
 @include('parts/aside')
@@ -94,10 +97,10 @@
                     </td>
                     <td class="align-middle text-center d-flex" width="30%" style="gap: 10px;height: 60px;align-items: center;">
                       <a style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Baixar" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip" 
-                      @if(modo == 11)
-                        onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.id }}'});"
+                      @if(modo == "prefeitura")
+                        onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.id }}', isPrefeitura: true, prefeitura: '{{prefeitura}}'});"
                       @else
-                        onclick="download64('{{ result.qr_code }}','{{ result.id }}')"
+                      onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.id }}', isPrefeitura: false});"
                       @endif
                       >
                         <i class="fas fa-download fa-lg"></i>
@@ -119,7 +122,11 @@
             </div>
           </div>
         </div>
-        <div class="preview-target" style="opacity: 0;"></div>
+        <div class="preview-target
+        @if(modo === "prefeitura")
+          prefeitura
+        @endif
+        " style="opacity: 0;"></div>
       </div>
     </div>
   </div>
@@ -136,10 +143,11 @@
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 {{-- include footer --}}
 
-@if(modo == 11)
-  <script src="./assets/js/hardd-new.js"></script>
+@if(modo == "prefeitura")
+<script src="./assets/js/hardd-new.js"></script>
 @else
-  <script src="./assets/js/hardd-old.js"></script>
+<script src="./assets/js/hardd-new.js"></script>
+{{--  <script src="./assets/js/hardd-old.js"></script>  --}}
 @endif
 @include('parts/footer')
 

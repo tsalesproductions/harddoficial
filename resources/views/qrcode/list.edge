@@ -188,9 +188,9 @@
                       
                     </td>
                     <td class="align-middle text-center d-flex" width="30%" style="gap: 10px;height: 60px;align-items: center;">
-                      <a style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Baixar" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip" onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.qr_id }}'});">
+                      {{--  <a style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Baixar" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip" onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.qr_id }}'});">
                         <i class="fas fa-download fa-lg"></i>
-                      </a>
+                      </a>  --}}
                       <a style="cursor: pointer" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copiar" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="copyToClipBoard('https://www.hardd.com.br/myme?id={{ result.qr_id }}')">
                         <i class="fas fa-copy fa-lg"></i>
                       </a>

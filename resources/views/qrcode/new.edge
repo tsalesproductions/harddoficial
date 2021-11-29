@@ -68,11 +68,22 @@
                 <div style="flex: 0 1 45%;">
                   <label for="modo" class="form-label">Modelo</label>
                   <select name="modo" id="modo" class="form-control">
-                    <option value="11">Modelo com 11</option>
-                    <option value="1">Modelo com apenas 1</option>
+                    <option value="default">Padrão</option>
+                    <option value="prefeitura">Prefeitura</option>
                   </select>
                   <br>
                 </div>
+
+                <div style="flex: 0 1 45%;display: none">
+                  <label for="prefeitura" class="form-label">Prefeitura</label>
+                  <select name="prefeitura" id="prefeitura" class="form-control">
+                    @each(prefeitura in prefeituras)
+                    <option value="{{prefeitura.prefeitura_logo}}-id-{{prefeitura.id}}">{{prefeitura.prefeitura_nome}}</option>
+                    @end
+                  </select>
+                  <br>
+                </div>
+
                 <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0" style="flex: 1 0 100%">Gerar Códigos</button>
               </div>
             </form>
@@ -82,6 +93,22 @@
     </div>
   </div>
 </main>
+
+<script>
+  window.addEventListener("load", () => {
+    let modo = document.querySelector("#modo");
+    let secPrefeitura = document.querySelector("#prefeitura");
+    if(!modo) return;
+    modo.addEventListener("change", ({target}) => {
+      const {value} = target;
+      if(value === "prefeitura"){
+        secPrefeitura.parentElement.style.display = "block"
+      }else{
+        secPrefeitura.parentElement.style.display = "none"
+      }
+    })
+  })
+</script>
 
 {{-- include footer --}}
 @include('parts/footer')

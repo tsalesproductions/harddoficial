@@ -28,6 +28,8 @@ export default class QrCodes extends BaseSchema {
         table.string('qr_cliente_plano_numero').notNullable();
         table.text('qr_meus', 'longtext').notNullable();
         table.boolean('qr_status').defaultTo(0).notNullable();
+        table.string('qr_modelo').defaultTo('default').notNullable();
+        table.string('qr_prefeitura').nullable();
         table.string('qr_id').notNullable();
         table.text('qr_code').notNullable();
         table.string('qr_password').notNullable();

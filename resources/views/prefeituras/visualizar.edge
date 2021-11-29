@@ -1,8 +1,11 @@
 {{-- include header --}}
 @include('parts/header')
 
+<link rel="stylesheet" href="./assets/css/qr-result-new.css"/>
+
 {{-- include aside --}}
 @include('parts/aside')
+
 
 <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
   <!-- Navbar -->
@@ -67,37 +70,40 @@
                 <thead>
                   <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Serial</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                     <th class="text-secondary opacity-7"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  @each(result in results)
+                  @each(result in data)
                   <tr>
                     <td width="10%">
-                      <div class="d-flex px-2 py-1">
+                      <div class="d-flex px-2 py-1 justify-content-center">
                         <div>
-                          <img src="../{{ result.prefeitura_logo }}" class="avatar avatar-sm me-3" alt="user1">
+                          <img src="{{ result.qr_code }}" class="avatar avatar-sm" alt="user1">
                         </div>
                       </div>
                     </td>
-                    <td width="50%">{{ result.prefeitura_nome }}</td>
+                    <td data-serial="{{ result.qr_id }}" width="50%">{{ result.qr_id }}</td>
                     <td class="align-middle text-center text-sm" width="20%">
-                      @if(result.prefeitura_status == 1) 
-                      <span class="badge badge-sm bg-gradient-success">Ativado</span>
-                      @else
-                        <span class="badge badge-sm bg-gradient-danger">Desativado</span>
-                      @end
-                      
+                      <span class="badge badge-sm bg-gradient-success">Disponível</span>
                     </td>
                     <td class="align-middle text-center d-flex" width="30%" style="gap: 10px;height: 60px;align-items: center;">
-                      <a href="../prefeitura/editar/{{result.id}}" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip">
-                        <i class="fas fa-edit fa-lg"></i>
+                      <a style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Baixar" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip" 
+                        onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.qr_id }}', isPrefeitura: true, prefeitura: '{{prefeitura.prefeitura_logo}}'});"
+                      >
+                        <i class="fas fa-download fa-lg"></i>
                       </a>
-                      <a href="../prefeitura/{{result.id}}" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver detalhes" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip">
+                      <a style="cursor: pointer" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copiar" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="copyToClipBoard('{{ result.qr_id }}')">
+                        <i class="fas fa-copy fa-lg"></i>
+                      </a>
+                      <a href="{{ result.qr_id }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
                         <i class="fas fa-eye fa-lg"></i>
                       </a>
+                      {{--  <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
+                        <i class="fas fa-edit fa-lg"></i>
+                      </a>  --}}
                     </td>
                   </tr>
                   @endeach
@@ -106,9 +112,14 @@
             </div>
           </div>
         </div>
+        <div class="preview-target prefeitura" style="opacity: 0;"></div>
       </div>
     </div>
   </div>
 </main>
+
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="./assets/js/hardd-new.js"></script>
 
 @include('parts/footer')

@@ -2,6 +2,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Prefeitura from 'App/Models/Prefeitura'
 import Database from '@ioc:Adonis/Lucid/Database'
 import Application from '@ioc:Adonis/Core/Application'
+import QrData from 'App/Models/QrCode';
 
 export default class PrefeiturasController {
   private async uploadFile(request, name){
@@ -78,9 +79,15 @@ export default class PrefeiturasController {
 
   public async list ({view, params}: HttpContextContract) {
     let data = await Prefeitura.findBy('id', params.id);
+    let qrs = await await QrData.query().select('*').whereRaw('qr_prefeitura = '+params.id);
     return view.render('prefeituras/visualizar', {
-      prefeitura: data
+      prefeitura: data,
+      data: qrs
     });
+  }
+
+  public async getAllPrefeituras(){
+    return await Prefeitura.query().select('*').whereRaw("prefeitura_status = 1")
   }
 
 }

@@ -97,3 +97,8 @@ section#myme-preview{
     padding-right: 20px;
     box-sizing: content-box;
   }
+
+  .prefeitura .serial p.serial,
+  .prefeitura .serial p.number{
+    color: #000002 !important;
+  }

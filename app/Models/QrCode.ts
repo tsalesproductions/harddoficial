@@ -78,5 +78,11 @@ export default class QrCode extends BaseModel {
     public qr_code: string;
 
     @column()
+    public qr_modelo: string;
+
+    @column()
+    public qr_prefeitura: string;
+
+    @column()
     public qr_password: string;
 }

@@ -3,11 +3,13 @@ import User from 'App/Models/User';
 import QrData from 'App/Models/QrCode';
 import { rules, schema } from '@ioc:Adonis/Core/Validator';
 import Database from '@ioc:Adonis/Lucid/Database';
+import MymeModelosController from './MymeModelosController';
+import PrefeiturasController from './PrefeiturasController';
 
 const QRCode = require('qrcode');
 const url = "https://www.hardd.com.br/myme?id=";
 
-export default class QrsController {
+export default class QrsController extends MymeModelosController {
   public async identify({ view, auth, response }: HttpContextContract) {
     return view.render('myme/identify');
   }
@@ -27,7 +29,8 @@ export default class QrsController {
 
     return view.render('qrcode/new',{
       user: userData,
-      name
+      name,
+      prefeituras:await new PrefeiturasController().getAllPrefeituras()
     });
   }
 
@@ -58,36 +61,26 @@ export default class QrsController {
     });
   }
 
-  private async searchInDatabase(term, field){
-    return await QrData.findBy(term, field);
-  }
-
-  private async generateId(){
-    let id = "HM"+Math.floor(Math.random() * 9999999) + 1;
-    let search = await this.searchInDatabase('qr_id', id);
-    
-    if(search){
-     this.generateId();
-    }else{
-      return id;
-    }
-  }
-
-  private async generateQrCode(q){
-    async function generateCode(url){
-      return await QRCode.toDataURL(url, {width: 140});
+  private async generateQrCode(q, modo, prefeitura){
+    let pref, prefeituraId;
+    if(modo === "prefeitura"){
+      pref = prefeitura.split("-id-");
+      prefeituraId = pref[1];
+      prefeitura = pref[0];
     }
 
     let codes = Array();
 
     for(let i=0;i<parseInt(q);i++){
       let response = await this.generateId();
-      let qr = await generateCode(url+response);
+      let qr = await this.generateCode(url+response, modo, prefeitura);
       
       try{
         const data = await QrData.create({
           qr_id: response,
-          qr_code: qr});
+          qr_code: qr,
+          qr_modelo: modo,
+          qr_prefeitura: (modo === "prefeitura" ? prefeituraId : "NULL")});
 
         codes.push({
           id: response,
@@ -104,25 +97,28 @@ export default class QrsController {
   }
 
   public async generate({view, request, auth, response }) {
+    
+    const { modo, prefeitura } = request.all();
+    
     let data = request.body();
     let total;
 
     if(!data.total) return;
       total = data.total;
-    
 
-    let result = await this.generateQrCode(total);
+    let result = await this.generateQrCode(total, modo, prefeitura);
 
     const userData = await User.findBy('email', auth.user?.email);
     if(!userData){
-      return response.redirect('/dashboard');;
+      return response.redirect('/dashboard');
     }
     const name = userData.name;
 
     return view.render('qrcode/result', {
       results: result,
       name,
-      modo: data.modo
+      modo: data.modo,
+      prefeitura: prefeitura
     });
 
       
