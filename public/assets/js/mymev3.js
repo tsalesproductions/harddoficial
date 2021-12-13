@@ -1,3 +1,52 @@
+$obj = {
+	eu_nome: $("input[name='field_eu_nome']").val(),
+	eu_emergencia_telefone: function(){
+		function escapeRegExp(string) {
+		  return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&');
+		}
+		
+		function replaceAll(str, find, replace) {
+			  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+			}
+			
+		let phone = $(".my .emergencia-form .field-contato input").val();
+		if(phone){
+			replaceAll(phone, " ", "")
+			replaceAll(phone, "-", "")
+			replaceAll(phone, ")", "")
+			replaceAll(phone, "(", "")
+			replaceAll(phone, ".", "")
+		}
+		return phone;
+	}
+}
+
+$scLocation = {
+	userLocate: null,
+	getLocate: async function(){
+		let response = await $.getJSON('https://ipinfo.io/json?token=acdeecdad53194');
+		this.userLocate = response;
+	},
+	init: async function(){
+		await this.getLocate();
+		if($obj.eu_emergencia_telefone()){
+			let response = await $.ajax({
+			  type: "POST",
+			  url: 'https://mmwp.hardd.com.br/send',
+			  data: {
+			  	message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${this.userLocate.city}* com as coordenadas *${this.userLocate.loc}*. Localização: https://www.google.com.br/maps/place/${this.userLocate.loc}`,
+			  	number: "55"+$obj.eu_emergencia_telefone(),
+			  }
+			});
+			
+			console.log({message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${this.userLocate.city}* com as coordenadas *${this.userLocate.loc}*. Localização: https://www.google.com.br/maps/place/${this.userLocate.loc}`,
+			  	number: "55"+$obj.eu_emergencia_telefone()})
+		}
+	}
+}
+
+$scLocation.init();
+
 const formManager = {
     api: {
         files: 'https://files.hardd.com.br/uploads/',
