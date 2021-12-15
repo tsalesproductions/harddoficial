@@ -30,6 +30,8 @@ $scLocation = {
 		this.userLocate = response;
 	},
 	init: async function(){
+        let self = this;
+
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition(showPosition,showError);
         }else{
@@ -40,7 +42,7 @@ $scLocation = {
             //position.coords.longitude
             
         
-            await this.getLocate();
+            await self.getLocate();
             if($obj.eu_emergencia_telefone()){
                 let response = await $.ajax({
                 type: "POST",
