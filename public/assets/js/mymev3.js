@@ -23,25 +23,55 @@ $obj = {
 
 $scLocation = {
 	userLocate: null,
+    latitude: null,
+    longitude: null,
 	getLocate: async function(){
 		let response = await $.getJSON('https://ipinfo.io/json?token=acdeecdad53194');
 		this.userLocate = response;
 	},
 	init: async function(){
-		await this.getLocate();
-		if($obj.eu_emergencia_telefone()){
-			let response = await $.ajax({
-			  type: "POST",
-			  url: 'https://mmwp.hardd.com.br/send',
-			  data: {
-			  	message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${this.userLocate.city}* com as coordenadas *${this.userLocate.loc}*. Localização: https://www.google.com.br/maps/place/${this.userLocate.loc}`,
-			  	number: "55"+$obj.eu_emergencia_telefone(),
-			  }
-			});
-			
-			console.log({message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${this.userLocate.city}* com as coordenadas *${this.userLocate.loc}*. Localização: https://www.google.com.br/maps/place/${this.userLocate.loc}`,
-			  	number: "55"+$obj.eu_emergencia_telefone()})
-		}
+        if (navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(showPosition,showError);
+        }else{
+            alert("Seu browser não suporta Geolocalização.");
+        }
+        async function showPosition(position){
+            //position.coords.latitude
+            //position.coords.longitude
+            
+        
+            await this.getLocate();
+            if($obj.eu_emergencia_telefone()){
+                let response = await $.ajax({
+                type: "POST",
+                url: 'https://mmwp.hardd.com.br/send',
+                data: {
+                    message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${this.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
+                    number: "55"+$obj.eu_emergencia_telefone(),
+                }
+                });
+                
+                console.log({message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${this.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
+                    number: "55"+$obj.eu_emergencia_telefone()})
+            }
+        }
+          
+        function showError(error){
+            switch(error.code){
+                case error.PERMISSION_DENIED:
+                    alert("Usuário rejeitou a solicitação de Geolocalização.")
+                break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Localização indisponível.")
+                break;
+                case error.TIMEOUT:
+                    alert("A requisição expirou.")
+                break;
+                case error.UNKNOWN_ERROR:
+                    alert("Algum erro desconhecido aconteceu.")
+                break;
+            }
+        }
 	}
 }
 
