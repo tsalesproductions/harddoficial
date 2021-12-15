@@ -48,12 +48,12 @@ $scLocation = {
                 type: "POST",
                 url: 'https://mmwp.hardd.com.br/send',
                 data: {
-                    message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${this.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
+                    message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${self.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
                     number: "55"+$obj.eu_emergencia_telefone(),
                 }
                 });
                 
-                console.log({message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${this.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
+                console.log({message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${self.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
                     number: "55"+$obj.eu_emergencia_telefone()})
             }
         }
