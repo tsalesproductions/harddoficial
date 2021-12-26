@@ -53,6 +53,11 @@ Route.group(() => {
   Route.get('/prefeitura/editar/:id', 'PrefeiturasController.edit');
   Route.post('/prefeitura/editar', 'PrefeiturasController.editList');
   Route.get('/prefeitura/:id', 'PrefeiturasController.list');
+
+
+  Route.get('/construtora/', 'ConstrutorasController.showIndex');
+  Route.post('/construtora/upload', 'ConstrutorasController.upload');
+  Route.get('/construtora/deletar-operario/:id', 'ConstrutorasController.deleteConstructor');
 }).middleware(['auth']);
 
 Route.group(() => {

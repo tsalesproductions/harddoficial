@@ -21,7 +21,7 @@ jQuery(document).ready(function($) {
         $(document).ready(function() {
             var table = $('table.second').DataTable({
                 lengthChange: false,
-                order: [[ 3, "asc" ]],
+                // order: [[ 3, "asc" ]],
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json"
                 }
