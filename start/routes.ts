@@ -63,7 +63,6 @@ Route.group(() => {
 Route.group(() => {
   Route.get('/ecommerce/get/:id', 'ApisController.getList')
   Route.post('/ecommerce/set/:id', 'ApisController.setList')
-
 });
 
 
@@ -71,6 +70,8 @@ Route.get('/myme', 'QrsController.identify');
 Route.get('/myme/auth', 'MymesController.login');
 Route.get('/myme/:id', 'MymesController.mymeManager')
 Route.post('/myme', 'MymesController.mymeSend')
+
+Route.get('/operario/:id', 'ConstrutorasController.operarioList')
 
 
 Route.get('/logout', 'AuthController.logout')

@@ -17,6 +17,7 @@ export default class Operarios extends BaseSchema {
       table.string('ficha_descricao2').notNullable();
       table.string('ficha_turno').notNullable();
       table.string('ficha_situacao').notNullable();
+      table.integer('ficha_status').defaultTo(0);
 
       table.string('operario_foto').nullable();
       table.string('operario_nome').nullable();

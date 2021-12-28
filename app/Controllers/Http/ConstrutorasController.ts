@@ -16,6 +16,19 @@ export default class ConstrutorasController {
       });
     }
 
+    public async operarioList({ request, view, auth, response }: HttpContextContract) {
+      let { id } = request.ctx?.params;
+      let operario = await Operarios.findBy("id", id);
+
+      if(!operario) response.redirect("/404/");
+
+      return view.render('construtora/ficha', {
+        operario: operario,
+        qualificacoes: JSON.parse(operario?.operario_qualificacoes),
+        emergencia: JSON.parse(operario?.operario_contatos_emergencia)
+      });
+    }
+
     public async upload({ request, response, auth }: HttpContextContract) {
       const uploadConfig = {
         check: async function(data){
@@ -43,6 +56,8 @@ export default class ConstrutorasController {
                 ficha_descricao2: data['Descrição_1'], 
                 ficha_turno: data.Turno, 
                 ficha_situacao: data['Situacao do Colaborador'],
+                operario_qualificacoes: `[{"id":1,"name":"NR 10 BÁSICO","selected":false},{"id":2,"name":"NR 10 SEP","selected":false},{"id":3,"name":"NR 11 EMPILHADEIRA","selected":false},{"id":4,"name":"NR 11 VEÍCULO REBOCADOR","selected":false},{"id":5,"name":"NR 11 GUINDASTE","selected":false},{"id":6,"name":"NR 11 PÁCARREGADEIRA","selected":false},{"id":7,"name":"NR 11 ESCAVADEIRA","selected":false},{"id":8,"name":"NR 11 RETROESCAVADEIRA","selected":false},{"id":9,"name":"NR 11 PLATAFORMA MÓVEL","selected":false},{"id":10,"name":"NR 11 PONTE ROLANTE","selected":false},{"id":11,"name":"NR 12 OPERADOR","selected":false},{"id":12,"name":"NR 12 MANUTENTOR","selected":false},{"id":13,"name":"NR 13 VASOS DE PRESSÃO","selected":false},{"id":14,"name":"NR 20 INFLÁMAVEIS E COMBUSTÍVEIS","selected":false},{"id":15,"name":"NR 33 ESPAÇO CONF. VIGIA","selected":false},{"id":16,"name":"NR 33 ESPAÇO CONF. SUP ENTREGA","selected":false},{"id":17,"name":"NR 33 TRABALHO EM ALTURA","selected":false},{"id":18,"name":"OUTROS","selected":false}]`,
+                operario_contatos_emergencia: `[{"nome":"","telefone":""},{"nome":"","telefone":""}]`
               })
           }catch(e){
             console.log("Houve um erro ao adicionar:", e);

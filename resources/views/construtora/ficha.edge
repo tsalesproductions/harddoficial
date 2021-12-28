@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyMe</title>
+    <link rel="stylesheet" href="../assets/css/core/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../assets/css/mymev3.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css"/>
+</head>
+<body>
+    <main class="myme
+    @if(operario.ficha_status === "1")
+    usado
+    @endif
+    ">
+        <form enctype="multipart/form-data" method="POST" action="{{ route('MymesController.mymeSend') }}">
+            {{ csrfField() }}
+            <header>
+                <img src="../assets/img/v3/capa.PNG" width="100%">
+                {{--  <a href="#">Alterar dados</a>  --}}
+            </header>
+            <div class="my">
+                <div class="photo without" data-type="eu-foto">
+                <img id="field_me_foto" class="capa" src="../assets/img/eu-default.svg"
+                />
+                    <input type="file" accept="image/jpg,image/jpeg,image/png">
+                </div>
+                <h1>EU</h1>
+                <div class="fields">
+                    <div class="gd m1">
+                        <div class="field field-nome b">
+                            <strong>NOME:</strong>
+                            <input  required type="text" name="operario_nome" value="" class=".form-control"/>
+                        </div>
+
+                        <div class="field field-nascimento b">
+                            <strong>DATA DE NASC:</strong>
+                            <input  type="text" name="operario_nascimento" value="" class=".form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="gd m2">
+                        <div class="field field-endereco b">
+                            <strong>ENDEREÇO:</strong>
+                            <input  type="text" name="operario_endereco" value="" class=".form-control"/>
+                        </div>
+
+                        <div class="field field-numero b">
+                            <strong>NUMERO:</strong>
+                            <input  type="text" name="operario_numero" value="" class=".form-control"/>
+                        </div>
+
+                        <div class="field field-cidade b">
+                            <strong>CIDADE:</strong>
+                            <input  type="text" name="operario_cidade" value="" class=".form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="gd">
+                        <div class="field field-doenca">
+                            <strong>DOENÇA DIAGNOSTICADA:</strong>
+                            <input  type="text" name="operario_doenca" value="" class=".form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="gd m3">
+                        <div class="field field-medicamento b">
+                            <strong>USO MEDICAMENTO:</strong>
+                            <input  type="text" name="operario_medicamento" value="" class=".form-control"/>
+                        </div>
+
+                        <div class="field field-peso b">
+                            <strong>PESO:</strong>
+                            <input  type="text" name="operario_peso" value="" class=".form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="gd m1">
+                        <div class="field field-alergia">
+                            <strong>ALERGIA:</strong>
+                            <input  type="text" name="operario_alergia" value="" class=".form-control"/>
+                        </div>
+
+                        <div class="field field-sangue">
+                            <strong>TIPO SANGUINEO:</strong>
+                            <input  type="text" name="operario_sangue" value="" class=".form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="gd">
+                        <div class="field field-sus-numero b sec-badgee">
+                            <div class="badgee right r12 l18 b30">
+                                Com os campos nome, data de nascimento e número do SUS preenchidos. Seu cartão digital estará disponível para visualização.
+                            </div>
+                            <strong>SUS Nº:</strong>
+                            <input  type="text" name="operario_sus_numero" value="" class=".form-control"/>
+                            <img src="../assets/img/v3/sus-mini.svg" id="susTrigger"/>
+                        </div>
+                    </div>
+
+                    <div class="gd m5">
+                        <div class="field field-sus-numero">
+                            <strong>PLANO DE SÁUDE:</strong>
+                            <input  type="text" name="operario_plano_numero" value="" class=".form-control"/>
+                        </div>
+
+                        <div class="field field-sus-numero">
+                            <strong>Nº:</strong>
+                            <input  type="text" name="field_plano_numero" value="" class=".form-control"/>
+                        </div>
+                    </div>
+
+                    <h4 class="emergencia sec-badgee">
+                        <div class="badgee left l20">
+                            Nos campos de contatos para emergência sugerimos que preencha com familiares, ou responsáveis maiores de 18 anos.<br><br>Obs: Os números cadastrados possuem discagem rápida!
+                        </div>
+                        CONTATO DE EMERGÊNCIA</h4>
+                    <div class="gd m5 emergencia-form">
+                        <div class="field field-nome">
+                            <strong>NOME:</strong>
+                            <input required  type="text" name="field_eu_e_nome1"
+                            class=".form-control"/>
+                        </div>
+
+                        <div class="field field-contato">
+                            <strong>CONTATO:</strong>
+                            <input required  type="text" name="field_eu_e_contato1"
+                            class=".form-control"/>
+                        </div>
+
+                        <div class="field field-nome b">
+                            <strong>NOME:</strong>
+                            <input  required type="text" name="field_eu_e_nome2"
+                            class=".form-control"/>
+                        </div>
+
+                        <div class="field field-contato b">
+                            <strong>CONTATO:</strong>
+                            <input required  type="text" name="field_eu_e_contato2"
+                            class=".form-control"/>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="emergencia sec-badgee">QUALIFICAÇÕES</h4>
+                <style>
+                    .qualificacoes{
+                        display: grid;
+                        gap: 5px 5px;
+                        margin: 0 !important;
+                        margin-bottom: 5px !important;
+                        padding: 0;
+                    }
+
+                    @media(min-width: 992px){
+                        .qualificacoes{
+                            grid-template-columns: repeat(2, 1fr);
+                        }
+                    }
+
+                    .qualificacoes input{
+                        width: auto !important
+                    }
+
+                    .qualificacoes li{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        background-color: #CBCACA;
+                        color: #1B1B1B;
+                        padding: 5px;
+                        font-weight: 800;
+                        font-size: 14px
+                    }
+
+                    .qualificacoes li input{
+                        width: 20px !important; 
+                        height: 20px;
+                    }
+
+                    .qualificacoes li span{
+                        font-size: 13px;
+                        color: #980000
+                    }
+
+                    .qualificacoes div{
+                        display: flex;
+                        align-items: center;
+                        gap: 10px
+                    }
+
+                    main.usado .qualificacoes input{
+                        display: none
+                    }
+
+                    main:not(.usado) .qualificacoes li span{
+                        display: none
+                    }
+                </style>
+                <ul class="qualificacoes">
+                    @each(qualificacao in qualificacoes)
+                    <li
+                    @if(!qualificacao.selected)
+                    style="display: none"
+                    @endif
+                    >
+                        <label for="{{qualificacao.id}}">{{qualificacao.name}}</label>
+                        <div>
+                            <span>VAL:02/23</span>
+                            <input type="checkbox" id="{{qualificacao.id}}"
+                            @if(qualificacao.selected)
+                            checked
+                            @endif
+                            />
+                        </div>
+                    </li>
+                    @endeach
+                </ul>
+            </div>
+            {{--  <img src="../assets/img/myme-logo-meu.png" class="logo-mid">  --}}
+
+            <div class="help" style="margin-top: 5px">
+                <div class="ic sec-badgee">
+                    <div class="badgee bottom r12 l18 b30">
+                        Aqui você encontrará os números de emergência que possuem discagem rápida para um socorro imediato!
+                    </div>
+                    <object data="../assets/img/v3/divider-emergencia.svg"></object>
+                </div>
+                <div class="items">
+                    <img data-emergencia="192" src="../assets/img/v3/192.png"/>
+                    <img data-emergencia="193" src="../assets/img/v3/193.png"/>
+                    <img data-emergencia="197" src="../assets/img/v3/197.png"/>
+                    <img data-emergencia="136" src="../assets/img/v3/136.png"/>
+                    <img data-emergencia="194" src="../assets/img/v3/194.png"/>
+                    <img data-emergencia="190" src="../assets/img/v3/190.png"/>
+                </div>
+                <footer>
+                    <object data="../assets/img/v3/footer.svg"></object>
+                </footer>
+            </div>
+
+            <div class="edit">
+                {{--  @if(data.qr_status == 0)  --}}
+                <div class="gd m7">
+                    <div class="field-password">
+                        <strong>CRIE SUA SENHA:</strong>
+                        <input required type="password" name="qr_password" placeholder="Insira uma senha para possa editar ou recuperar seus dados MY ME futuramente." class=".form-control"/>
+                        {{--  <small>Insira uma senha para poder editar ou recuperar seu cadastro futuramente.</small>  --}}
+                    </div>
+                </div>
+                {{--  @end  --}}
+
+                <div class="terms">
+                    <input  type="checkbox" id="field_terms" name="field_terms">
+                    <label for="field_terms">Eu concordo que <a target="_blank" href="../assets/termos-myme.pdf">sobre a lei LGPD</a> e estou ciente que os dados inseridos acima estarão disponíveis a qualquer momento através deste link.</label>
+                </div>
+                <div class="error" style="display: none"></div>
+                <button type="submit" disabled><div class="spinner-border" style="width: 1.3rem;height: 1.3rem; display: none;" role="status"><span class="visually-hidden"></span></div> SALVAR</button>
+            </div>
+
+        </form>
+        {{--  @else
+            <h2 style="font-size: 32px; text-align: center;">MyMe não encontrado</h2>
+        @endif  --}}
+    </main>
+
+  <!-- Modal -->
+  <div class="modal fade" id="selectOpt" tabindex="-1" aria-labelledby="selectOptLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <section>
+                <img data-type="human" src="../assets/img/v3/modal-human.svg"/>
+                <img data-type="pet" src="../assets/img/v3/modal-pet.svg"/>
+                <img data-type="object" src="../assets/img/v3/modal-object.svg"/>
+            </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="susCard" tabindex="-1" aria-labelledby="susCardOptLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <suscard>
+                <img data-type="human" src="../assets/img/v3/sus-card.png"/>
+                <span id="sus-nome"></span>
+                <span id="sus-nascimento"></span>
+                <span id="sus-sexo"></span>
+                <span id="sus-numero"></span>
+            </suscard>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <script src="../assets/vendor/jquery/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/myme_operarios.js"></script>
+    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+
+</body>
+</html>
