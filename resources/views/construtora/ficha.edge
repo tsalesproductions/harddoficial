@@ -12,12 +12,23 @@
 </head>
 <body>
     <main class="myme
-    @if(operario.ficha_status === "1")
-    usado
-    @endif
+    @if(operario.ficha_status == 1)
+    disponivel
+    @else
+    indisponivel
+    @end
     ">
-        <form enctype="multipart/form-data" method="POST" action="{{ route('MymesController.mymeSend') }}">
+        <form enctype="multipart/form-data" method="POST" action="{{ route('ConstrutorasController.updateOperario') }}">
             {{ csrfField() }}
+            @if(operario.ficha_status == 1)
+            <input type="hidden" name="ficha_matricula" 
+            value="{{operario.ficha_matricula}}"
+            />
+
+            <input type="text" name="field_qualificacoes" value=""/>
+
+            <input type="hidden" name="ficha_eu_foto" />
+            @end
             <header>
                 <img src="../assets/img/v3/capa.PNG" width="100%">
                 {{--  <a href="#">Alterar dados</a>  --}}
@@ -33,60 +44,100 @@
                     <div class="gd m1">
                         <div class="field field-nome b">
                             <strong>NOME:</strong>
-                            <input  required type="text" name="operario_nome" value="" class=".form-control"/>
+                            <input  required type="text" name="operario_nome"
+                            @if(operario.operario_nome)
+                            value="{{operario.operario_nome}}"
+                            @endif
+                            class=".form-control"/>
                         </div>
 
                         <div class="field field-nascimento b">
                             <strong>DATA DE NASC:</strong>
-                            <input  type="text" name="operario_nascimento" value="" class=".form-control"/>
+                            <input  type="text" name="operario_nascimento" 
+                            @if(operario.operario_nascimento)
+                            value="{{operario.operario_nascimento}}"
+                            @endif
+                            class=".form-control"/>
                         </div>
                     </div>
 
                     <div class="gd m2">
                         <div class="field field-endereco b">
                             <strong>ENDEREÇO:</strong>
-                            <input  type="text" name="operario_endereco" value="" class=".form-control"/>
+                            <input  type="text" name="operario_endereco" 
+                            @if(operario.operario_endereco)
+                            value="{{operario.operario_endereco}}"
+                            @endif
+                            class=".form-control"/>
                         </div>
 
                         <div class="field field-numero b">
                             <strong>NUMERO:</strong>
-                            <input  type="text" name="operario_numero" value="" class=".form-control"/>
+                            <input  type="text" name="operario_numero" 
+                            @if(operario.operario_numero)
+                            value="{{operario.operario_numero}}"
+                            @endif
+                            class=".form-control"/>
                         </div>
 
                         <div class="field field-cidade b">
                             <strong>CIDADE:</strong>
-                            <input  type="text" name="operario_cidade" value="" class=".form-control"/>
+                            <input  type="text" name="operario_cidade" 
+                            @if(operario.operario_cidade)
+                            value="{{operario.operario_cidade}}"
+                            @endif
+                            class=".form-control"/>
                         </div>
                     </div>
 
                     <div class="gd">
                         <div class="field field-doenca">
                             <strong>DOENÇA DIAGNOSTICADA:</strong>
-                            <input  type="text" name="operario_doenca" value="" class=".form-control"/>
+                            <input  type="text" name="operario_doenca" 
+                            @if(operario.operario_doenca)
+                            value="{{operario.operario_doenca}}"
+                            @endif
+                            class=".form-control"/>
                         </div>
                     </div>
 
                     <div class="gd m3">
                         <div class="field field-medicamento b">
                             <strong>USO MEDICAMENTO:</strong>
-                            <input  type="text" name="operario_medicamento" value="" class=".form-control"/>
+                            <input  type="text" name="operario_medicamento" 
+                            @if(operario.operario_medicamento)
+                            value="{{operario.operario_medicamento}}"
+                            @endif
+                            class=".form-control"/>
                         </div>
 
                         <div class="field field-peso b">
                             <strong>PESO:</strong>
-                            <input  type="text" name="operario_peso" value="" class=".form-control"/>
+                            <input  type="text" name="operario_peso" 
+                            @if(operario.operario_peso)
+                            value="{{operario.operario_peso}}"
+                            @endif
+                            class=".form-control"/>
                         </div>
                     </div>
 
                     <div class="gd m1">
                         <div class="field field-alergia">
                             <strong>ALERGIA:</strong>
-                            <input  type="text" name="operario_alergia" value="" class=".form-control"/>
+                            <input  type="text" name="operario_alergia" 
+                            @if(operario.operario_alergia)
+                            value="{{operario.operario_alergia}}"
+                            @endif
+                            class=".form-control"/>
                         </div>
 
                         <div class="field field-sangue">
                             <strong>TIPO SANGUINEO:</strong>
-                            <input  type="text" name="operario_sangue" value="" class=".form-control"/>
+                            <input  type="text" name="operario_sangue" 
+                            @if(operario.operario_sangue)
+                            value="{{operario.operario_sangue}}"
+                            @endif
+                            class=".form-control"/>
                         </div>
                     </div>
 
@@ -96,7 +147,11 @@
                                 Com os campos nome, data de nascimento e número do SUS preenchidos. Seu cartão digital estará disponível para visualização.
                             </div>
                             <strong>SUS Nº:</strong>
-                            <input  type="text" name="operario_sus_numero" value="" class=".form-control"/>
+                            <input  type="text" name="operario_sus_numero" 
+                            @if(operario.operario_sus_numero)
+                            value="{{operario.operario_sus_numero}}"
+                            @endif
+                            class=".form-control"/>
                             <img src="../assets/img/v3/sus-mini.svg" id="susTrigger"/>
                         </div>
                     </div>
@@ -104,12 +159,20 @@
                     <div class="gd m5">
                         <div class="field field-sus-numero">
                             <strong>PLANO DE SÁUDE:</strong>
-                            <input  type="text" name="operario_plano_numero" value="" class=".form-control"/>
+                            <input  type="text" name="operario_plano_numero" 
+                            @if(operario.operario_plano_numero)
+                            value="{{operario.operario_plano_numero}}"
+                            @endif
+                            class=".form-control"/>
                         </div>
 
                         <div class="field field-sus-numero">
                             <strong>Nº:</strong>
-                            <input  type="text" name="field_plano_numero" value="" class=".form-control"/>
+                            <input  type="text" name="field_plano_numero" 
+                            @if(operario.field_plano_numero)
+                            value="{{operario.field_plano_numero}}"
+                            @endif
+                            class=".form-control"/>
                         </div>
                     </div>
 
@@ -195,20 +258,24 @@
                         display: none
                     }
 
-                    main:not(.usado) .qualificacoes li span{
+                    .qualificacoes li input[type=text]{
                         display: none
                     }
                 </style>
                 <ul class="qualificacoes">
                     @each(qualificacao in qualificacoes)
-                    <li
-                    @if(!qualificacao.selected)
+                    <li data-id="{{qualificacao.id}}" 
+                    @if(operario.ficha_status === 0 && !qualificacao.selected)
                     style="display: none"
                     @endif
                     >
                         <label for="{{qualificacao.id}}">{{qualificacao.name}}</label>
                         <div>
-                            <span>VAL:02/23</span>
+                            <input type="text" value="02/23" style="width: 50px !important; 
+                            @if(qualificacao.selected)
+                            display: block;
+                            @endif
+                            ">
                             <input type="checkbox" id="{{qualificacao.id}}"
                             @if(qualificacao.selected)
                             checked

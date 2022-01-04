@@ -98,6 +98,10 @@ const formManager = {
         })
     },
     badgeClick: function(){
+        if(this.q(".indisponivel")){
+            $(".badgee").remove();
+        }
+
         $(".badgee").click(({target}) => {
             $(target).closest(".badgee").remove();
         })
@@ -122,7 +126,7 @@ const formManager = {
         }
     },
     disableAllInputs: function(){
-        if(!this.q(".usado")) return;
+        if(this.q(".disponivel")) return;
         let inputs = this.qall("input:not(.form),textarea,select");
         inputs.forEach(function(item){
             item.readOnly = true;
@@ -177,10 +181,11 @@ const formManager = {
             });
     },
     checkIfEnabled: function(){
-        if(this.myme.classList.contains("usado")){
+        if(this.myme.classList.contains("indisponivel")){
             if(document.querySelector(".edit")){
                 document.querySelector(".edit")?.remove();
                 document.querySelector(".add-more")?.remove();
+                this.susTrigger();
             }
         }else{
             document.querySelector(".help")?.remove();
@@ -262,6 +267,7 @@ const formManager = {
             submit = this.q("button[type='submit']"),
             self = this;
 
+            if(!terms) return;
             terms.addEventListener("change", function(e){
                 let fields = {
                     eu: (self.dataInputs.eu.foto ? true : false),
@@ -294,6 +300,34 @@ const formManager = {
                 }
             });
     },
+    qualificacoes: function(){
+        function checkboxToggle(){
+            $(".qualificacoes li input[type=checkbox]").click(({target}) => {
+                $(target).closest("li").find("input[type=text]").toggle();
+            })  
+        }
+
+        function submitSave(){
+            $("button[type=submit]").click(() => {
+                let objs = [];
+
+                let selecteds = document.querySelectorAll(".qualificacoes li input[type=checkbox]:checked");
+                    if(selecteds.length > 0){
+                        for(let selected of selecteds){
+                            objs.push({
+                                id: $(selected).closest("li").attr("data-id"),
+                                date: $(selected).closest("li").find('input[type=text]').val(),
+                                checked: selected.checked
+                            })
+                        }
+
+                        $("input[name=field_qualificacoes]").val(JSON.stringify(objs))
+                    }
+            })
+        }
+
+        checkboxToggle(),submitSave()
+    },
     init: function(){
         this.checkIfEnabled();
         this.termsValidate();
@@ -301,6 +335,8 @@ const formManager = {
         this.contactValidate();
         this.badgeClick();
         this.triggetInputs();
+        this.qualificacoes();
+        this.dataInputs.eu.foto = "salve";
     }
 }
 

@@ -18,10 +18,10 @@ export default class ConstrutorasController {
 
     public async operarioList({ request, view, auth, response }: HttpContextContract) {
       let { id } = request.ctx?.params;
-      let operario = await Operarios.findBy("id", id);
+      let operario = await Operarios.findBy("ficha_matricula", id);
 
       if(!operario) response.redirect("/404/");
-
+      
       return view.render('construtora/ficha', {
         operario: operario,
         qualificacoes: JSON.parse(operario?.operario_qualificacoes),
@@ -99,5 +99,45 @@ export default class ConstrutorasController {
       await operario.delete()
       response.redirect("/construtora/?deleted=true");
       
+    }
+
+    public async updateOperario({view, request, response }: HttpContextContract) {
+      const { 
+        ficha_matricula,
+        ficha_eu_foto,
+        operario_nome,
+        operario_nascimento,
+        operario_endereco,
+        operario_numero,
+        operario_cidade,
+        operario_doenca,
+        operario_medicamento,
+        operario_peso,
+        operario_alergia,
+        operario_sangue,
+        operario_sus_numero,
+        operario_plano_numero,
+        field_plano_numero,
+        field_eu_e_nome1,
+        field_eu_e_contato1,
+        field_eu_e_nome2,
+        field_eu_e_contato2,
+        field_qualificacoes
+      } = request.all();
+
+      let { operario_qualificacoes } = await Operarios.findBy("ficha_matricula", ficha_matricula);
+      
+      if(!operario_qualificacoes) return;
+
+      let opList = JSON.parse(operario_qualificacoes);
+    
+      for(let list of JSON.parse(field_qualificacoes)){
+        let opt = opList.find(f => f.id == list.id);
+        if(opt){
+          opList[opList.findIndex(f => f.id == list.id)].selected = list.checked;
+          opList[opList.findIndex(f => f.id == list.id)].date = list.date;
+        }
+      }
+
     }
 }

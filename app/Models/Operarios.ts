@@ -36,6 +36,9 @@ export default class Operarios extends BaseModel {
   public ficha_situacao: string;
 
   @column()
+  public ficha_status: string;
+
+  @column()
   public operario_foto: string;
 
   @column()
