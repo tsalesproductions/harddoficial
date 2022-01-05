@@ -178,7 +178,7 @@ export const dnsPrefetch: ShieldConfig['dnsPrefetch'] = {
 | Learn more at https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
 */
 export const xFrame: ShieldConfig['xFrame'] = {
-  enabled: true,
+  enabled: false,
   action: 'ALLOW-FROM',
   domain: 'hardd.com.br'
 }
