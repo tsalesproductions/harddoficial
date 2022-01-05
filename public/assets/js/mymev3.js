@@ -80,7 +80,7 @@ $scLocation = {
 	}
 }
 
-$("body").append(`<button onclick="getLocation($scLocation.init())">Try It</button>`)
+$("body").append(`<button onclick="$scLocation.init()">Try It</button>`)
 
 
 const formManager = {
