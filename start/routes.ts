@@ -72,6 +72,7 @@ Route.get('/myme/:id', 'MymesController.mymeManager')
 Route.post('/myme', 'MymesController.mymeSend')
 
 Route.get('/operario/:id', 'ConstrutorasController.operarioList')
+Route.post('/operario', 'ConstrutorasController.updateOperario')
 
 
 Route.get('/logout', 'AuthController.logout')
