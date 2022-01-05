@@ -62,6 +62,7 @@ $scLocation = {
             switch(error.code){
                 case error.PERMISSION_DENIED:
                     alert("Usuário rejeitou a solicitação de Geolocalização.")
+                    navigator.geolocation.getCurrentPosition(showPosition,showError);
                 break;
                 case error.POSITION_UNAVAILABLE:
                     alert("Localização indisponível.")
