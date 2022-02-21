@@ -49,8 +49,16 @@ export default class QrsController extends MymeModelosController {
     const page = request.input('page', 1)
     const limit = 100
 
-    const posts = await Database.from('qr_codes').orderBy('qr_status', 'asc').paginate(page, limit)
-          posts.baseUrl('/qrcode/listar')
+    let q = request.qs();
+    
+    let posts;
+    if(q.search && q.search !== ''){
+      posts = await Database.from('qr_codes').whereRaw(`qr_id LIKE '%${q.search}%'`).orderBy('qr_status', 'asc').paginate(page, limit)
+    }else{
+      posts = await Database.from('qr_codes').orderBy('qr_status', 'asc').paginate(page, limit)
+    }
+    
+    posts.baseUrl('/qrcode/listar')
 
     const name = userData.name;
 
@@ -131,10 +139,30 @@ export default class QrsController extends MymeModelosController {
       const r = await QrData.findBy('qr_id', data.id);
 
       if(!r) return response.json([{status: "error", msg: "Não foi encontrado um código com o id informado"}]);
-      
-      r.qr_status = "0";
-      r.qr_emergencia = "";
-      // r.qr_meu_emergencia = "";
+      	
+      r.qr_imagem = ''
+      r.qr_cliente_nome = ''
+      r.qr_cliente_nascimento = ''
+      r.qr_cliente_endereco_rua = ''
+      r.qr_cliente_endereco_numero = ''
+      r.qr_cliente_endereco_cidade = ''
+      r.qr_cliente_tipo_sanguineo = ''
+      r.qr_cliente_alergia = ''
+      r.qr_cliente_peso = ''
+      r.qr_cliente_uso_medicamento = ''
+      r.qr_cliente_email = ''
+      r.qr_cliente_escola_nome = ''
+      r.qr_cliente_escola_serie = ''
+      r.qr_emergencia = ''
+      r.qr_cliente_doenca = ''
+      r.qr_cliente_anexo = ''
+      r.qr_cliente_obs = ''
+      r.qr_cliente_sus_numero = ''
+      r.qr_cliente_plano_nome = ''
+      r.qr_cliente_plano_numero = ''
+      r.qr_meus = ''
+      r.qr_status = '0';
+      r.qr_password = ''
 
       await r.save();
       response.json([{status: "success", msg: "Código resetado com sucesso"}]);

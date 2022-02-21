@@ -69,13 +69,13 @@
                   <label for="modo" class="form-label">Modelo</label>
                   <select name="modo" id="modo" class="form-control">
                     <option value="default">Padrão</option>
-                    <option value="prefeitura">Prefeitura</option>
+                    <option value="prefeitura">Modelo</option>
                   </select>
                   <br>
                 </div>
 
                 <div style="flex: 0 1 45%;display: none">
-                  <label for="prefeitura" class="form-label">Prefeitura</label>
+                  <label for="prefeitura" class="form-label">Modelos</label>
                   <select name="prefeitura" id="prefeitura" class="form-control">
                     @each(prefeitura in prefeituras)
                     <option value="{{prefeitura.prefeitura_logo}}-id-{{prefeitura.id}}">{{prefeitura.prefeitura_nome}}</option>

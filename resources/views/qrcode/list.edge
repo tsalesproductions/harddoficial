@@ -159,6 +159,16 @@
         <div class="card z-index-2">
           <div class="card-body p-3">
             <div class="table-responsive p-0">
+              <form method="POST" class="form-inline d-flex" id="searchById">
+                <input type="text" name="q_id" placeholder="Buscar por id" class="form-control" style="height: 40px; border-radius: 0;" required/>
+                <button type="submit" class="btn btn-primary" style="height: 40px; border-radius: 0;"><i class="fas fa-search"></i></button>
+              </form>
+              <script>
+                document.querySelector("#searchById").addEventListener("submit", (e) => {
+                  e.preventDefault();
+                  location.href = '/qrcode/listar?search='+e.target.querySelector(`input[name=q_id]`).value
+                });
+              </script>
               <table class="table align-items-center mb-0">
                 <thead>
                   <tr>
@@ -233,3 +243,4 @@
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 {{-- include footer --}}
 @include('parts/footer')
+<script src="/assets/js/hardd-new.js"></script>
