@@ -69,7 +69,9 @@
                   <label for="modo" class="form-label">Modelo</label>
                   <select name="modo" id="modo" class="form-control">
                     <option value="default">Padrão</option>
+                    <option value="bottom">Bottom</option>
                     <option value="prefeitura">Modelo</option>
+                    <option value="unitario">Modelo unitário</option>
                   </select>
                   <br>
                 </div>
@@ -101,7 +103,7 @@
     if(!modo) return;
     modo.addEventListener("change", ({target}) => {
       const {value} = target;
-      if(value === "prefeitura"){
+      if(value === "prefeitura" || value === "bottom"){
         secPrefeitura.parentElement.style.display = "block"
       }else{
         secPrefeitura.parentElement.style.display = "none"

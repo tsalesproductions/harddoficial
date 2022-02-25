@@ -48,6 +48,18 @@ section#myme-preview{
     background-position: center center;
   }
 
+  /* section#myme-preview article.myme .qr:before{
+    content: "";
+    display: block;
+    width: 100%;
+    background-image: url(../../assets/img/v3/bottom/escaneie-alt.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 20px;
+    position: relative;
+    top: -20px;
+  } */
+
   section#myme-preview article.serial{
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 30px;

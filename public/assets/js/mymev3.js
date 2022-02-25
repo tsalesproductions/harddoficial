@@ -10,14 +10,21 @@ $obj = {
 			}
 			
 		let phone = $(".my .emergencia-form .field-contato input").val();
+        let phoneb = $(".my .emergencia-form .field-contato.b input").val();
 		if(phone){
 			replaceAll(phone, " ", "")
 			replaceAll(phone, "-", "")
 			replaceAll(phone, ")", "")
 			replaceAll(phone, "(", "")
 			replaceAll(phone, ".", "")
+
+            replaceAll(phoneb, " ", "")
+			replaceAll(phoneb, "-", "")
+			replaceAll(phoneb, ")", "")
+			replaceAll(phoneb, "(", "")
+			replaceAll(phoneb, ".", "")
 		}
-		return phone;
+		return [phone,phoneb];
 	}
 }
 
@@ -44,17 +51,24 @@ $scLocation = {
         
             await self.getLocate();
             if($obj.eu_emergencia_telefone()){
+                let phone = $obj.eu_emergencia_telefone();
                 let response = await $.ajax({
                 type: "POST",
                 url: 'https://mmwp.hardd.com.br/send',
                 data: {
                     message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${self.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
-                    number: "55"+$obj.eu_emergencia_telefone(),
+                    number: "55"+phone[0],
                 }
                 });
-                
-                console.log({message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${self.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
-                    number: "55"+$obj.eu_emergencia_telefone()})
+
+                $.ajax({
+                    type: "POST",
+                    url: 'https://mmwp.hardd.com.br/send',
+                    data: {
+                        message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${self.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
+                        number: "55"+phone[1],
+                    }
+                });
             }
         }
           
@@ -784,6 +798,7 @@ const formManager = {
             $(".badgee").click((e) => {
                 e.preventDefault();
                 $(e.target).remove();
+                setTimeout(() => $(".btn-close").click(),20)
             });
             
             if($(".meus .meu").length > 0){

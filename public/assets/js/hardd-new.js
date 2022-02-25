@@ -165,6 +165,7 @@ $qrPapelDownload = {
       backgroundColor: 'rgba(0, 0, 0, 0)', 
       removeContainer: true,
   }).then(canvas => {
+    //  $(".preview-target").css("opacity", "1");
       // document.body.appendChild(canvas)
       var a = document.createElement('a');
       // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
@@ -186,11 +187,18 @@ $qrPapelDownload = {
       logo = data.prefeitura.split("-id-")[0];
       nome = 'modelos/prefeitura/logo.png';
       nomeTransformed = 'modelos/prefeitura/logo_token.png';
+      this.element(data);
     }else{
-      logo = 'modelos/default/logo_hardd.png';
-      nome = 'modelos/default/logo.png';
-      nomeTransformed = 'modelos/default/logo_token.png';
+      let modo = data.modo;
+      if(modo === "bottom"){
+        downloadMymeBottom(data.id, data.qr, data.logo.split("-id-")[0])
+      }else{
+        logo = 'modelos/default/logo_hardd_old.png';
+        nome = 'modelos/default/logo.png';
+        nomeTransformed = 'modelos/default/logo_token.png';
+        this.element(data);
+      }
     }
-    this.element(data);
+    
   }
 }

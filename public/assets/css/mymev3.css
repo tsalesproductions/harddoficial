@@ -173,8 +173,8 @@ main.myme textarea::placeholder{
 }
 
 .field-anexo img{
-    width: 40px;
-    position: absolute;
+    width: 35px;
+    /* position: relative; */
     top: -8px;
     right: -65px;
 }
@@ -296,8 +296,8 @@ main.myme header > a{
     z-index: 3 !important;
     width: 65px;
     position: absolute;
-    right: 0px;
-    top: 0px;
+    right: 5px;
+    top: 7px;
 }
 
 main.myme form{
@@ -686,6 +686,7 @@ main.myme .field-foto img{
 .help{
     margin-top: 55px;
     background-color: #BCBEC0;
+    padding-bottom: 20px;
 }
 
 .help .ic{
@@ -774,7 +775,8 @@ main.myme .terms label{
 /***** FOOTER *****/
 main.myme footer{
     text-align: center;
-    margin-top: 15px;
+    margin-top: 0;
+    line-height: 1;
 }
 
 main.myme footer img{
@@ -1366,4 +1368,8 @@ main.myme footer img{
         transform: scale(1.1);
         border-color: #ea4c4c;
     }
+  }
+
+  .disponivel .help{
+      display: none;
   }

@@ -4,6 +4,10 @@
 
 @if(modo == "prefeitura")
   <link rel="stylesheet" href="./assets/css/qr-result-new.css"/>
+@elseif(modo == "bottom")
+  <link rel="stylesheet" href="./assets/css/hardd-bottom.css"/>
+@elseif(modo === "unitario")
+  <link rel="stylesheet" href="./assets/css/qr-result-old.css"/>
 @else
   <link rel="stylesheet" href="./assets/css/qr-result-new.css"/>
   {{--  <link rel="stylesheet" href="./assets/css/qr-result-old.css"/>  --}}
@@ -99,8 +103,10 @@
                       <a style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Baixar" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip" 
                       @if(modo == "prefeitura")
                         onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.id }}', isPrefeitura: true, prefeitura: '{{prefeitura}}'});"
+                      @elseif(modo == "unitario")
+                        onclick="download64('{{ result.qr_code }}','{{ result.id }}')"
                       @else
-                      onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.id }}', isPrefeitura: false});"
+                        onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.id }}', isPrefeitura: false, modo: '{{modo}}', logo: '{{prefeitura}}'});"
                       @endif
                       >
                         <i class="fas fa-download fa-lg"></i>
@@ -143,11 +149,19 @@
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 {{-- include footer --}}
 
+
+<script src="https://unpkg.com/fabric@5.2.1/dist/fabric.min.js"></script>
 @if(modo == "prefeitura")
-<script src="./assets/js/hardd-new.js"></script>
+  <script src="./assets/js/hardd-new.js"></script>
+@elseif(modo == "bottom")
+  <script src="./assets/js/hardd-bottom.js"></script>
+  <script src="./assets/js/hardd-new.js"></script>
+@elseif(modo === "unitario")
+  <script src="./assets/js/hardd-old.js"></script>
 @else
-<script src="./assets/js/hardd-new.js"></script>
+  <script src="./assets/js/hardd-new.js"></script>
 {{--  <script src="./assets/js/hardd-old.js"></script>  --}}
 @endif
 @include('parts/footer')
+
 

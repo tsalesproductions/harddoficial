@@ -2,6 +2,7 @@
 @include('parts/header')
 
 <link rel="stylesheet" href="./assets/css/qr-result-new.css"/>
+<link rel="stylesheet" href="./assets/css/hardd-bottom.css"/>
 
 {{-- include aside --}}
 @include('parts/aside')
@@ -13,8 +14,8 @@
     <div class="container-fluid py-1 px-3">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Prefeituras</a></li>
-          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Prefeituras cadastradas</li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Modelos</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Modelo</li>
         </ol>
       </nav>
       <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -90,8 +91,13 @@
                       <span class="badge badge-sm bg-gradient-success">Disponível</span>
                     </td>
                     <td class="align-middle text-center d-flex" width="30%" style="gap: 10px;height: 60px;align-items: center;">
-                      <a style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Baixar" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip" 
-                        onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.qr_id }}', isPrefeitura: true, prefeitura: '{{prefeitura.prefeitura_logo}}'});"
+                      <a style="cursor: pointer; display: none;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Baixar" class="text-secondary font-weight-bold text-xs trigger-download" data-toggle="tooltip" 
+                        {{--  onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.qr_id }}', isPrefeitura: true, prefeitura: '{{prefeitura.prefeitura_logo}}'});"  --}}
+                        @if(result.qr_modelo == "prefeitura")
+                          onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.id }}', isPrefeitura: true, prefeitura: '{{prefeitura}}'});"
+                        @else
+                          onclick="$qrPapelDownload.init({qr: '{{ result.qr_code }}', id: '{{ result.id }}', isPrefeitura: false, modo: '{{result.qr_modelo}}', logo: '{{prefeitura.prefeitura_logo}}'});"
+                        @endif
                       >
                         <i class="fas fa-download fa-lg"></i>
                       </a>
@@ -118,8 +124,9 @@
   </div>
 </main>
 
-
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://unpkg.com/fabric@5.2.1/dist/fabric.min.js"></script>
+<script src="./assets/js/hardd-bottom.js"></script>
 <script src="./assets/js/hardd-new.js"></script>
 
 @include('parts/footer')

@@ -71,7 +71,7 @@ export default class QrsController extends MymeModelosController {
 
   private async generateQrCode(q, modo, prefeitura){
     let pref, prefeituraId;
-    if(modo === "prefeitura"){
+    if(modo === "prefeitura" || modo === "bottom"){
       pref = prefeitura.split("-id-");
       prefeituraId = pref[1];
       prefeitura = pref[0];
@@ -88,7 +88,7 @@ export default class QrsController extends MymeModelosController {
           qr_id: response,
           qr_code: qr,
           qr_modelo: modo,
-          qr_prefeitura: (modo === "prefeitura" ? prefeituraId : "NULL")});
+          qr_prefeitura: (modo === "prefeitura" || modo === "bottom" ? prefeituraId : "NULL")});
 
         codes.push({
           id: response,
