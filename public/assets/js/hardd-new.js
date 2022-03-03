@@ -79,55 +79,79 @@ $qrPapelDownload = {
         <img src="${logo}" class="logo" ${(data.isPrefeitura ? `style="transform: rotate(
 -90deg);"` : '')}/>
         <img src="${nome}" class="name"/>
-          <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          <div class="tst">
+            <img src="/assets/img/v3/bottom/escaneie-alt.png"/>
+            <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          </div>
         </article>
         <article class="myme">
           <img src="${logo}" class="logo" ${(data.isPrefeitura ? `style="transform: rotate(
 -90deg);"` : '')}/>
           <img src="${nome}" class="name"/>
-          <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          <div class="tst">
+            <img src="/assets/img/v3/bottom/escaneie-alt.png"/>
+            <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          </div>
           
         </article>
         <article class="myme">
           <img src="${logo}" class="logo" ${(data.isPrefeitura ? `style="transform: rotate(
 -90deg);"` : '')}/>
           <img src="${nome}" class="name"/>
-          <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          <div class="tst">
+            <img src="/assets/img/v3/bottom/escaneie-alt.png"/>
+            <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          </div>
           
         </article>
         <article class="myme">
           <img src="${logo}" class="logo" ${(data.isPrefeitura ? `style="transform: rotate(
 -90deg);"` : '')}/>
           <img src="${nome}" class="name"/>
-          <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          <div class="tst">
+            <img src="/assets/img/v3/bottom/escaneie-alt.png"/>
+            <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          </div>
           
         </article>
         <article class="myme">
           <img src="${logo}" class="logo" ${(data.isPrefeitura ? `style="transform: rotate(
 -90deg);"` : '')}/>
           <img src="${nome}" class="name"/>
-          <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          <div class="tst">
+            <img src="/assets/img/v3/bottom/escaneie-alt.png"/>
+            <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          </div>
           
         </article>
         <article class="myme">
           <img src="${logo}" class="logo" ${(data.isPrefeitura ? `style="transform: rotate(
 -90deg);"` : '')}/>
           <img src="${nome}" class="name"/>
-          <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          <div class="tst">
+            <img src="/assets/img/v3/bottom/escaneie-alt.png"/>
+            <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          </div>
           
         </article>
         <article class="myme">
           <img src="${logo}" class="logo" ${(data.isPrefeitura ? `style="transform: rotate(
 -90deg);"` : '')}/>
           <img src="${nome}" class="name"/>
-          <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          <div class="tst">
+            <img src="/assets/img/v3/bottom/escaneie-alt.png"/>
+            <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          </div>
           
         </article>
         <article class="myme">
           <img src="${logo}" class="logo" ${(data.isPrefeitura ? `style="transform: rotate(
 -90deg);"` : '')}/>
           <img src="${nome}" class="name"/>
-          <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          <div class="tst">
+            <img src="/assets/img/v3/bottom/escaneie-alt.png"/>
+            <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          </div>
           
         </article>
         <article class="serial">
@@ -139,21 +163,30 @@ $qrPapelDownload = {
           <img src="${logo}" class="logo" ${(data.isPrefeitura ? `style="transform: rotate(
 -90deg);"` : '')}/>
           <img src="${nome}" class="name"/>
-          <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          <div class="tst">
+            <img src="/assets/img/v3/bottom/escaneie-alt.png"/>
+            <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          </div>
           
         </article>
         <article class="myme">
           <img src="${logo}" class="logo" ${(data.isPrefeitura ? `style="transform: rotate(
 -90deg);"` : '')}/>
           <img src="${nome}" class="name"/>
-          <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          <div class="tst">
+            <img src="/assets/img/v3/bottom/escaneie-alt.png"/>
+            <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          </div>
           
         </article>
         <article class="myme">
           <img src="${logo}" class="logo" ${(data.isPrefeitura ? `style="transform: rotate(
 -90deg);"` : '')}/>
           <img src="${nome}" class="name"/>
-          <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          <div class="tst">
+            <img src="/assets/img/v3/bottom/escaneie-alt.png"/>
+            <div style="background-image: url(${data.qr}); ${(data.isPrefeitura ? `background-size: contain;` : '')}" class="qr"></div>
+          </div>
           
         </article>
   </section>`)
@@ -165,7 +198,7 @@ $qrPapelDownload = {
       backgroundColor: 'rgba(0, 0, 0, 0)', 
       removeContainer: true,
   }).then(canvas => {
-    //  $(".preview-target").css("opacity", "1");
+     $(".preview-target").css("opacity", "1");
       // document.body.appendChild(canvas)
       var a = document.createElement('a');
       // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.

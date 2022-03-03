@@ -1,5 +1,6 @@
 section#myme-preview{
-    width: 1116.54px;
+    /* width: 1116.54px; */
+    width: 1156.54px;
     height: 1406.15px;
     
     display: grid;
@@ -10,7 +11,8 @@ section#myme-preview{
   }
 
   section#myme-preview article{
-    width: 188.98px;
+    /* width: 188.98px; */
+    width: 208.98px;
     height: 389.76px;
     background-color: #fff;
     border-radius: 10px;
@@ -41,11 +43,28 @@ section#myme-preview{
     width: 162.41px;
     height: 162.41px;
     /* border-radius: 10px; */
-    transform: rotate(-90deg);
+    
 
     background-repeat: no-repeat;
     background-size: 200px;
     background-position: center center;
+
+    /* position: relative;
+    left: 12px; */
+  }
+
+  section#myme-preview article.myme .tst{
+    transform: rotate(-90deg);
+    position: relative;
+    left: -15px;
+    top: 0px;
+  }
+
+  section#myme-preview article.myme .tst img{
+    width: 155px;
+    position: relative;
+    left: 5px;
+    bottom: -3px;
   }
 
   /* section#myme-preview article.myme .qr:before{
@@ -55,9 +74,11 @@ section#myme-preview{
     background-image: url(../../assets/img/v3/bottom/escaneie-alt.png);
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center center;
     height: 20px;
     position: relative;
     top: -20px;
+    left: 5px;
   } */
 
   section#myme-preview article.serial{
