@@ -53,22 +53,18 @@ $scLocation = {
             if($obj.eu_emergencia_telefone()){
                 let phone = $obj.eu_emergencia_telefone();
                 let response = await $.ajax({
-                type: "POST",
-                url: 'https://mmwp.hardd.com.br/send',
-                data: {
-                    message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${self.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
-                    number: "55"+phone[0],
-                }
+                    type: "POST",
+                    url: 'https://mmwp.hardd.com.br/send/hardd?phone=55'+phone[0]+`&text=O MYME de ${$obj.eu_nome} acaba de ser lido em *${self.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
                 });
 
-                $.ajax({
-                    type: "POST",
-                    url: 'https://mmwp.hardd.com.br/send',
-                    data: {
-                        message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${self.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
-                        number: "55"+phone[1],
-                    }
-                });
+                // $.ajax({
+                //     type: "POST",
+                //     url: 'https://mmwp.hardd.com.br/send',
+                //     data: {
+                //         message: `O MYME de ${$obj.eu_nome} acaba de ser lido em *${self.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
+                //         number: "55"+phone[1],
+                //     }
+                // });
             }
         }
           
