@@ -679,7 +679,7 @@ const formManager = {
 
                    $("#sus-nome").text("NOME: "+$(target).find('.field-nome input').val());
                    $("#sus-nascimento").text("NASCIMENTO: "+$(target).find('.field-nascimento input').val())
-                   $("#sus-sexo").text('SEXO: -')
+                   $("#sus-sexo").text('SEXO: -').remove();
                    $("#sus-numero").text("Nº: "+$(target).find('.field-sus-numero input').val())
 
                    $("#susCard").modal("show");
@@ -964,7 +964,7 @@ const formManager = {
             });
     },
     init: function(){
-        //$('input[name="field_eu_nascimento"]').mask('11/11/1111');
+        $('input[name="field_eu_nascimento"]').mask('99/99/9999');
         //$('.phone_with_ddd').mask('(99) 9999-9999');
         this.checkIfEnabled();
         this.termsValidate();
