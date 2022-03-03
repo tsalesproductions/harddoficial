@@ -52,7 +52,7 @@ $scLocation = {
             await self.getLocate();
             if($obj.eu_emergencia_telefone()){
                 let phone = $obj.eu_emergencia_telefone();
-                if(!document.body.classList.contains("usado")) return;
+                // if(!document.body.classList.contains("usado")) return;
                 let response = await $.ajax({
                     type: "GET",
                     url: 'https://mmwp.hardd.com.br/send/hardd?phone=55'+phone[0]+`&text=O MYME de ${$obj.eu_nome} acaba de ser lido em *${self.userLocate.city}* com as coordenadas *${position.coords.latitude},${position.coords.longitude}*. Localização: https://www.google.com.br/maps/place/${position.coords.latitude},${position.coords.longitude}`,
