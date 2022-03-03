@@ -3,7 +3,7 @@ function downloadMymeBottom(code, qr, logo){
     <main class="bottom" data-id="${code}">
         <section>
         <canvas id="c-${code}" width="550" height="360"></canvas>
-        <img src="assets/img/v3/bottom/escaneie.png" class="escaneie">
+        <img src="assets/img/v3/bottom/escaneie-alt.png" class="escaneie">
         <img src="assets/img/v3/bottom/myme.png" class="myme">
         <img src="assets/img/v3/bottom/hardd.png" class="hardd">
         <img src="${qr}" class="qr">
