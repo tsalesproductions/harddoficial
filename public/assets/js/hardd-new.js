@@ -198,7 +198,7 @@ $qrPapelDownload = {
       backgroundColor: 'rgba(0, 0, 0, 0)', 
       removeContainer: true,
   }).then(canvas => {
-     $(".preview-target").css("opacity", "1");
+    //  $(".preview-target").css("opacity", "1");
       // document.body.appendChild(canvas)
       var a = document.createElement('a');
       // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
