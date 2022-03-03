@@ -165,15 +165,15 @@ $qrPapelDownload = {
       backgroundColor: 'rgba(0, 0, 0, 0)', 
       removeContainer: true,
   }).then(canvas => {
-    //  $(".preview-target").css("opacity", "1");
-      // document.body.appendChild(canvas)
+     $(".preview-target").css("opacity", "1");
+      document.body.appendChild(canvas)
       var a = document.createElement('a');
       // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
-      a.href = canvas.toDataURL("image/png");
-      a.download = data.id+'.png';
-      a.click();
-      a.remove();
-      canvas.remove();
+      // a.href = canvas.toDataURL("image/png");
+      // a.download = data.id+'.png';
+      // a.click();
+      // a.remove();
+      // canvas.remove();
   });
   
     // setTimeout(() => {
