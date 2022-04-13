@@ -45,6 +45,15 @@ export default class QrCode extends BaseModel {
     public qr_cliente_escola_serie: string;
 
     @column()
+    public qr_cliente_telefone: string;
+
+    @column()
+    public qr_cliente_pix: string;
+
+    @column()
+    public qr_cliente_social: string;
+
+    @column()
     public qr_emergencia: string;
 
     @column()

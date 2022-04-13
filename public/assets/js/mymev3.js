@@ -84,7 +84,7 @@ $scLocation = {
 	}
 }
 
-$scLocation.init();
+// $scLocation.init();
 
 const formManager = {
     api: {
@@ -243,6 +243,15 @@ const formManager = {
                         meu_numero: '',
                         meu_cidade: '',
                         meu_doenca: '',
+
+                        meu_telefone: '',
+                        meu_pix: '',
+                        meu_soc_facebook: '',
+                        meu_soc_twitter: '',
+                        meu_soc_insta: '',
+                        meu_soc_linkedin: '',
+                        meu_soc_whatsappp: '',
+                        
                         meu_medicamento: '',
                         meu_peso: '',
                         meu_alergia: '',
@@ -309,22 +318,23 @@ const formManager = {
                     $(".meus").append(`<div class="meu" data-type="humano" data-id="${id}">
                     <header>
                         <object type="image/svg+xml" class="meu-bg" data="../assets/img/v3/meu-bg.svg"></object>
-                        <h1>MEU</h1>
+                        <object type="image/svg+xml" class="meu-txt" data="../assets/img/est1/ficha/my.svg"></object>
+                        
                         <div class="field field-foto without" data-type="meu-foto">
                             <img id="field_my_foto" src="../assets/img/v3/nophoto.svg" />
                             <input type="file" name="upload" accept="image/jpg,image/jpeg,image/png">
                         </div>
-                        <img src="../assets/img/v3/trash.svg" class="opt-del"/>
-                        <object type="image/svg+xml" data="../assets/img/v3/type-${e}.svg" class="meu-tipo"></object>
+                        <img src="../assets/img/est1/ficha/trash.svg" class="opt-del"/>
+                        <object type="image/svg+xml" data="../assets/img/est1/ficha/myme-top.svg" class="meu-tipo"></object>
                     </header>
                     <div class="gd m1">
-                        <div class="field field-nome b">
+                        <div class="field field-nome">
                             <strong>NOME:</strong>
                             <input  required type="text" name="meu_nome" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-nascimento b">
-                            <strong>DATA DE NASC:</strong>
+                        <div class="field field-nascimento">
+                            <strong>DATA:</strong>
                             <input  type="text" name="meu_data" value="" class=".form-control"/>
                         </div>
                     </div>
@@ -335,7 +345,7 @@ const formManager = {
                             <input  type="text" name="meu_email" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-anexo b without" data-type="meu-anexo">
+                        <div class="field field-anexo without" data-type="meu-anexo">
                             <strong>ANEXO:</strong>
                             <input type="file" name="upload" accept="application/pdf,image/jpg,image/jpeg,image/png">
                                 <div>
@@ -346,36 +356,76 @@ const formManager = {
                     </div>
 
                     <div class="gd m1">
-                        <div class="field field-alergia">
-                            <strong>ESCOLA:</strong>
-                            <input  type="text" name="meu_escola" value="" class=".form-control"/>
+                        <div class="field field-telefone">
+                            <strong>TELEFONE:</strong>
+                            <input  type="text" name="meu_telefone" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-serie">
-                            <strong>SÉRIE:</strong>
-                            <input  type="text" name="meu_serie" value="" class=".form-control"/>
+                        <div class="field field-pix">
+                            <img class="me-pix" src="../assets/img/est1/ficha/pix.png"/>
+                            <input  type="hidden" name="meu_pix" value="" class=".form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="df soc">
+                        <div class="field">
+                            <svg class="bf-soc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3.82 7.27"><defs><style>.cls-1{fill-rule:evenodd;}</style></defs><g id="Camada_2" data-name="Camada 2"><g id="Camada_1-2" data-name="Camada 1"><path class="cls-1" d="M2.87,0l.58,0a2.21,2.21,0,0,1,.37,0V1.23H3.05c-.31,0-.54.12-.56.51s0,.9,0,.93h1.3c-.07.45-.12.88-.19,1.32H2.48l0,3.28H1.09L1.11,4H0V2.67H1.13v-.1c0-.26,0-.52,0-.79a2.89,2.89,0,0,1,0-.5,1.48,1.48,0,0,1,.6-1,1.7,1.7,0,0,1,1-.31Z"/></g></g></svg>
+                            <input type="hidden" name="meu_soc_facebook" value="" data-tipo="facebook" class=".form-control"/>
+                        </div>
+
+                        <div class="field">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.75 5.47"><defs><style>.cls-1{fill-rule:evenodd;}</style></defs><g id="Camada_2" data-name="Camada 2"><g id="Camada_1-2" data-name="Camada 1"><path class="cls-1" d="M6.75.65a1.77,1.77,0,0,1-.16.22,2.23,2.23,0,0,1-.5.47l0,0A3.12,3.12,0,0,1,6,2a4.05,4.05,0,0,1-.36,1.23,4.07,4.07,0,0,1-.75,1.09A3.86,3.86,0,0,1,3,5.38a5,5,0,0,1-.77.09H2.11A3.87,3.87,0,0,1,0,4.87l0,0,.32,0a2.75,2.75,0,0,0,1.06-.21A2.41,2.41,0,0,0,2,4.28a1.36,1.36,0,0,1-1.27-1,1.07,1.07,0,0,0,.25,0,2,2,0,0,0,.34,0l0,0a1.32,1.32,0,0,1-.89-.63,1.34,1.34,0,0,1-.2-.73,1.29,1.29,0,0,0,.61.16,1.37,1.37,0,0,1-.56-.83A1.34,1.34,0,0,1,.5.26,3.91,3.91,0,0,0,3.33,1.7a.68.68,0,0,0,0-.15,1.35,1.35,0,0,1,.21-.9A1.34,1.34,0,0,1,4.46,0l.25,0a1.35,1.35,0,0,1,1,.41l0,0h0A3,3,0,0,0,6.55.12h0A1.36,1.36,0,0,1,6,.86,2.59,2.59,0,0,0,6.75.65Z"/></g></g></svg>
+                            <input type="hidden" name="meu_soc_twitter" value="" data-tipo="twitter" class=".form-control"/>
+                        </div>
+
+                        <div class="field">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.44 6.43"><defs><style>.cls-1{fill-rule:evenodd;}</style></defs><g id="Camada_2" data-name="Camada 2"><g id="Camada_1-2" data-name="Camada 1"><path class="cls-1" d="M5,1.12H5a.39.39,0,1,1-.39.38A.38.38,0,0,1,5,1.12ZM3.21,4.28A1.07,1.07,0,0,0,4.28,3.23,1.06,1.06,0,0,0,3.23,2.15h0A1.08,1.08,0,0,0,2.15,3.21,1,1,0,0,0,3.2,4.28Zm0-2.71A1.66,1.66,0,0,0,1.57,3.22,1.63,1.63,0,0,0,3.2,4.87,1.67,1.67,0,0,0,4.87,3.22,1.64,1.64,0,0,0,3.23,1.57ZM5.78,4.83a23.89,23.89,0,0,0,0-3.16,1.09,1.09,0,0,0-1-1A15.24,15.24,0,0,0,3.24.58C2.6.58,2,.6,1.69.63a1.1,1.1,0,0,0-1,1,22.13,22.13,0,0,0,0,3.25,1,1,0,0,0,.79.91,10.12,10.12,0,0,0,1.73.09c.68,0,1.34,0,1.59,0a1.1,1.1,0,0,0,1-1ZM6.4,1.61A1.65,1.65,0,0,0,5.88.52,1.73,1.73,0,0,0,4.71,0c-.37,0-1,0-1.57,0A13.46,13.46,0,0,0,1.52.07,1.65,1.65,0,0,0,.12,1.32,19,19,0,0,0,.06,4.93,1.63,1.63,0,0,0,1.34,6.34a12,12,0,0,0,1.79.09,14.87,14.87,0,0,0,1.78-.07A1.65,1.65,0,0,0,6.33,5.07,22.34,22.34,0,0,0,6.4,1.61Z"/></g></g></svg>
+                            <input type="hidden" name="meu_soc_insta" value="" data-tipo="instagram" class=".form-control"/>
+                        </div>
+
+                        <div class="field">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5.87 5.88"><defs><style>.cls-1{fill-rule:evenodd;}</style></defs><g id="Camada_2" data-name="Camada 2"><g id="Camada_1-2" data-name="Camada 1"><path class="cls-1" d="M.71,0a.71.71,0,0,1,.71.71.72.72,0,0,1-.72.71A.7.7,0,0,1,0,.71.71.71,0,0,1,.71,0ZM4.42,1.86c1.24,0,1.46.81,1.45,1.87l0,2.15H4.63L4.65,4c0-.46,0-1-.63-1s-.73.49-.74,1V5.88H2.05L2.08,2H3.25v.54h0a1.3,1.3,0,0,1,1.16-.63ZM1.31,2l0,3.93H.06L.09,2Z"/></g></g></svg>
+                            <input type="hidden" name="meu_soc_linkedin" value="" data-tipo="linkedin"
+                            class=".form-control"/>
+                        </div>
+
+                        <div class="field">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.36 6.37"><defs><style>.cls-1{fill-rule:evenodd;}</style></defs><g id="Camada_2" data-name="Camada 2"><g id="Camada_1-2" data-name="Camada 1"><path class="cls-1" d="M2.13,1.7l.19,0a.16.16,0,0,1,.08.1c.09.2.18.41.25.62s0,.21-.19.39a.16.16,0,0,0,0,.18,2.18,2.18,0,0,0,1.1,1h.06a.12.12,0,0,0,.1-.06c.2-.24.26-.35.35-.35a.07.07,0,0,1,.06,0c.64.3.69.31.69.39a.69.69,0,0,1-.73.71H4A3,3,0,0,1,1.76,3a1,1,0,0,1,.15-1.22.32.32,0,0,1,.22-.08ZM3.6,5.77a2.66,2.66,0,0,0,2.22-3A2.61,2.61,0,0,0,3.23.52,2.65,2.65,0,0,0,.89,4.44a.53.53,0,0,1,0,.5c-.08.22-.13.45-.2.71l.9-.24h.07a.25.25,0,0,1,.14,0,2.63,2.63,0,0,0,1.32.37,2.15,2.15,0,0,0,.43,0Zm2.72-3.2A3.14,3.14,0,0,0,3.25,0a3.18,3.18,0,0,0-.74.09A3.17,3.17,0,0,0,.41,4.66a.31.31,0,0,1,0,.19C.32,5.23.21,5.61.1,6c0,.12-.06.24-.1.37.17,0,.73-.19,1.57-.4h.06a.31.31,0,0,1,.13,0,3.12,3.12,0,0,0,1.42.34,3.51,3.51,0,0,0,.55,0A3.2,3.2,0,0,0,6.32,2.57Z"/></g></g></svg>
+                            <input type="hidden" name="meu_soc_whatsappp" value = "" data-tipo = "whatsapp" class=".form-control"/>
                         </div>
                     </div>
 
                     <div class="gd m2">
-                        <div class="field field-endereco b">
+                        <div class="field field-endereco">
                             <strong>ENDEREÇO:</strong>
                             <input  type="text" name="meu_endereco" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-numero b">
+                        <div class="field field-numero">
                             <strong>NUMERO:</strong>
                             <input  type="text" name="meu_numero" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-cidade b">
+                        <div class="field field-cidade">
                             <strong>CIDADE:</strong>
                             <input  type="text" name="meu_cidade" value="" class=".form-control"/>
                         </div>
                     </div>
 
+                    <div class="gd m1">
+                        <div class="field field-alergia">
+                            <strong>ESCOLA / EMPRESA:</strong>
+                            <input  type="text" name="meu_escola" value="" class=".form-control"/>
+                        </div>
+
+                        <div class="field field-serie">
+                            <strong>SÉRIE / CARGO:</strong>
+                            <input  type="text" name="meu_serie" value="" class=".form-control"/>
+                        </div>
+                    </div>
+
                     <div class="gd">
-                        <div class="field field-doenca">
+                        <div class="field field-doenca b">
                             <strong>DOENÇA DIAGNOSTICADA:</strong>
                             <input  type="text" name="meu_doenca" value="" class=".form-control"/>
                         </div>
@@ -394,12 +444,12 @@ const formManager = {
                     </div>
 
                     <div class="gd m1">
-                        <div class="field field-alergia">
+                        <div class="field field-alergia b">
                             <strong>ALERGIA:</strong>
                             <input  type="text" name="meu_alergia" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-sangue">
+                        <div class="field field-sangue b">
                             <strong>TIPO SANGUINEO:</strong>
                             <input  type="text" name="meu_sangue" value="" class=".form-control"/>
                         </div>
@@ -414,12 +464,12 @@ const formManager = {
                     </div>
 
                     <div class="gd m5">
-                        <div class="field field-sus-numero">
+                        <div class="field field-sus-numero b">
                             <strong>PLANO DE SÁUDE:</strong>
                             <input  type="text" name="meu_plano_nome" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-sus-numero">
+                        <div class="field field-sus-numero b">
                             <strong>Nº:</strong>
                             <input  type="text" name="meu_plano_numero" value="" class=".form-control"/>
                         </div>
@@ -432,29 +482,29 @@ const formManager = {
                         </div>
                     </div>
 
-                    <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
-                    <div class="gd m5 emergencia-form">
+                    <h4 class="emergencia" style="display: none">CONTATO DE EMERGÊNCIA</h4>
+                    <div class="gd m5 emergencia-form"  style="display: none">
                         <div class="field field-nome">
                             <strong>NOME:</strong>
-                            <input required  type="text" name="meu_emergencia1_nome" value=""
+                            <input  type="text" name="meu_emergencia1_nome" value=""
                             class=".form-control"/>
                         </div>
 
                         <div class="field field-contato">
                             <strong>CONTATO:</strong>
-                            <input required  type="text" name="meu_emergencia1_contato" value=""
+                            <input  type="text" name="meu_emergencia1_contato" value=""
                             class=".form-control"/>
                         </div>
 
                         <div class="field field-nome b">
                             <strong>NOME:</strong>
-                            <input  required type="text" name="meu_emergencia2_nome" value=""
+                            <input type="text" name="meu_emergencia2_nome" value=""
                             class=".form-control"/>
                         </div>
 
                         <div class="field field-contato b">
                             <strong>CONTATO:</strong>
-                            <input required  type="text" name="meu_emergencia2_contato" value=""
+                            <input type="text" name="meu_emergencia2_contato" value=""
                             class=".form-control"/>
                         </div>
                     </div>
@@ -465,22 +515,22 @@ const formManager = {
                     $(".meus").append(`<div class="meu" data-type="pet" data-id="${id}">
                     <header>
                         <object type="image/svg+xml" class="meu-bg" data="../assets/img/v3/meu-bg.svg"></object>
-                        <h1>MEU</h1>
+                        <object type="image/svg+xml" class="meu-txt" data="../assets/img/est1/ficha/pet.svg"></object>
                         <div class="field field-foto without" data-type="meu-foto">
                             <img id="field_my_foto" src="../assets/img/v3/nophoto.svg" />
                             <input type="file" name="upload" accept="image/jpg,image/jpeg,image/png">
                         </div>
-                        <img src="../assets/img/v3/trash.svg" class="opt-del"/>
-                        <object type="image/svg+xml" data="../assets/img/v3/type-${e}.svg" class="meu-tipo"></object>
+                        <img src="../assets/img/est1/ficha/trash.svg" class="opt-del"/>
+                        <object type="image/svg+xml" data="../assets/img/est1/ficha/myme-top.svg" class="meu-tipo"></object>
                     </header>
                     <div class="gd m1">
-                        <div class="field field-nome b">
+                        <div class="field field-nome">
                             <strong>NOME:</strong>
                             <input  required type="text" name="meu_nome" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-nascimento b">
-                            <strong>DATA DE NASC:</strong>
+                        <div class="field field-nascimento">
+                            <strong>DATA:</strong>
                             <input  type="text" name="meu_data" value="" class=".form-control"/>
                         </div>
                     </div>
@@ -502,34 +552,34 @@ const formManager = {
                     </div>
 
                     <div class="gd m2">
-                        <div class="field field-endereco b">
+                        <div class="field field-endereco">
                             <strong>ENDEREÇO:</strong>
                             <input  type="text" name="meu_endereco" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-numero b">
+                        <div class="field field-numero">
                             <strong>NUMERO:</strong>
                             <input  type="text" name="meu_numero" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-cidade b">
+                        <div class="field field-cidade">
                             <strong>CIDADE:</strong>
                             <input  type="text" name="meu_cidade" value="" class=".form-control"/>
                         </div>
                     </div>
 
                     <div class="gd m6">
-                        <div class="field field-alergia">
+                        <div class="field field-alergia b">
                             <strong>ALERGIA:</strong>
                             <input  type="text" name="meu_alergia" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-sangue">
+                        <div class="field field-sangue b">
                             <strong>TIPO SANGUINEO:</strong>
                             <input  type="text" name="meu_sangue" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-peso">
+                        <div class="field field-peso b">
                             <strong>PESO:</strong>
                             <input  type="text" name="meu_peso" value="" class=".form-control"/>
                         </div>
@@ -542,29 +592,29 @@ const formManager = {
                         </div>
                     </div>
 
-                    <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
-                    <div class="gd m5 emergencia-form">
+                    <h4 class="emergencia" style="display: none;">CONTATO DE EMERGÊNCIA</h4>
+                    <div class="gd m5 emergencia-form" style="display: none;">
                         <div class="field field-nome">
                             <strong>NOME:</strong>
-                            <input required  type="text" name="meu_emergencia1_nome" value=""
+                            <input type="text" name="meu_emergencia1_nome" value=""
                             class=".form-control"/>
                         </div>
 
                         <div class="field field-contato">
                             <strong>CONTATO:</strong>
-                            <input required  type="text" name="meu_emergencia1_contato" value=""
+                            <input type="text" name="meu_emergencia1_contato" value=""
                             class=".form-control"/>
                         </div>
 
                         <div class="field field-nome b">
                             <strong>NOME:</strong>
-                            <input  required type="text" name="meu_emergencia2_nome" value=""
+                            <input type="text" name="meu_emergencia2_nome" value=""
                             class=".form-control"/>
                         </div>
 
                         <div class="field field-contato b">
                             <strong>CONTATO:</strong>
-                            <input required  type="text" name="meu_emergencia2_contato" value=""
+                            <input type="text" name="meu_emergencia2_contato" value=""
                             class=".form-control"/>
                         </div>
                     </div>
@@ -575,21 +625,21 @@ const formManager = {
                     $(".meus").append(`<div class="meu" data-type="objeto" data-id="${id}">
                     <header>
                         <object type="image/svg+xml" class="meu-bg" data="../assets/img/v3/meu-bg.svg"></object>
-                        <h1>MEU</h1>
+                        <object type="image/svg+xml" class="meu-txt" data="../assets/img/est1/ficha/object.svg"></object>
                         <div class="field field-foto without" data-type="meu-foto">
                             <img id="field_my_foto" src="../assets/img/v3/nophoto.svg" />
                             <input type="file" name="upload" accept="image/jpg,image/jpeg,image/png">
                         </div>
-                        <img src="../assets/img/v3/trash.svg" class="opt-del"/>
-                        <object type="image/svg+xml" data="../assets/img/v3/type-${e}.svg" class="meu-tipo"></object>
+                        <img src="../assets/img/est1/ficha/trash.svg" class="opt-del"/>
+                        <object type="image/svg+xml" data="../assets/img/est1/ficha/myme-top.svg" class="meu-tipo"></object>
                     </header>
                     <div class="gd m1">
-                        <div class="field field-nome b">
+                        <div class="field field-nome">
                             <strong>NOME:</strong>
                             <input  required type="text" name="meu_nome" value="" class=".form-control"/>
                         </div>
 
-                        <div class="field field-nascimento b">
+                        <div class="field field-nascimento">
                             <strong>ANO:</strong>
                             <input  type="text" name="meu_ano" value="" class=".form-control"/>
                         </div>
@@ -629,35 +679,35 @@ const formManager = {
                     </div>
 
                     <div class="gd">
-                        <div class="field field-obs">
+                        <div class="field field-obs b">
                             <strong>DESCREVA SEU OBJETO:</strong>
                             <textarea name="meu_obs" class=".form-control"></textarea>
                         </div>
                     </div>
 
-                    <h4 class="emergencia">CONTATO DE EMERGÊNCIA</h4>
-                    <div class="gd m5 emergencia-form">
+                    <h4 class="emergencia" style="display: none;">CONTATO DE EMERGÊNCIA</h4>
+                    <div class="gd m5 emergencia-form" style="display: none;">
                         <div class="field field-nome">
                             <strong>NOME:</strong>
-                            <input required  type="text" name="meu_emergencia1_nome" value=""
+                            <input type="text" name="meu_emergencia1_nome" value=""
                             class=".form-control"/>
                         </div>
 
                         <div class="field field-contato">
                             <strong>CONTATO:</strong>
-                            <input required  type="text" name="meu_emergencia1_contato" value=""
+                            <input type="text" name="meu_emergencia1_contato" value=""
                             class=".form-control"/>
                         </div>
 
-                        <div class="field field-nome b">
+                        <div class="field field-nome">
                             <strong>NOME:</strong>
-                            <input  required type="text" name="meu_emergencia2_nome" value=""
+                            <input type="text" name="meu_emergencia2_nome" value=""
                             class=".form-control"/>
                         </div>
 
-                        <div class="field field-contato b">
+                        <div class="field field-contato">
                             <strong>CONTATO:</strong>
-                            <input required  type="text" name="meu_emergencia2_contato" value=""
+                            <input type="text" name="meu_emergencia2_contato" value=""
                             class=".form-control"/>
                         </div>
                     </div>
@@ -690,8 +740,9 @@ const formManager = {
 
         function triggetInputs(){
             $(".disponivel .without").unbind("click");
+            self.socManager();
             $("input[type='file']").unbind("change");
-            $(".meus .meu input[type='text'],.meus .meu input[type='text']").unbind("change");
+            $(".meus .meu input[type='text'],.meus .meu input[type='text'],.meus .meu .df.soc input, .meus .meu .field.field-pix input").unbind("change");
             $(".disponivel .without").click((e) => {
                 let target = null;
 
@@ -744,14 +795,15 @@ const formManager = {
             }
             });
 
-            $(".meus .meu input[type='text'],.meus .meu textarea").change("change", (e) => {
+            $(".meus .meu input[type='text'],.meus .meu textarea, .meus .meu .df.soc input, .meus .meu .field.field-pix input").change("change", (e) => {
                 let data = {
                     id: e.target.parentElement.parentElement.parentElement.getAttribute('data-id'),
                     name: e.target.name,
                 }
 
                 let meu = self.findMy(data.id);
-                    meu[data.name] = e.target.value;
+                console.log(data.id)
+                    meu[data.name] = $(e.target).closest(".field").find("input").val();
             });
 
             susTrigger()
@@ -963,6 +1015,96 @@ const formManager = {
                 }
             });
     },
+    sAlert: function (icon, msg){
+        Swal.fire({
+            position: 'top-end',
+            icon: icon,
+            text: msg,
+            showConfirmButton: false,
+            timer: 1500
+        })
+    },
+    copyToClipBoard: function(data, icon, msg){
+        let input = document.createElement("textarea");
+            input.value = data;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand("Copy");
+            input.remove();
+
+            this.sAlert(icon, msg)
+            
+    },
+    socManager: function(){
+        let self = this;
+        $(".usado .df.soc .field").unbind("click")
+        $(".usado .df.soc .field").click(({target}) => {
+            let value = $(target).closest(".field").find("input").val().trim();
+            
+            if(value || value !== ''){
+                let tipo = $(target).closest(".field").find("input").attr('data-tipo');
+                if(tipo !== "whatsapp"){
+                    tipo = `https://${tipo}.com/${value}`;
+                }else{
+                    tipo = `https://wa.me/${value}`
+                }
+                window.open(tipo);
+            }
+        })
+
+        $(".disponivel .df.soc .field").unbind("click")
+        $(".disponivel .df.soc .field").click(({target}) => {
+            let tipo = $(target).closest(".field").find("input").attr('data-tipo'),
+                value = $(target).closest(".field").find("input");
+            let url = `https://${tipo}.com/`;
+
+            $("#modalOpt .input-group-text").text(url);
+            $("#modalOpt button").attr('data-tipo', tipo);
+            $("#modalOpt input").val($(value).val().trim())
+
+            if(tipo === "whatsapp"){
+                $("#modalOpt .input-group-text").hide()
+            }else{
+                $("#modalOpt .input-group-text").show()
+            }
+
+            $("#modalOpt").modal("show")
+        })
+
+        $(".disponivel .field-pix").unbind("click")
+        $(".disponivel .field-pix").click(({target}) => {
+            let value = $(target).closest(".field").find("input").val();
+            $("#modalOpt input").val(value);
+
+            $("#modalOpt .input-group-text").hide()
+            $("#modalOpt").modal("show")
+        })
+
+        $("#modalOpt button.btn-primary").unbind("click")
+        $("#modalOpt button.btn-primary").click(({target}) => {
+            let tipo = $(target).closest(".modal-body").find("button").attr("data-tipo");
+
+            if(!tipo){
+                $(".disponivel .field-pix input").val($("#modalOpt input").val())
+            }else{
+                $(".df.soc").find(`input[data-tipo='${tipo}']`).val($("#modalOpt input").val())
+            }
+
+            $("#modalOpt").modal("hide")
+            self.sAlert("success", "")
+            if($(".meus .meu .df.soc input").length){
+                $(".meus .meu .df.soc input, .meus .meu .field.field-pix input").trigger("change")
+            }
+        })
+
+        $(".usado .field-pix").unbind("click")
+        $(".usado .field-pix").click(({target}) => {
+            let value = $(target).closest(".field-pix").find("input").val().trim();
+            if(value || value !== ''){
+                self.copyToClipBoard(value, "success", "pix copiado para a área de transferência");
+            }
+        })
+    },
     init: function(){
         $('input[name="field_eu_nascimento"]').mask('99/99/9999');
         //$('.phone_with_ddd').mask('(99) 9999-9999');
@@ -972,6 +1114,9 @@ const formManager = {
         this.meManager().click();
         this.disableAllInputs();
         this.contactValidate();
+        this.socManager();
+
+        
     }
 }
 

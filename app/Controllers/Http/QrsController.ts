@@ -88,7 +88,8 @@ export default class QrsController extends MymeModelosController {
           qr_id: response,
           qr_code: qr,
           qr_modelo: modo,
-          qr_prefeitura: (modo === "prefeitura" || modo === "bottom" ? prefeituraId : "NULL")});
+          qr_prefeitura: (modo === "prefeitura" || modo === "bottom" ? prefeituraId : "NULL"),
+          qr_cliente_social: JSON.stringify([{"name":"facebook","value":""},{"name":"twitter","value":""},{"name":"instagram","value":""},{"name":"linkedin","value":""},{"name":"whatsapp","value":""}])});
 
         codes.push({
           id: response,

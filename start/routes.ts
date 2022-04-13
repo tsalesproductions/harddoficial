@@ -65,6 +65,8 @@ Route.group(() => {
   Route.post('/ecommerce/set/:id', 'ApisController.setList')
 });
 
+Route.post('/downloadMyme', 'MymesController.vcfManager');
+
 
 Route.get('/myme', 'QrsController.identify');
 Route.get('/myme/auth', 'MymesController.login');

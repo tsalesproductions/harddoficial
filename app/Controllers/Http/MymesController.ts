@@ -3,6 +3,13 @@ import QrData from 'App/Models/QrCode';
 import Route from '@ioc:Adonis/Core/Route'
 import Application from '@ioc:Adonis/Core/Application'
 import Database from '@ioc:Adonis/Lucid/Database'
+import axios from 'axios';
+import sharp from 'sharp'
+
+var fs = require('fs')
+
+const VCard = require('vcard-creator').default
+
 
 export default class MymesController {
   public async mymeManager({view, request, response, params }: HttpContextContract) {
@@ -14,6 +21,7 @@ export default class MymesController {
       data: data, 
       qr_id: body.id,
       meu_emergencia: (data?.qr_emergencia ? JSON.parse(data?.qr_emergencia) : []),
+      qr_cliente_social: (data?.qr_cliente_social ? JSON.parse(data?.qr_cliente_social) : []),
       meus: (data?.qr_meus ? JSON.parse(data?.qr_meus) : []),
     });
   }
@@ -38,6 +46,15 @@ export default class MymesController {
       field_eu_endereco,
       field_eu_numero,
       field_eu_cidade,
+
+      field_eu_telefone,
+      field_eu_pix,
+      field_eu_soc_facebook,
+      field_eu_soc_twitter,
+      field_eu_soc_insta,
+      field_eu_soc_linkedin,
+      field_eu_soc_whatsappp,
+
       field_eu_doenca,
       field_eu_medicamento,
       field_eu_peso,
@@ -55,6 +72,29 @@ export default class MymesController {
       qr_id,
       qr_password
     } = request.all();
+
+    const qr_cliente_social = [
+      {
+        "name": "facebook",
+        "value": field_eu_soc_facebook
+      },
+      {
+        "name": "twitter",
+        "value": field_eu_soc_twitter
+      },
+      {
+        "name": "instagram",
+        "value": field_eu_soc_insta
+      },
+      {
+        "name": "linkedin",
+        "value": field_eu_soc_linkedin
+      },
+      {
+        "name": "whatsapp",
+        "value": field_eu_soc_whatsappp
+      }
+    ]
 
     const {eu, meus} = JSON.parse(qr_meus);
 
@@ -83,6 +123,11 @@ export default class MymesController {
       qr_cliente_endereco_rua = ?,
       qr_cliente_endereco_numero = ?,
       qr_cliente_endereco_cidade = ?,
+
+      qr_cliente_telefone = ?,
+      qr_cliente_pix = ?,
+      qr_cliente_social = ?,
+
       qr_cliente_doenca = ?,
       qr_cliente_uso_medicamento = ?,
       qr_cliente_peso = ?,
@@ -108,6 +153,11 @@ export default class MymesController {
       field_eu_endereco,
       field_eu_numero,
       field_eu_cidade,
+
+      field_eu_telefone,
+      field_eu_pix,
+      JSON.stringify(qr_cliente_social),
+
       field_eu_doenca,
       field_eu_medicamento,
       field_eu_peso,
@@ -151,6 +201,50 @@ export default class MymesController {
     let result = await Database.rawQuery(`UPDATE qr_codes SET qr_status = ? WHERE qr_id = ? AND qr_password = ?`, ['0', serial, password]);
     
     return response.redirect('/myme/'+userData.qr_id);
+  }
+
+  public async vcfManager({ request, response }: HttpContextContract){
+    const { firstname, lastname, email, phone, addressA, addressB, facebook, twitter, instagram, linkedin, id, image } = request.all();
+
+    // return response.json([]);
+    let host = request.request.headers.origin;
+    
+    const imageResponse = await axios({"method": "get", "url": "https://files.hardd.com.br/uploads/myme_8028711001.webp", "responseType": "stream"})
+    await imageResponse.data.pipe(sharp().jpeg({"quality": 100}).
+        toFile("./public/exports/"+id+".jpeg", (err, info) => {
+          var myVCard = new VCard()
+              myVCard
+              .addName(lastname, firstname, '', '', '')
+              .addEmail(email)
+              .addPhoneNumber(phone, 'WORK')
+              .addAddress('', '', addressA, addressB, '', '', '')
+              
+            if(facebook){
+                myVCard.addURL(facebook, 'TYPE=Facebook')
+            }
+            
+            if(twitter){
+                myVCard.addURL(twitter, 'TYPE=Twitter')
+            }
+            
+            if(instagram){
+                myVCard.addURL(instagram, 'TYPE=Instagram')
+            }
+            
+            if(linkedin){
+                myVCard.addURL(linkedin, 'TYPE=Linkedin')
+            }
+
+            myVCard.addPhoto(`${host}/exports/${id}.jpeg`, 'JPEG')
+
+          fs.writeFile('./public/exports/'+id+'.vcf', myVCard.toString(), function (err) {
+            if (err) throw err;
+            // response.json({data: `https://${host}/exports/${id}.vcf`})
+          });
+
+      }))
+
+      response.json({data: `${host}/exports/${id}.vcf`})
   }
 }
 

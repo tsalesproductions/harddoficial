@@ -99,7 +99,8 @@ export const csrf: ShieldConfig['csrf'] = {
     '/ecommerce/set',
     '/myme',
     '/myme/:id',
-    '/construtora/upload'
+    '/construtora/upload',
+    '/downloadMyme'
   ],
 
   /*

@@ -19,6 +19,9 @@ export default class QrCodes extends BaseSchema {
         table.string('qr_cliente_email').notNullable();
         table.string('qr_cliente_escola_nome').notNullable();
         table.string('qr_cliente_escola_serie').notNullable();
+        table.string('qr_cliente_telefone').notNullable();
+        table.string('qr_cliente_pix').notNullable()
+        table.string('qr_cliente_social').notNullable();
         table.string('qr_emergencia').notNullable();
         table.string('qr_cliente_doenca').notNullable();
         table.string('qr_cliente_anexo').notNullable();

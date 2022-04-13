@@ -8,6 +8,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 *{margin: 0; padding: 0; -webkit-box-sizing: border-box; box-sizing: border-box;}
 
+body{
+    color: #000;
+}
+
 ::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -77,7 +81,7 @@ main.myme input::-webkit-input-placeholder, main.myme textarea::-webkit-input-pl
     border: none;
     font-weight: 700;
     font-size: 16px;
-    color: #333;
+    color: #000;
     outline: none !important;
     opacity: 1;
 }
@@ -89,7 +93,7 @@ main.myme input::-moz-placeholder, main.myme textarea::-moz-placeholder{
     border: none;
     font-weight: 700;
     font-size: 16px;
-    color: #333;
+    color: #000;
     outline: none !important;
     opacity: 1;
 }
@@ -101,7 +105,7 @@ main.myme input:-ms-input-placeholder, main.myme textarea:-ms-input-placeholder{
     border: none;
     font-weight: 700;
     font-size: 16px;
-    color: #333;
+    color: #000;
     outline: none !important;
     opacity: 1;
 }
@@ -113,7 +117,7 @@ main.myme input::-ms-input-placeholder, main.myme textarea::-ms-input-placeholde
     border: none;
     font-weight: 700;
     font-size: 16px;
-    color: #333;
+    color: #000;
     outline: none !important;
     opacity: 1;
 }
@@ -130,7 +134,7 @@ main.myme textarea::placeholder{
     border: none;
     font-weight: 700;
     font-size: 16px;
-    color: #333;
+    color: #000;
     outline: none !important;
     opacity: 1;
 }
@@ -173,7 +177,7 @@ main.myme textarea::placeholder{
 }
 
 .field-anexo img{
-    width: 35px;
+    width: 23px;
     /* position: relative; */
     top: -8px;
     right: -65px;
@@ -200,15 +204,15 @@ main.myme textarea:focus{
 main.myme .gd{
     display: -ms-grid;
     display: grid;
-    grid-gap: 5px;
-    margin-bottom: 5px;
+    grid-gap: 1px;
+    margin-bottom: 1px;
 }
 
 main.myme header{
     position: relative;
     width: 100%;
     height: 185px;
-    background-color: #313131;
+    background-color: #000;
 }
 
 main.myme header > a{
@@ -217,6 +221,53 @@ main.myme header > a{
     top: 5px;
     color: #fff;
     text-decoration: none;
+}
+
+main.myme header .me{
+    width: 60px;
+    margin: 10px;
+}
+
+main.myme header .logo{
+    float: right;
+    width: 50px;
+    margin: 10px;
+}
+
+main.myme footer .logo{
+    width: 50px;
+    position: absolute;
+    margin: 10px;
+    right: 0;
+    top: 0;
+}
+
+main.myme footer .logo-hardd{
+    width: 80px;
+    position: absolute;
+    margin: 10px;
+    right: 0;
+    bottom: 0;
+}
+
+main.myme button.download-contact{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    bottom: -19px;
+    width: 120px;
+    height: 55px;
+    border: none;
+    border-top-left-radius: 35px;
+    background: #abbe92;
+
+    z-index: 99999 !important;
+}
+
+main.myme button.download-contact img{
+    width: 30px;
 }
 
 
@@ -301,7 +352,7 @@ main.myme header > a{
 }
 
 main.myme form{
-    background-color: #323232;
+    background-color: #58595b;
 }
 
 /****** EU ******/
@@ -338,7 +389,7 @@ main.myme .my img.capa{
 }
 
 main.myme .my img.capa:not(.uploading){
-    border: 4px solid #E6E6E6;
+    /* border: 4px solid #E6E6E6; */
 }
 
 .myme .meu #field_my_foto{
@@ -359,13 +410,13 @@ main.myme .my > h1{
 
 main.myme .field{
     text-align: left;
-    background-color: #E5E5E5;
+    background-color: #e6e7e8;
     padding: 5px;
 }
 
 main.myme .field.b,
 main.myme .b{
-    background-color: #B2B2B2;
+    background-color: #a7a9ac;
 }
 
 main.myme button[type='submit']{
@@ -415,8 +466,52 @@ main.myme button[type='submit']:hover{
 main.myme .field strong{
     display: block;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
 }
+
+main.myme .field.field-pix{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main.myme .df.soc{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    margin-bottom: 1px;
+
+    cursor: pointer;
+}
+
+main.myme .field-pix{
+    cursor: pointer;
+}
+
+main.myme .df.soc .field{
+    width: 100%;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+}
+
+main.myme .df.soc .field input[value=' ']{
+    cursor: no-drop;
+    opacity: .6;
+}
+
+main.myme .df.soc .field svg.bf-soc{
+    width: 15px;
+}
+
+main.myme .df.soc .field svg:not(.bf-soc){
+    width: 30px;
+}
+
+main.myme .df.soc object{
+    width: 20px;
+}
+
 /****** MEU ******/
 main.myme .me{
     /* margin-top: 110px; */
@@ -431,7 +526,7 @@ main.myme .logo-mid{
 }
 
 main.myme h4.emergencia{
-    background-color: #980000;
+    background-color: #8e181a;
     color: #fff;
     text-align: center;
     font-size: 16px;
@@ -653,8 +748,8 @@ main.myme .field-foto img{
 
 /***** ADD MORE *****/
 .add-more{
-    margin: 20px 0;
-    background-color: #CCCCCC;
+    margin: 10px 0;
+    background-color: #a7a9ac;
     padding: 5px;
     font-size: 16px;
     font-weight: 700;
@@ -662,7 +757,7 @@ main.myme .field-foto img{
     -webkit-transition: all .2s ease-out;
     -o-transition: all .2s ease-out;
     transition: all .2s ease-out;
-    color: #323232;
+    color: #000;
 }
 
 .add-more span{
@@ -684,18 +779,19 @@ main.myme .field-foto img{
 
 /****** HELP ******/
 .help{
-    margin-top: 55px;
+    margin-top: 0;
     background-color: #BCBEC0;
     padding-bottom: 20px;
 }
 
 .help .ic{
     text-align: center;
-    background-color: #980000;
+    background-color: #8e181a;
     color: #fff;
     margin-bottom: 20px;
     position: relative;
     line-height: 30px;
+    height: 30px;
 }
 
 .help .ic .svg{
@@ -774,9 +870,12 @@ main.myme .terms label{
 
 /***** FOOTER *****/
 main.myme footer{
+    position: relative;
     text-align: center;
     margin-top: 0;
     line-height: 1;
+    background-color: #414042;
+    padding-bottom: 10px;
 }
 
 main.myme footer img{
@@ -826,14 +925,14 @@ main.myme footer img{
     }
 
     input:-moz-read-only{
-        -webkit-text-fill-color:#333; /* Override iOS / Android font color change */
+        -webkit-text-fill-color:#000; /* Override iOS / Android font color change */
         -webkit-opacity:1;
         opacity: 1;
     }
 
     input:read-only,
     input[readonly]{
-        -webkit-text-fill-color:#333; /* Override iOS / Android font color change */
+        -webkit-text-fill-color:#000; /* Override iOS / Android font color change */
         -webkit-opacity:1;
         opacity: 1;
     }
@@ -1019,7 +1118,7 @@ main.myme footer img{
 }
 
 .identify .field strong{
-    color:  #E5E5E5 !important;
+    color:  #e6e7e8 !important;
 }
 
 .identify .field input{
@@ -1161,6 +1260,7 @@ main.myme footer img{
 
 .meu-bg{
     width: calc(100% + 1px);
+    opacity: 0;
 }
 
 .meu header h1{
@@ -1176,11 +1276,18 @@ main.myme footer img{
 }
 
 .meu header .opt-del{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    width: 50px;
-    height: 50px;
-    bottom: 10px;
-    right: 10px;
+    right: 0;
+    bottom: 2px;
+    width: 120px;
+    height: 55px;
+    border: none;
+    border-top-left-radius: 35px;
+    background: #8e181a;
+    padding: 14px;
     -webkit-transition: all .2s ease-out;
     -o-transition: all .2s ease-out;
     transition: all .2s ease-out;
@@ -1201,9 +1308,11 @@ main.myme footer img{
 
 .meu header .meu-tipo{
     position: absolute;
-    width: 40px;
+    width: 50px;
+    height: 50px;
     top: 10px;
     right: 10px;
+    z-index: 9999;
 }
 
 .sec-badgee{
@@ -1370,6 +1479,63 @@ main.myme footer img{
     }
   }
 
-  .disponivel .help{
-      display: none;
-  }
+@media(min-width: 768px){
+    #modalOpt .modal-body > div{
+        display: grid;
+        grid-template-columns: auto 75px;
+    }
+}
+
+@media(max-width: 767px){
+    #modalOpt button.btn-primary{
+        width: 100%;
+    }
+
+    #modalOpt .input-group-text{
+        border-radius: 0;
+    }
+
+    #modalOpt input{
+        margin-left: 0 !important;
+    }
+
+    #modalOpt .btn-close{
+        margin-bottom: 10px;
+        margin-top: 0 !important;
+    }
+}
+
+.meu-txt{
+    position: absolute;
+    width: 60px;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}
+
+[data-type="object"] .meu-txt,
+[data-type="pet"] .meu-txt{
+    width: 25px !important;
+}
+
+@media(max-width: 767px){
+    svg#a{
+        width: 8rem !important;
+    }
+
+    svg#b{
+        width: 14rem !important;
+    }
+
+    svg#c{
+        width: 13rem !important;
+    }
+
+    main.myme footer .logo-hardd{
+        width: 50px !important;
+    }
+
+    main.myme footer .logo{
+        width: 40px !important;
+    }
+}
