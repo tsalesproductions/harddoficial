@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+REV:2022-05-09T14:36:29.315Z
+N;CHARSET=utf-8:Wiezel;Willian;;;
+FN;CHARSET=utf-8:Willian Wiezel
+EMAIL;INTERNET:willian.wiezel@edu.unipar.br 
+TEL;WORK:11 96448-8408 
+ADR;WORK;POSTAL;CHARSET=utf-8:;;Rua Sergipe, zona 2 5545;Umuarama ;;;
+URL;TYPE=Twitter:https://twitter.com/
+PHOTO;ENCODING=b;TYPE=JPEG:https://painel.hardd.com.br/exports/HM38507691
+ .jpeg
+END:VCARD

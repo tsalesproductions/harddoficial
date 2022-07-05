@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+REV:2022-05-15T17:44:40.374Z
+N;CHARSET=utf-8:silva;Renato;;;
+FN;CHARSET=utf-8:Renato silva
+EMAIL;INTERNET:Renato@hardd.com.br
+TEL;WORK:44 998159589
+ADR;WORK;POSTAL;CHARSET=utf-8:;;Jd.Monaco rua Suzuka 365;Mandaguaçu;;;
+URL;TYPE=Facebook:https://facebook.com/Renato Silva
+URL;TYPE=Twitter:https://twitter.com/Renato Silva
+URL;TYPE=Instagram:https://instagram.com/@renato_sergios
+PHOTO;ENCODING=b;TYPE=JPEG:https://painel.hardd.com.br/exports/HM43993251
+ .jpeg
+END:VCARD

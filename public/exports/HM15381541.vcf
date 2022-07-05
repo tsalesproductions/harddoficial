@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+REV:2022-06-02T14:14:00.764Z
+N;CHARSET=utf-8:Sales;Thiago;;;
+FN;CHARSET=utf-8:Thiago Sales
+EMAIL;INTERNET:thiago_salests@hotmail.com
+TEL;WORK:21975394966
+ADR;WORK;POSTAL;CHARSET=utf-8:;;rua Leonardo Vilasboas 100;Rio de Janeiro
+ ;;;
+URL;TYPE=Twitter:https://twitter.com/
+PHOTO;ENCODING=b;TYPE=JPEG:https://painel.hardd.com.br/exports/HM15381541
+ .jpeg
+END:VCARD

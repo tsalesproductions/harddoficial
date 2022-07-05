@@ -1,4 +1,4 @@
-$obj = {
+﻿$obj = {
 	eu_nome: $("input[name='field_eu_nome']").val(),
 	eu_emergencia_telefone: function(){
 		function escapeRegExp(string) {
@@ -84,7 +84,7 @@ $scLocation = {
 	}
 }
 
-// $scLocation.init();
+$scLocation.init();
 
 const formManager = {
     api: {
